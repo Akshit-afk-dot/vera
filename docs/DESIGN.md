@@ -2,11 +2,11 @@
 
 **Pitch.** Drop in a raw formation/grading tester export in any layout; get every cell graded, the bad ones flagged with evidence, and a QC report in which every number comes from code that ran in a Nebius sandbox.
 
-## Name (pick one, then rename the repo)
+## Name: **Vera** (chosen Oct 19)
 
 | Name | Why |
 |---|---|
-| **Vera** (recommended) | Latin for "true": the product's edge is that every number is verified. "Vera, the cell QC agent that shows its work." |
+| **Vera** (chosen) | Latin for "true": the product's edge is that every number is verified. "Vera, the cell QC agent that shows its work." |
 | Tessa | Reads your *tester*; friendly and easy to say aloud in the video |
 | Gaston | After Gaston Planté, who built the first rechargeable battery (1859) |
 | Mira | "Look" in several languages; it looks at 512 channels so you don't have to |
@@ -79,7 +79,7 @@ Bundled demo samples are data we re-host, so they must be fully synthetic or der
 | R5 | Dataset terms | M/M | Never re-host restricted data; fetch scripts; synthetic from CC BY only | — |
 | R6 | MIT-Stanford format unresolved | M/L | R3 runs on Michigan alone (n = 40), modest claims | Unresolved by Oct 24 → drop |
 | R7 | LLM output drift (mapping, code) | M/M | Pydantic validation + retries, deterministic checks, repair loop, R5 metrics report it honestly | — |
-| R8 | Repo in OneDrive (sync of `.venv`, `node_modules`, data; file locks) | H/M | Move repo to e.g. `C:\dev\` before `web/` install; `DATA_DIR` outside OneDrive | Before partner runs `npm install` |
+| R8 | Repo in OneDrive (sync of `.venv`, `node_modules`, data; file locks) | closed | Moved to `C:\dev\vera` on Oct 19 | — |
 | R9 | Schedule slip | M/H | Cut order below; submit a complete version Tue Oct 27 | Phase gate missed by > ½ day |
 | R10 | Untrusted code or uploads | L/H | Sandbox only, network off, no secrets in sandbox, size/type limits, `local` runner blocked in public | — |
 

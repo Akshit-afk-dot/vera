@@ -1,0 +1,45 @@
+# R1 answer key, written by hand from the file on 2026-10-19 (not from the README alone; see pitfalls).
+dataset: oxford
+data_label: REAL
+file: Oxford_Battery_Degradation_Dataset_1.mat
+sha256: a8f0b928f4ea77d7ba98b97194b78cc77336f2338fee8b57573d043f0cf26781
+format: mat-v5
+structure: "CellN.cycNNNN.{C1ch,C1dc,OCVch,OCVdc}.{t,v,q,T}"
+
+channels:
+  source: top-level variable names
+  count: 8
+  ids: [Cell1, Cell2, Cell3, Cell4, Cell5, Cell6, Cell7, Cell8]
+cycles:
+  definition: "characterisation cycle; key cycNNNN where NNNN = drive cycles completed before it (cyc0000, cyc0100, ...)"
+  count_per_channel: {Cell1: 78, Cell2: 73, Cell3: 76, Cell4: 47, Cell5: 46, Cell6: 46, Cell7: 77, Cell8: 76}
+steps:
+  source: key under each cycle
+  values: [C1ch, C1dc, OCVch, OCVdc]   # 1-C charge/discharge (740 mA), pseudo-OCV charge/discharge (40 mA)
+
+roles:
+  time_s: {source: t, unit: "MATLAB datenum (days)", to_canonical: "(t - t[0]) * 86400"}
+  voltage_v: {source: v, unit: V, scale: 1}
+  current_a: {source: null, derive: "dq/dt with q in mAh and t in s: A = dq/dt * 3.6", expected: "+0.74 A C1ch, -0.74 A C1dc, +/-0.04 A OCV"}
+  capacity_ah: {source: q, unit: mAh, scale: 0.001, note: "cumulative within each step; negative during discharge"}
+  temperature_c: {source: T, unit: degC, scale: 1}
+current_sign: charge_positive   # q rises on charge, falls on discharge
+
+reference_values:   # computed from the file with scipy.io.loadmat
+  c1dc_capacity_mah_first_to_last:
+    Cell1: [739.1, 560.6]
+    Cell2: [734.8, 544.9]
+    Cell3: [735.1, 565.9]
+    Cell4: [734.1, 581.2]
+    Cell5: [735.3, 456.1]   # 62% retained: the clear outlier of the batch
+    Cell6: [732.8, 579.0]
+    Cell7: [728.7, 582.8]
+    Cell8: [727.5, 559.0]
+  cell1_cyc0000_c1dc: {duration_s: 3606, median_dt_s: 1.0, derived_median_current_a: -0.74}
+  chamber_temperature_c: 40
+
+pitfalls:
+  - "README says t is in seconds; it is a MATLAB datenum in days (values ~735954.8)"
+  - "No current column: current must be derived from q (or from the known 1C / OCV rates)"
+  - "Cells have different numbers of characterisation cycles (46-78): cycle keys are not a common index"
+  - "Datenum of the first record is 2014-12-21; README gives start date 08/01/2015 (dd/mm/yyyy), so do not rely on README dates"

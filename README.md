@@ -1,6 +1,6 @@
-# Battery Cell QC Agent (working title)
+# Vera: the cell QC agent that shows its work
 
-An AI agent that reads a raw Li-ion formation/grading tester export in any layout, grades every cell, flags the bad
+Vera is an AI agent that reads a raw Li-ion formation/grading tester export in any layout, grades every cell, flags the bad
 ones with evidence and writes a plain-language QC report. Every number comes from code executed in an isolated
 Nebius Token Factory Sandbox, never from the model. Built on **NVIDIA Nemotron** models served by
 **Nebius Token Factory** for the Nebius × NVIDIA Global AI Hackathon (track: Best Apps & Agents).

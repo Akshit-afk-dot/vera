@@ -1,0 +1,44 @@
+# R1 answer key, written by hand from the files on 2026-10-19 (not from the README alone; see pitfalls).
+dataset: nasa
+data_label: REAL
+file: "1. BatteryAgingARC-FY08Q4/B0005.mat"   # inside "5. Battery Data Set.zip"; one file = one cell
+sha256: 0eae4585baf3f200c09fe24c5ab884f1889679fc75206ca1aa19da704104f0b0
+format: mat-v5
+structure: "B0005.cycle[] (616 operation records) -> {type, ambient_temperature, time, data}"
+
+channels:
+  source: top-level variable name (equals the file stem)
+  count: 1
+  ids: [B0005]
+cycles:
+  definition: one cycle = one discharge record (operations are charge | discharge | impedance, not cycles)
+  count: 168
+  operation_counts: {charge: 170, discharge: 168, impedance: 278}
+steps:
+  source: cycle[].type
+  values: [charge, discharge, impedance]
+
+roles:   # canonical role -> where it lives, unit in the file, factor to the canonical unit
+  time_s: {source: "cycle[].data.Time", unit: s, scale: 1, note: "restarts at 0 for every operation; operation start is cycle[].time as a MATLAB datevec [Y M D h m s]"}
+  voltage_v: {source: "cycle[].data.Voltage_measured", unit: V, scale: 1}
+  current_a: {source: "cycle[].data.Current_measured", unit: A, scale: 1}
+  temperature_c: {source: "cycle[].data.Temperature_measured", unit: degC, scale: 1}
+  capacity_ah: {source: "cycle[type=discharge].data.Capacity", unit: Ah, scale: 1, note: "one scalar per discharge, not a time series"}
+current_sign: charge_positive   # Current_measured about +1.5 A on charge, -2.0 A on discharge
+ignore: [Current_charge, Voltage_charge, Current_load, Voltage_load, Sense_current, Battery_current, Current_ratio, Battery_impedance, Rectified_Impedance]
+extras:
+  resistance_ohm: {source: "cycle[type=impedance].data.Re and .Rct", unit: Ohm, note: "EIS fit; first record Re 0.04467, Rct 0.06946"}
+
+reference_values:   # computed from the file with scipy.io.loadmat
+  first_discharge_capacity_ah: 1.8565
+  last_discharge_capacity_ah: 1.3251
+  first_discharge: {samples: 197, duration_s: 3690, median_current_a: -2.012}
+  ambient_temperature_c: 24
+
+pitfalls:
+  - "README lists discharge fields as Current_charge/Voltage_charge; the files use Current_load/Voltage_load"
+  - "README says Rectified_impedance; the field is Rectified_Impedance"
+  - "Impedance arrays are complex128"
+  - "Each discharge record includes the rest after cut-off: last Voltage_measured is ~3.28 V, not the 2.7 V cut-off"
+  - "B0025-B0028 appear in two sub-zips (byte-identical); deduplicate across the archive (34 distinct cells)"
+  - "Archive is a zip of 6 zips; the cut-off voltage and ambient temperature differ per group (see each README)"

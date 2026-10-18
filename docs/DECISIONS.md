@@ -15,3 +15,7 @@ One line each: date (IST) · decision · why. Newest at the bottom.
 - 2026-10-18 · Stay in Best Apps & Agents (not Coding and Agentic Engineering) · the product serves QC engineers, not developers; writing and running code is a means here, not the product.
 - 2026-10-18 · Docker is not installed locally; the deploy host or CI builds the image · avoid a heavy install (WSL2) before Phase 4.
 - 2026-10-18 · Raw datasets go under `DATA_DIR` (default `data/raw`, gitignored) · lets the repo stay in OneDrive while data lives outside it.
+- 2026-10-19 · Project name **Vera** (Akshit) · "the cell QC agent that shows its work": verification is the differentiator.
+- 2026-10-19 · Repo moved from `OneDrive\Desktop\Hackathon` to `C:\dev\vera` · OneDrive was syncing `.venv`, and would sync `node_modules` and GBs of data.
+- 2026-10-19 · R1 answer keys are written from the files themselves, with README errors listed as pitfalls · both NASA and Oxford READMEs contradict their data (field names; time unit).
+- 2026-10-19 · OPEN for Phase 1 (before contract freeze): extend `LayoutMapping` with record paths for nested `.mat` structs and a `derived` current source (dq/dt), or route such files to the tier-2 normalizer · NASA and Oxford cannot be expressed in v0.

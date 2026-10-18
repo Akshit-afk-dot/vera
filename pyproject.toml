@@ -1,5 +1,5 @@
 [project]
-name = "cell-qc-agent"
+name = "vera"
 version = "0.1.0"
 description = "AI agent that reads raw Li-ion formation/grading tester exports, flags bad cells with evidence, grades every cell and writes a QC report. NVIDIA Nemotron on Nebius Token Factory."
 readme = "README.md"

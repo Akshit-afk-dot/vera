@@ -1,6 +1,6 @@
 # CLAUDE.md: Battery Cell QC Agent
 
-Nebius × NVIDIA Global AI Hackathon · track **Best Apps & Agents** · team of 2 · submission closes **Fri Oct 30, 2026, 10:00 am PT (= 10:30 pm IST)**. Written Sun Oct 18, 2026 (IST); about 12 days remain. The project name is a working title: propose five human-sounding names in `docs/DESIGN.md`.
+Nebius × NVIDIA Global AI Hackathon · track **Best Apps & Agents** · team of 2 · submission closes **Fri Oct 30, 2026, 10:00 am PT (= 10:30 pm IST)**. Written Sun Oct 18, 2026 (IST); about 12 days remain. The project name is a working title: propose five human-sounding names in `docs/DESIGN.md`. **Chosen Oct 19: Vera** (repo at `C:\dev\vera` on Akshit's machine).
 
 Tags used below: **VERIFIED** = read in the official docs or rules on Oct 17–18, 2026. **VERIFY** = unconfirmed, test it live before relying on it.
 
@@ -243,7 +243,7 @@ tests/
 
 ## Status log (update as you go)
 
-- [ ] Phase 0 verified, `docs/PHASE0.md` written (Oct 18: toolchain, docs, repo hygiene done; probes written, waiting on `.env` keys and Sandboxes access)
+- [ ] Phase 0 verified, `docs/PHASE0.md` written (Oct 18: toolchain, docs, repo hygiene done; probes written, waiting on `.env` keys and Sandboxes access. Oct 19: repo moved to `C:\dev\vera`, named Vera; NASA + Oxford fetched, formats resolved, R1 answer keys written)
 - [x] `docs/DESIGN.md` and `contracts/` v0 committed (Oct 18; contract freeze at end of Phase 1)
 - [ ] Rough end to end on one public dataset (target Tue Oct 20, 9:30 pm IST)
 - [ ] Synthetic generator and five export layouts

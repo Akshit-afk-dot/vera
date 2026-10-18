@@ -1,0 +1,32 @@
+{
+  "nasa": {
+    "title": "NASA PCoE Li-ion battery aging (18650 cells)",
+    "terms": "Use at own risk; acknowledge the NASA Prognostics Center of Excellence data repository and donors",
+    "files": {
+      "battery_data_set.zip": {
+        "url": "https://phm-datasets.s3.amazonaws.com/NASA/5.+Battery+Data+Set.zip",
+        "bytes": 209708670,
+        "sha256": "82302a7db4fc1b34e0b6676326610438d43b816bdf11a69d1d012a464ef2f92e",
+        "fetched_at": "2026-10-18T19:00:56Z"
+      }
+    }
+  },
+  "oxford": {
+    "title": "Oxford Battery Degradation Dataset 1 (8 Kokam 740 mAh pouch cells)",
+    "terms": "ODbL 1.0: credit the source, do not re-host",
+    "files": {
+      "Oxford_Battery_Degradation_Dataset_1.mat": {
+        "url": "https://ora.ox.ac.uk/objects/uuid:03ba4b01-cfed-46d3-9b1a-7d4a7bdf6fac/files/m5ac36a1e2073852e4f1f7dee647909a7",
+        "bytes": 266164290,
+        "sha256": "a8f0b928f4ea77d7ba98b97194b78cc77336f2338fee8b57573d043f0cf26781",
+        "fetched_at": "2026-10-18T19:02:15Z"
+      },
+      "Readme.txt": {
+        "url": "https://ora.ox.ac.uk/objects/uuid:03ba4b01-cfed-46d3-9b1a-7d4a7bdf6fac/files/m43cc05e7c5f1245f4895d9dbd495e52f",
+        "bytes": 5643,
+        "sha256": "f04c8bdae97e98632b9daeaa7c71631990dbf5ecbf38711347fc470baefc0def",
+        "fetched_at": "2026-10-18T19:02:16Z"
+      }
+    }
+  }
+}

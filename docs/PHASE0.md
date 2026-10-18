@@ -10,7 +10,7 @@ Started Sun Oct 18, 2026, 23:40 IST. Steps follow CLAUDE.md §10. Status: ✅ do
 | 4 | Per-model probes (chat, tools single + parallel, JSON both styles, streaming, latency) | ⏳ | Same script; writes `docs/phase0/models_probe.json` |
 | 5 | Sandboxes smoke test | ⏳ | `scripts/phase0_sandbox.py` written; REST client unit-tested against a mock |
 | 6 | Rate limits + concurrency test | ⏳ | Concurrency test is in the models probe; a human reads the dashboard limits |
-| 7 | Dataset downloads | ⏳ | Waiting for go-ahead (sizes below). Michigan needs a browser/Globus |
+| 7 | Dataset downloads | 🟡 partial | Oct 19: NASA + Oxford downloaded, formats resolved, answer keys written. UConn, CALCE next; Michigan and MIT need a browser |
 | 8 | Repo hygiene | ✅ | git, Apache-2.0, .gitignore, CI (ruff, pytest, schema check, gitleaks), pre-commit secret scan |
 | 9 | DESIGN.md | ✅ | `docs/DESIGN.md` |
 
@@ -18,7 +18,7 @@ Started Sun Oct 18, 2026, 23:40 IST. Steps follow CLAUDE.md §10. Status: ✅ do
 
 | Tool | Version | Notes |
 |---|---|---|
-| OS | Windows 11 Home 10.0.26200 | Repo lives in `OneDrive\Desktop`, which OneDrive syncs (Desktop is redirected). See risk R8 in DESIGN.md |
+| OS | Windows 11 Home 10.0.26200 | Repo moved out of OneDrive to `C:\dev\vera` on Oct 19 (Desktop is OneDrive-synced) |
 | Python | 3.12.10 | via `uv` venv |
 | uv | 0.11.2 | `uv sync` installed all deps in 40 s |
 | Node / npm | 25.2.1 / 11.6.2 | for `web/` |
@@ -61,15 +61,28 @@ Sandboxes access requested on: _not yet_ · Rate limits seen in dashboard: _not 
   "Nemotron 3 Ultra" for serious reasoning and "Nano or Super" for fast calls, and encourages (does not require)
   Nebius Serverless Endpoints/Jobs for deployment.
 
-## Datasets (step 7): waiting for a go-ahead to download
+## Datasets (step 7)
 
-| Dataset | How | Size | Destination |
+`uv run python scripts/fetch_data.py nasa oxford` downloads into `$DATA_DIR/<name>/` and records size + SHA-256 in
+`data/manifest.json`. `uv run python -I scripts/inspect_dataset.py <name>` extracts (zip-slip safe) and peeks every file
+with the same generic code the agent will use (`agent/ingest/peek.py`).
+
+| Dataset | How | Size | Status |
 |---|---|---|---|
-| NASA PCoE battery | script (direct S3 zip) | ≈210 MB | `$DATA_DIR/nasa/` |
-| Oxford Degradation 1 | script (single .mat) | ≈254 MB | `$DATA_DIR/oxford/` |
+| NASA PCoE battery | script (direct S3 zip) | 209.7 MB | ✅ Oct 19. Zip of 6 zips → 48 `.mat` (34 distinct cells; B0025–28 duplicated). Key: `eval/answer_keys/nasa.yaml` |
+| Oxford Degradation 1 | script (ORA file link) | 266.2 MB | ✅ Oct 19. One `.mat` with 8 cells × 46–78 characterisation cycles. Key: `eval/answer_keys/oxford.yaml` |
 | UConn-ISU-ILCC 2025 | script after link check | several zips | `$DATA_DIR/uconn/` |
 | CALCE (one cell group) | script after link check | tens of MB | `$DATA_DIR/calce/` |
 | Michigan formation | **browser or Globus** (scripted download got 403) | 2.37 GB | `$DATA_DIR/michigan/` |
 | MIT-Stanford | browser (site needs JS); format unverified | ≈3 GB | `$DATA_DIR/mit/` |
 
-Recommendation: set `DATA_DIR` to a folder outside OneDrive before downloading (several GB would otherwise sync).
+Since the repo moved to `C:\dev\vera`, the default `DATA_DIR=data/raw` is outside OneDrive.
+
+**What the real files taught us (both READMEs are wrong somewhere, which is the R1 story):**
+- NASA: README field names differ from the files (`Current_load` not `Current_charge` on discharge; `Rectified_Impedance`);
+  "cycle" records are operations (charge/discharge/impedance), not cycles; impedance arrays are complex; each discharge
+  record includes the post-cut-off rest. One cell per file.
+- Oxford: README says `t` is in seconds; it is a MATLAB datenum in days. There is no current column (derive it from
+  charge `q` in mAh). One file holds 8 cells; Cell5 retained 62% of its capacity versus 74–80% for the others.
+- Contract impact (Phase 1, before the freeze): `LayoutMapping` must express nested record paths in `.mat` files
+  (NASA) and a derived current (Oxford), or those formats go to the tier-2 normalizer. See DECISIONS.md.
