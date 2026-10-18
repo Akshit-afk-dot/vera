@@ -1,0 +1,6 @@
+#!/bin/sh
+# Enabled by `make setup` (git config core.hooksPath .githooks).
+if command -v gitleaks >/dev/null 2>&1; then
+  gitleaks git --pre-commit --staged --redact --no-banner || exit 1
+fi
+exec uv run --quiet python scripts/secret_scan.py

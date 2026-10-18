@@ -1,0 +1,206 @@
+{
+  "$defs": {
+    "ColumnMap": {
+      "additionalProperties": false,
+      "properties": {
+        "role": {
+          "enum": [
+            "channel_id",
+            "cycle",
+            "step",
+            "time_s",
+            "voltage_v",
+            "current_a",
+            "capacity_ah",
+            "temperature_c",
+            "ignore"
+          ],
+          "title": "Role",
+          "type": "string"
+        },
+        "scale": {
+          "default": 1.0,
+          "description": "Multiply file values by this to reach the canonical unit",
+          "title": "Scale",
+          "type": "number"
+        },
+        "source": {
+          "description": "Column header as it appears in the file, or 0-based index as a string",
+          "title": "Source",
+          "type": "string"
+        },
+        "unit": {
+          "description": "Unit in the file, e.g. 'mV', 'A', 'mAh', 'hh:mm:ss', 's'",
+          "title": "Unit",
+          "type": "string"
+        }
+      },
+      "required": [
+        "source",
+        "role",
+        "unit"
+      ],
+      "title": "ColumnMap",
+      "type": "object"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Declarative description of a tester export (tier-1 ingestion). Applied by a generic reader.",
+  "properties": {
+    "channel_source": {
+      "default": "column",
+      "enum": [
+        "column",
+        "sheet",
+        "file",
+        "wide_column_prefix"
+      ],
+      "title": "Channel Source",
+      "type": "string"
+    },
+    "columns": {
+      "items": {
+        "$ref": "#/$defs/ColumnMap"
+      },
+      "title": "Columns",
+      "type": "array"
+    },
+    "confidence": {
+      "maximum": 1,
+      "minimum": 0,
+      "title": "Confidence",
+      "type": "number"
+    },
+    "current_sign": {
+      "default": "charge_positive",
+      "enum": [
+        "charge_positive",
+        "discharge_positive"
+      ],
+      "title": "Current Sign",
+      "type": "string"
+    },
+    "decimal": {
+      "default": ".",
+      "enum": [
+        ".",
+        ","
+      ],
+      "title": "Decimal",
+      "type": "string"
+    },
+    "delimiter": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Delimiter"
+    },
+    "encoding": {
+      "default": "utf-8",
+      "title": "Encoding",
+      "type": "string"
+    },
+    "format": {
+      "enum": [
+        "csv",
+        "excel",
+        "mat",
+        "hdf5"
+      ],
+      "title": "Format",
+      "type": "string"
+    },
+    "header_row": {
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "0-based line (csv) or row (excel) holding column names",
+      "title": "Header Row"
+    },
+    "notes": {
+      "default": "",
+      "title": "Notes",
+      "type": "string"
+    },
+    "orientation": {
+      "default": "long",
+      "enum": [
+        "long",
+        "wide"
+      ],
+      "title": "Orientation",
+      "type": "string"
+    },
+    "sheet_pattern": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Regex of sheet names to read (excel)",
+      "title": "Sheet Pattern"
+    },
+    "struct_path": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Dotted path to the data struct (mat/hdf5)",
+      "title": "Struct Path"
+    },
+    "time_format": {
+      "default": "seconds",
+      "enum": [
+        "seconds",
+        "minutes",
+        "hours",
+        "hh:mm:ss",
+        "timestamp"
+      ],
+      "title": "Time Format",
+      "type": "string"
+    },
+    "wide_column_prefix": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Wide Column Prefix"
+    }
+  },
+  "required": [
+    "format",
+    "columns",
+    "confidence"
+  ],
+  "title": "LayoutMapping",
+  "type": "object",
+  "x-contract-version": 0
+}

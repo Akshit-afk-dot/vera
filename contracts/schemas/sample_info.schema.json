@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "data_label": {
+      "enum": [
+        "REAL",
+        "REAL+PLANTED",
+        "SYNTHETIC"
+      ],
+      "title": "Data Label",
+      "type": "string"
+    },
+    "description": {
+      "title": "Description",
+      "type": "string"
+    },
+    "has_replay": {
+      "title": "Has Replay",
+      "type": "boolean"
+    },
+    "id": {
+      "title": "Id",
+      "type": "string"
+    },
+    "n_channels": {
+      "title": "N Channels",
+      "type": "integer"
+    },
+    "name": {
+      "title": "Name",
+      "type": "string"
+    },
+    "size_bytes": {
+      "title": "Size Bytes",
+      "type": "integer"
+    }
+  },
+  "required": [
+    "id",
+    "name",
+    "description",
+    "data_label",
+    "n_channels",
+    "size_bytes",
+    "has_replay"
+  ],
+  "title": "SampleInfo",
+  "type": "object",
+  "x-contract-version": 0
+}

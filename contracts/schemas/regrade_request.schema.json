@@ -1,0 +1,142 @@
+{
+  "$defs": {
+    "GradeThresholds": {
+      "additionalProperties": false,
+      "description": "Capacity bins are % of the reference capacity; IR bins are % of the batch-median IR.",
+      "properties": {
+        "basis": {
+          "default": "batch_median",
+          "enum": [
+            "batch_median",
+            "nominal"
+          ],
+          "title": "Basis",
+          "type": "string"
+        },
+        "capacity_min_pct": {
+          "additionalProperties": {
+            "type": "number"
+          },
+          "default": {
+            "A": 98.0,
+            "B": 95.0,
+            "C": 90.0
+          },
+          "propertyNames": {
+            "enum": [
+              "A",
+              "B",
+              "C"
+            ]
+          },
+          "title": "Capacity Min Pct",
+          "type": "object"
+        },
+        "ir_max_pct": {
+          "additionalProperties": {
+            "type": "number"
+          },
+          "default": {
+            "A": 115.0,
+            "B": 130.0,
+            "C": 160.0
+          },
+          "propertyNames": {
+            "enum": [
+              "A",
+              "B",
+              "C"
+            ]
+          },
+          "title": "Ir Max Pct",
+          "type": "object"
+        },
+        "max_grade_by_severity": {
+          "additionalProperties": {
+            "enum": [
+              "A",
+              "B",
+              "C",
+              "REJECT"
+            ],
+            "type": "string"
+          },
+          "default": {
+            "high": "C",
+            "medium": "B"
+          },
+          "description": "A flagged cell can grade no better than this",
+          "propertyNames": {
+            "enum": [
+              "low",
+              "medium",
+              "high"
+            ]
+          },
+          "title": "Max Grade By Severity",
+          "type": "object"
+        },
+        "nominal_capacity_ah": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Nominal Capacity Ah"
+        },
+        "rationale": {
+          "default": "",
+          "title": "Rationale",
+          "type": "string"
+        },
+        "reject_on_flags": {
+          "default": [
+            "NOISY_OR_DEAD_CHANNEL"
+          ],
+          "items": {
+            "enum": [
+              "LOW_CAPACITY",
+              "HIGH_IR",
+              "CURVE_SHAPE",
+              "CAPACITY_CREEP_UP",
+              "NOISY_OR_DEAD_CHANNEL",
+              "LOW_CE"
+            ],
+            "type": "string"
+          },
+          "title": "Reject On Flags",
+          "type": "array"
+        },
+        "source": {
+          "default": "default",
+          "enum": [
+            "default",
+            "agent",
+            "user"
+          ],
+          "title": "Source",
+          "type": "string"
+        }
+      },
+      "title": "GradeThresholds",
+      "type": "object"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "thresholds": {
+      "$ref": "#/$defs/GradeThresholds"
+    }
+  },
+  "required": [
+    "thresholds"
+  ],
+  "title": "RegradeRequest",
+  "type": "object",
+  "x-contract-version": 0
+}

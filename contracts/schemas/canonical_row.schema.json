@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "One row of the canonical parquet table both ingestion tiers produce.",
+  "properties": {
+    "capacity_ah": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Capacity Ah"
+    },
+    "channel_id": {
+      "title": "Channel Id",
+      "type": "string"
+    },
+    "current_a": {
+      "description": "Positive = charge",
+      "title": "Current A",
+      "type": "number"
+    },
+    "cycle": {
+      "title": "Cycle",
+      "type": "integer"
+    },
+    "step": {
+      "title": "Step",
+      "type": "integer"
+    },
+    "temperature_c": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Temperature C"
+    },
+    "time_s": {
+      "title": "Time S",
+      "type": "number"
+    },
+    "voltage_v": {
+      "title": "Voltage V",
+      "type": "number"
+    }
+  },
+  "required": [
+    "channel_id",
+    "cycle",
+    "step",
+    "time_s",
+    "voltage_v",
+    "current_a"
+  ],
+  "title": "CanonicalRow",
+  "type": "object",
+  "x-contract-version": 0
+}

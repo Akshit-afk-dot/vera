@@ -1,0 +1,1710 @@
+{
+  "$defs": {
+    "AnalysisProgress": {
+      "additionalProperties": false,
+      "properties": {
+        "done": {
+          "title": "Done",
+          "type": "integer"
+        },
+        "run_id": {
+          "title": "Run Id",
+          "type": "string"
+        },
+        "seq": {
+          "description": "Strictly increasing within a run",
+          "minimum": 0,
+          "title": "Seq",
+          "type": "integer"
+        },
+        "total": {
+          "title": "Total",
+          "type": "integer"
+        },
+        "ts": {
+          "format": "date-time",
+          "title": "Ts",
+          "type": "string"
+        },
+        "type": {
+          "const": "analysis.progress",
+          "default": "analysis.progress",
+          "title": "Type",
+          "type": "string"
+        },
+        "unit": {
+          "enum": [
+            "shards",
+            "channels"
+          ],
+          "title": "Unit",
+          "type": "string"
+        },
+        "v": {
+          "const": 0,
+          "default": 0,
+          "title": "V",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "run_id",
+        "seq",
+        "ts",
+        "done",
+        "total",
+        "unit"
+      ],
+      "title": "AnalysisProgress",
+      "type": "object"
+    },
+    "BatchSummary": {
+      "additionalProperties": false,
+      "properties": {
+        "flag_counts": {
+          "additionalProperties": {
+            "type": "integer"
+          },
+          "propertyNames": {
+            "enum": [
+              "LOW_CAPACITY",
+              "HIGH_IR",
+              "CURVE_SHAPE",
+              "CAPACITY_CREEP_UP",
+              "NOISY_OR_DEAD_CHANNEL",
+              "LOW_CE"
+            ]
+          },
+          "title": "Flag Counts",
+          "type": "object"
+        },
+        "grade_counts": {
+          "additionalProperties": {
+            "type": "integer"
+          },
+          "propertyNames": {
+            "enum": [
+              "A",
+              "B",
+              "C",
+              "REJECT"
+            ]
+          },
+          "title": "Grade Counts",
+          "type": "object"
+        },
+        "median_ir_mohm": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Median Ir Mohm"
+        },
+        "n_channels": {
+          "title": "N Channels",
+          "type": "integer"
+        },
+        "n_flagged": {
+          "title": "N Flagged",
+          "type": "integer"
+        },
+        "reference_capacity_ah": {
+          "title": "Reference Capacity Ah",
+          "type": "number"
+        }
+      },
+      "required": [
+        "n_channels",
+        "n_flagged",
+        "grade_counts",
+        "flag_counts",
+        "reference_capacity_ah"
+      ],
+      "title": "BatchSummary",
+      "type": "object"
+    },
+    "CodeGenerated": {
+      "additionalProperties": false,
+      "properties": {
+        "attempt": {
+          "title": "Attempt",
+          "type": "integer"
+        },
+        "code": {
+          "title": "Code",
+          "type": "string"
+        },
+        "code_id": {
+          "title": "Code Id",
+          "type": "string"
+        },
+        "purpose": {
+          "title": "Purpose",
+          "type": "string"
+        },
+        "run_id": {
+          "title": "Run Id",
+          "type": "string"
+        },
+        "seq": {
+          "description": "Strictly increasing within a run",
+          "minimum": 0,
+          "title": "Seq",
+          "type": "integer"
+        },
+        "sha256": {
+          "title": "Sha256",
+          "type": "string"
+        },
+        "ts": {
+          "format": "date-time",
+          "title": "Ts",
+          "type": "string"
+        },
+        "type": {
+          "const": "code.generated",
+          "default": "code.generated",
+          "title": "Type",
+          "type": "string"
+        },
+        "v": {
+          "const": 0,
+          "default": 0,
+          "title": "V",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "run_id",
+        "seq",
+        "ts",
+        "code_id",
+        "purpose",
+        "attempt",
+        "sha256",
+        "code"
+      ],
+      "title": "CodeGenerated",
+      "type": "object"
+    },
+    "ColumnMap": {
+      "additionalProperties": false,
+      "properties": {
+        "role": {
+          "enum": [
+            "channel_id",
+            "cycle",
+            "step",
+            "time_s",
+            "voltage_v",
+            "current_a",
+            "capacity_ah",
+            "temperature_c",
+            "ignore"
+          ],
+          "title": "Role",
+          "type": "string"
+        },
+        "scale": {
+          "default": 1.0,
+          "description": "Multiply file values by this to reach the canonical unit",
+          "title": "Scale",
+          "type": "number"
+        },
+        "source": {
+          "description": "Column header as it appears in the file, or 0-based index as a string",
+          "title": "Source",
+          "type": "string"
+        },
+        "unit": {
+          "description": "Unit in the file, e.g. 'mV', 'A', 'mAh', 'hh:mm:ss', 's'",
+          "title": "Unit",
+          "type": "string"
+        }
+      },
+      "required": [
+        "source",
+        "role",
+        "unit"
+      ],
+      "title": "ColumnMap",
+      "type": "object"
+    },
+    "GradeThresholds": {
+      "additionalProperties": false,
+      "description": "Capacity bins are % of the reference capacity; IR bins are % of the batch-median IR.",
+      "properties": {
+        "basis": {
+          "default": "batch_median",
+          "enum": [
+            "batch_median",
+            "nominal"
+          ],
+          "title": "Basis",
+          "type": "string"
+        },
+        "capacity_min_pct": {
+          "additionalProperties": {
+            "type": "number"
+          },
+          "default": {
+            "A": 98.0,
+            "B": 95.0,
+            "C": 90.0
+          },
+          "propertyNames": {
+            "enum": [
+              "A",
+              "B",
+              "C"
+            ]
+          },
+          "title": "Capacity Min Pct",
+          "type": "object"
+        },
+        "ir_max_pct": {
+          "additionalProperties": {
+            "type": "number"
+          },
+          "default": {
+            "A": 115.0,
+            "B": 130.0,
+            "C": 160.0
+          },
+          "propertyNames": {
+            "enum": [
+              "A",
+              "B",
+              "C"
+            ]
+          },
+          "title": "Ir Max Pct",
+          "type": "object"
+        },
+        "max_grade_by_severity": {
+          "additionalProperties": {
+            "enum": [
+              "A",
+              "B",
+              "C",
+              "REJECT"
+            ],
+            "type": "string"
+          },
+          "default": {
+            "high": "C",
+            "medium": "B"
+          },
+          "description": "A flagged cell can grade no better than this",
+          "propertyNames": {
+            "enum": [
+              "low",
+              "medium",
+              "high"
+            ]
+          },
+          "title": "Max Grade By Severity",
+          "type": "object"
+        },
+        "nominal_capacity_ah": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Nominal Capacity Ah"
+        },
+        "rationale": {
+          "default": "",
+          "title": "Rationale",
+          "type": "string"
+        },
+        "reject_on_flags": {
+          "default": [
+            "NOISY_OR_DEAD_CHANNEL"
+          ],
+          "items": {
+            "enum": [
+              "LOW_CAPACITY",
+              "HIGH_IR",
+              "CURVE_SHAPE",
+              "CAPACITY_CREEP_UP",
+              "NOISY_OR_DEAD_CHANNEL",
+              "LOW_CE"
+            ],
+            "type": "string"
+          },
+          "title": "Reject On Flags",
+          "type": "array"
+        },
+        "source": {
+          "default": "default",
+          "enum": [
+            "default",
+            "agent",
+            "user"
+          ],
+          "title": "Source",
+          "type": "string"
+        }
+      },
+      "title": "GradeThresholds",
+      "type": "object"
+    },
+    "LayoutMapping": {
+      "additionalProperties": false,
+      "description": "Declarative description of a tester export (tier-1 ingestion). Applied by a generic reader.",
+      "properties": {
+        "channel_source": {
+          "default": "column",
+          "enum": [
+            "column",
+            "sheet",
+            "file",
+            "wide_column_prefix"
+          ],
+          "title": "Channel Source",
+          "type": "string"
+        },
+        "columns": {
+          "items": {
+            "$ref": "#/$defs/ColumnMap"
+          },
+          "title": "Columns",
+          "type": "array"
+        },
+        "confidence": {
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Confidence",
+          "type": "number"
+        },
+        "current_sign": {
+          "default": "charge_positive",
+          "enum": [
+            "charge_positive",
+            "discharge_positive"
+          ],
+          "title": "Current Sign",
+          "type": "string"
+        },
+        "decimal": {
+          "default": ".",
+          "enum": [
+            ".",
+            ","
+          ],
+          "title": "Decimal",
+          "type": "string"
+        },
+        "delimiter": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Delimiter"
+        },
+        "encoding": {
+          "default": "utf-8",
+          "title": "Encoding",
+          "type": "string"
+        },
+        "format": {
+          "enum": [
+            "csv",
+            "excel",
+            "mat",
+            "hdf5"
+          ],
+          "title": "Format",
+          "type": "string"
+        },
+        "header_row": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "0-based line (csv) or row (excel) holding column names",
+          "title": "Header Row"
+        },
+        "notes": {
+          "default": "",
+          "title": "Notes",
+          "type": "string"
+        },
+        "orientation": {
+          "default": "long",
+          "enum": [
+            "long",
+            "wide"
+          ],
+          "title": "Orientation",
+          "type": "string"
+        },
+        "sheet_pattern": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Regex of sheet names to read (excel)",
+          "title": "Sheet Pattern"
+        },
+        "struct_path": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Dotted path to the data struct (mat/hdf5)",
+          "title": "Struct Path"
+        },
+        "time_format": {
+          "default": "seconds",
+          "enum": [
+            "seconds",
+            "minutes",
+            "hours",
+            "hh:mm:ss",
+            "timestamp"
+          ],
+          "title": "Time Format",
+          "type": "string"
+        },
+        "wide_column_prefix": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Wide Column Prefix"
+        }
+      },
+      "required": [
+        "format",
+        "columns",
+        "confidence"
+      ],
+      "title": "LayoutMapping",
+      "type": "object"
+    },
+    "LlmCall": {
+      "additionalProperties": false,
+      "properties": {
+        "cached": {
+          "default": false,
+          "title": "Cached",
+          "type": "boolean"
+        },
+        "cost_usd": {
+          "title": "Cost Usd",
+          "type": "number"
+        },
+        "latency_ms": {
+          "title": "Latency Ms",
+          "type": "integer"
+        },
+        "model": {
+          "title": "Model",
+          "type": "string"
+        },
+        "purpose": {
+          "title": "Purpose",
+          "type": "string"
+        },
+        "role": {
+          "enum": [
+            "planner",
+            "worker"
+          ],
+          "title": "Role",
+          "type": "string"
+        },
+        "run_id": {
+          "title": "Run Id",
+          "type": "string"
+        },
+        "seq": {
+          "description": "Strictly increasing within a run",
+          "minimum": 0,
+          "title": "Seq",
+          "type": "integer"
+        },
+        "tokens_in": {
+          "title": "Tokens In",
+          "type": "integer"
+        },
+        "tokens_out": {
+          "title": "Tokens Out",
+          "type": "integer"
+        },
+        "ts": {
+          "format": "date-time",
+          "title": "Ts",
+          "type": "string"
+        },
+        "type": {
+          "const": "llm.call",
+          "default": "llm.call",
+          "title": "Type",
+          "type": "string"
+        },
+        "v": {
+          "const": 0,
+          "default": 0,
+          "title": "V",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "run_id",
+        "seq",
+        "ts",
+        "role",
+        "model",
+        "purpose",
+        "tokens_in",
+        "tokens_out",
+        "latency_ms",
+        "cost_usd"
+      ],
+      "title": "LlmCall",
+      "type": "object"
+    },
+    "MemoryHit": {
+      "additionalProperties": false,
+      "properties": {
+        "fingerprint": {
+          "title": "Fingerprint",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "mapping",
+            "normalizer",
+            "thresholds"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "run_id": {
+          "title": "Run Id",
+          "type": "string"
+        },
+        "saved_at": {
+          "format": "date-time",
+          "title": "Saved At",
+          "type": "string"
+        },
+        "seq": {
+          "description": "Strictly increasing within a run",
+          "minimum": 0,
+          "title": "Seq",
+          "type": "integer"
+        },
+        "ts": {
+          "format": "date-time",
+          "title": "Ts",
+          "type": "string"
+        },
+        "type": {
+          "const": "memory.hit",
+          "default": "memory.hit",
+          "title": "Type",
+          "type": "string"
+        },
+        "v": {
+          "const": 0,
+          "default": 0,
+          "title": "V",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "run_id",
+        "seq",
+        "ts",
+        "kind",
+        "fingerprint",
+        "saved_at"
+      ],
+      "title": "MemoryHit",
+      "type": "object"
+    },
+    "RepairAttempt": {
+      "additionalProperties": false,
+      "properties": {
+        "attempt": {
+          "title": "Attempt",
+          "type": "integer"
+        },
+        "error_summary": {
+          "title": "Error Summary",
+          "type": "string"
+        },
+        "failed_code_id": {
+          "title": "Failed Code Id",
+          "type": "string"
+        },
+        "max_attempts": {
+          "title": "Max Attempts",
+          "type": "integer"
+        },
+        "run_id": {
+          "title": "Run Id",
+          "type": "string"
+        },
+        "seq": {
+          "description": "Strictly increasing within a run",
+          "minimum": 0,
+          "title": "Seq",
+          "type": "integer"
+        },
+        "ts": {
+          "format": "date-time",
+          "title": "Ts",
+          "type": "string"
+        },
+        "type": {
+          "const": "repair.attempt",
+          "default": "repair.attempt",
+          "title": "Type",
+          "type": "string"
+        },
+        "v": {
+          "const": 0,
+          "default": 0,
+          "title": "V",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "run_id",
+        "seq",
+        "ts",
+        "attempt",
+        "max_attempts",
+        "failed_code_id",
+        "error_summary"
+      ],
+      "title": "RepairAttempt",
+      "type": "object"
+    },
+    "ReportReady": {
+      "additionalProperties": false,
+      "properties": {
+        "formats": {
+          "items": {
+            "enum": [
+              "md",
+              "pdf"
+            ],
+            "type": "string"
+          },
+          "title": "Formats",
+          "type": "array"
+        },
+        "run_id": {
+          "title": "Run Id",
+          "type": "string"
+        },
+        "seq": {
+          "description": "Strictly increasing within a run",
+          "minimum": 0,
+          "title": "Seq",
+          "type": "integer"
+        },
+        "ts": {
+          "format": "date-time",
+          "title": "Ts",
+          "type": "string"
+        },
+        "type": {
+          "const": "report.ready",
+          "default": "report.ready",
+          "title": "Type",
+          "type": "string"
+        },
+        "v": {
+          "const": 0,
+          "default": 0,
+          "title": "V",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "run_id",
+        "seq",
+        "ts",
+        "formats"
+      ],
+      "title": "ReportReady",
+      "type": "object"
+    },
+    "ResultsReady": {
+      "additionalProperties": false,
+      "properties": {
+        "run_id": {
+          "title": "Run Id",
+          "type": "string"
+        },
+        "seq": {
+          "description": "Strictly increasing within a run",
+          "minimum": 0,
+          "title": "Seq",
+          "type": "integer"
+        },
+        "summary": {
+          "$ref": "#/$defs/BatchSummary"
+        },
+        "ts": {
+          "format": "date-time",
+          "title": "Ts",
+          "type": "string"
+        },
+        "type": {
+          "const": "results.ready",
+          "default": "results.ready",
+          "title": "Type",
+          "type": "string"
+        },
+        "v": {
+          "const": 0,
+          "default": 0,
+          "title": "V",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "run_id",
+        "seq",
+        "ts",
+        "summary"
+      ],
+      "title": "ResultsReady",
+      "type": "object"
+    },
+    "RunFailed": {
+      "additionalProperties": false,
+      "properties": {
+        "error": {
+          "title": "Error",
+          "type": "string"
+        },
+        "run_id": {
+          "title": "Run Id",
+          "type": "string"
+        },
+        "seq": {
+          "description": "Strictly increasing within a run",
+          "minimum": 0,
+          "title": "Seq",
+          "type": "integer"
+        },
+        "stage": {
+          "title": "Stage",
+          "type": "string"
+        },
+        "ts": {
+          "format": "date-time",
+          "title": "Ts",
+          "type": "string"
+        },
+        "type": {
+          "const": "run.failed",
+          "default": "run.failed",
+          "title": "Type",
+          "type": "string"
+        },
+        "v": {
+          "const": 0,
+          "default": 0,
+          "title": "V",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "run_id",
+        "seq",
+        "ts",
+        "stage",
+        "error"
+      ],
+      "title": "RunFailed",
+      "type": "object"
+    },
+    "RunFinished": {
+      "additionalProperties": false,
+      "properties": {
+        "cost_usd": {
+          "title": "Cost Usd",
+          "type": "number"
+        },
+        "duration_s": {
+          "title": "Duration S",
+          "type": "number"
+        },
+        "run_id": {
+          "title": "Run Id",
+          "type": "string"
+        },
+        "seq": {
+          "description": "Strictly increasing within a run",
+          "minimum": 0,
+          "title": "Seq",
+          "type": "integer"
+        },
+        "tokens_in": {
+          "title": "Tokens In",
+          "type": "integer"
+        },
+        "tokens_out": {
+          "title": "Tokens Out",
+          "type": "integer"
+        },
+        "ts": {
+          "format": "date-time",
+          "title": "Ts",
+          "type": "string"
+        },
+        "type": {
+          "const": "run.finished",
+          "default": "run.finished",
+          "title": "Type",
+          "type": "string"
+        },
+        "v": {
+          "const": 0,
+          "default": 0,
+          "title": "V",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "run_id",
+        "seq",
+        "ts",
+        "duration_s",
+        "tokens_in",
+        "tokens_out",
+        "cost_usd"
+      ],
+      "title": "RunFinished",
+      "type": "object"
+    },
+    "RunStarted": {
+      "additionalProperties": false,
+      "properties": {
+        "mode": {
+          "enum": [
+            "live",
+            "replay"
+          ],
+          "title": "Mode",
+          "type": "string"
+        },
+        "models": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "propertyNames": {
+            "enum": [
+              "planner",
+              "worker"
+            ]
+          },
+          "title": "Models",
+          "type": "object"
+        },
+        "run_id": {
+          "title": "Run Id",
+          "type": "string"
+        },
+        "runner": {
+          "enum": [
+            "contree",
+            "tools",
+            "local"
+          ],
+          "title": "Runner",
+          "type": "string"
+        },
+        "seq": {
+          "description": "Strictly increasing within a run",
+          "minimum": 0,
+          "title": "Seq",
+          "type": "integer"
+        },
+        "source": {
+          "$ref": "#/$defs/SourceInfo"
+        },
+        "ts": {
+          "format": "date-time",
+          "title": "Ts",
+          "type": "string"
+        },
+        "type": {
+          "const": "run.started",
+          "default": "run.started",
+          "title": "Type",
+          "type": "string"
+        },
+        "v": {
+          "const": 0,
+          "default": 0,
+          "title": "V",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "run_id",
+        "seq",
+        "ts",
+        "source",
+        "mode",
+        "runner",
+        "models"
+      ],
+      "title": "RunStarted",
+      "type": "object"
+    },
+    "SandboxFinished": {
+      "additionalProperties": false,
+      "properties": {
+        "artifacts": {
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "title": "Artifacts",
+          "type": "array"
+        },
+        "code_id": {
+          "title": "Code Id",
+          "type": "string"
+        },
+        "duration_s": {
+          "title": "Duration S",
+          "type": "number"
+        },
+        "exit_code": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Exit Code"
+        },
+        "ok": {
+          "title": "Ok",
+          "type": "boolean"
+        },
+        "operation_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Operation Id"
+        },
+        "run_id": {
+          "title": "Run Id",
+          "type": "string"
+        },
+        "seq": {
+          "description": "Strictly increasing within a run",
+          "minimum": 0,
+          "title": "Seq",
+          "type": "integer"
+        },
+        "shard": {
+          "title": "Shard",
+          "type": "integer"
+        },
+        "stderr_tail": {
+          "default": "",
+          "title": "Stderr Tail",
+          "type": "string"
+        },
+        "stdout_tail": {
+          "default": "",
+          "title": "Stdout Tail",
+          "type": "string"
+        },
+        "ts": {
+          "format": "date-time",
+          "title": "Ts",
+          "type": "string"
+        },
+        "type": {
+          "const": "sandbox.finished",
+          "default": "sandbox.finished",
+          "title": "Type",
+          "type": "string"
+        },
+        "v": {
+          "const": 0,
+          "default": 0,
+          "title": "V",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "run_id",
+        "seq",
+        "ts",
+        "code_id",
+        "shard",
+        "ok",
+        "exit_code",
+        "duration_s"
+      ],
+      "title": "SandboxFinished",
+      "type": "object"
+    },
+    "SandboxStarted": {
+      "additionalProperties": false,
+      "properties": {
+        "channels": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Channels",
+          "type": "array"
+        },
+        "code_id": {
+          "title": "Code Id",
+          "type": "string"
+        },
+        "n_shards": {
+          "title": "N Shards",
+          "type": "integer"
+        },
+        "operation_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Operation Id"
+        },
+        "run_id": {
+          "title": "Run Id",
+          "type": "string"
+        },
+        "runner": {
+          "enum": [
+            "contree",
+            "tools",
+            "local"
+          ],
+          "title": "Runner",
+          "type": "string"
+        },
+        "seq": {
+          "description": "Strictly increasing within a run",
+          "minimum": 0,
+          "title": "Seq",
+          "type": "integer"
+        },
+        "shard": {
+          "title": "Shard",
+          "type": "integer"
+        },
+        "ts": {
+          "format": "date-time",
+          "title": "Ts",
+          "type": "string"
+        },
+        "type": {
+          "const": "sandbox.started",
+          "default": "sandbox.started",
+          "title": "Type",
+          "type": "string"
+        },
+        "v": {
+          "const": 0,
+          "default": 0,
+          "title": "V",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "run_id",
+        "seq",
+        "ts",
+        "runner",
+        "code_id",
+        "shard",
+        "n_shards",
+        "channels"
+      ],
+      "title": "SandboxStarted",
+      "type": "object"
+    },
+    "SchemaNeedsConfirmation": {
+      "additionalProperties": false,
+      "properties": {
+        "reason": {
+          "title": "Reason",
+          "type": "string"
+        },
+        "run_id": {
+          "title": "Run Id",
+          "type": "string"
+        },
+        "seq": {
+          "description": "Strictly increasing within a run",
+          "minimum": 0,
+          "title": "Seq",
+          "type": "integer"
+        },
+        "ts": {
+          "format": "date-time",
+          "title": "Ts",
+          "type": "string"
+        },
+        "type": {
+          "const": "schema.needs_confirmation",
+          "default": "schema.needs_confirmation",
+          "title": "Type",
+          "type": "string"
+        },
+        "v": {
+          "const": 0,
+          "default": 0,
+          "title": "V",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "run_id",
+        "seq",
+        "ts",
+        "reason"
+      ],
+      "title": "SchemaNeedsConfirmation",
+      "type": "object"
+    },
+    "SchemaProposed": {
+      "additionalProperties": false,
+      "properties": {
+        "attempt": {
+          "title": "Attempt",
+          "type": "integer"
+        },
+        "code_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Set for tier=normalizer",
+          "title": "Code Id"
+        },
+        "mapping": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/LayoutMapping"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "run_id": {
+          "title": "Run Id",
+          "type": "string"
+        },
+        "seq": {
+          "description": "Strictly increasing within a run",
+          "minimum": 0,
+          "title": "Seq",
+          "type": "integer"
+        },
+        "tier": {
+          "enum": [
+            "declarative",
+            "normalizer"
+          ],
+          "title": "Tier",
+          "type": "string"
+        },
+        "ts": {
+          "format": "date-time",
+          "title": "Ts",
+          "type": "string"
+        },
+        "type": {
+          "const": "schema.proposed",
+          "default": "schema.proposed",
+          "title": "Type",
+          "type": "string"
+        },
+        "v": {
+          "const": 0,
+          "default": 0,
+          "title": "V",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "run_id",
+        "seq",
+        "ts",
+        "tier",
+        "attempt"
+      ],
+      "title": "SchemaProposed",
+      "type": "object"
+    },
+    "SchemaValidated": {
+      "additionalProperties": false,
+      "properties": {
+        "checks": {
+          "items": {
+            "$ref": "#/$defs/ValidationCheck"
+          },
+          "title": "Checks",
+          "type": "array"
+        },
+        "n_channels": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "N Channels"
+        },
+        "n_cycles": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "N Cycles"
+        },
+        "n_rows": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "N Rows"
+        },
+        "ok": {
+          "title": "Ok",
+          "type": "boolean"
+        },
+        "run_id": {
+          "title": "Run Id",
+          "type": "string"
+        },
+        "seq": {
+          "description": "Strictly increasing within a run",
+          "minimum": 0,
+          "title": "Seq",
+          "type": "integer"
+        },
+        "ts": {
+          "format": "date-time",
+          "title": "Ts",
+          "type": "string"
+        },
+        "type": {
+          "const": "schema.validated",
+          "default": "schema.validated",
+          "title": "Type",
+          "type": "string"
+        },
+        "v": {
+          "const": 0,
+          "default": 0,
+          "title": "V",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "run_id",
+        "seq",
+        "ts",
+        "ok",
+        "checks"
+      ],
+      "title": "SchemaValidated",
+      "type": "object"
+    },
+    "SourceInfo": {
+      "additionalProperties": false,
+      "properties": {
+        "data_label": {
+          "enum": [
+            "REAL",
+            "REAL+PLANTED",
+            "SYNTHETIC"
+          ],
+          "title": "Data Label",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "upload",
+            "sample"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "sha256": {
+          "title": "Sha256",
+          "type": "string"
+        },
+        "size_bytes": {
+          "title": "Size Bytes",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "kind",
+        "name",
+        "size_bytes",
+        "sha256",
+        "data_label"
+      ],
+      "title": "SourceInfo",
+      "type": "object"
+    },
+    "ThresholdsProposed": {
+      "additionalProperties": false,
+      "properties": {
+        "run_id": {
+          "title": "Run Id",
+          "type": "string"
+        },
+        "seq": {
+          "description": "Strictly increasing within a run",
+          "minimum": 0,
+          "title": "Seq",
+          "type": "integer"
+        },
+        "thresholds": {
+          "$ref": "#/$defs/GradeThresholds"
+        },
+        "ts": {
+          "format": "date-time",
+          "title": "Ts",
+          "type": "string"
+        },
+        "type": {
+          "const": "thresholds.proposed",
+          "default": "thresholds.proposed",
+          "title": "Type",
+          "type": "string"
+        },
+        "v": {
+          "const": 0,
+          "default": 0,
+          "title": "V",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "run_id",
+        "seq",
+        "ts",
+        "thresholds"
+      ],
+      "title": "ThresholdsProposed",
+      "type": "object"
+    },
+    "ValidationCheck": {
+      "additionalProperties": false,
+      "properties": {
+        "detail": {
+          "default": "",
+          "title": "Detail",
+          "type": "string"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "ok": {
+          "title": "Ok",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "name",
+        "ok"
+      ],
+      "title": "ValidationCheck",
+      "type": "object"
+    },
+    "VerifyClaimFailed": {
+      "additionalProperties": false,
+      "properties": {
+        "action": {
+          "enum": [
+            "regenerated",
+            "dropped"
+          ],
+          "title": "Action",
+          "type": "string"
+        },
+        "claim": {
+          "title": "Claim",
+          "type": "string"
+        },
+        "reason": {
+          "title": "Reason",
+          "type": "string"
+        },
+        "run_id": {
+          "title": "Run Id",
+          "type": "string"
+        },
+        "sentence": {
+          "title": "Sentence",
+          "type": "string"
+        },
+        "seq": {
+          "description": "Strictly increasing within a run",
+          "minimum": 0,
+          "title": "Seq",
+          "type": "integer"
+        },
+        "ts": {
+          "format": "date-time",
+          "title": "Ts",
+          "type": "string"
+        },
+        "type": {
+          "const": "verify.claim_failed",
+          "default": "verify.claim_failed",
+          "title": "Type",
+          "type": "string"
+        },
+        "v": {
+          "const": 0,
+          "default": 0,
+          "title": "V",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "run_id",
+        "seq",
+        "ts",
+        "sentence",
+        "claim",
+        "reason",
+        "action"
+      ],
+      "title": "VerifyClaimFailed",
+      "type": "object"
+    },
+    "VerifySummary": {
+      "additionalProperties": false,
+      "properties": {
+        "claims_checked": {
+          "title": "Claims Checked",
+          "type": "integer"
+        },
+        "claims_failed": {
+          "title": "Claims Failed",
+          "type": "integer"
+        },
+        "run_id": {
+          "title": "Run Id",
+          "type": "string"
+        },
+        "sentences_dropped": {
+          "title": "Sentences Dropped",
+          "type": "integer"
+        },
+        "sentences_regenerated": {
+          "title": "Sentences Regenerated",
+          "type": "integer"
+        },
+        "seq": {
+          "description": "Strictly increasing within a run",
+          "minimum": 0,
+          "title": "Seq",
+          "type": "integer"
+        },
+        "ts": {
+          "format": "date-time",
+          "title": "Ts",
+          "type": "string"
+        },
+        "type": {
+          "const": "verify.summary",
+          "default": "verify.summary",
+          "title": "Type",
+          "type": "string"
+        },
+        "v": {
+          "const": 0,
+          "default": 0,
+          "title": "V",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "run_id",
+        "seq",
+        "ts",
+        "claims_checked",
+        "claims_failed",
+        "sentences_regenerated",
+        "sentences_dropped"
+      ],
+      "title": "VerifySummary",
+      "type": "object"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "discriminator": {
+    "mapping": {
+      "analysis.progress": "#/$defs/AnalysisProgress",
+      "code.generated": "#/$defs/CodeGenerated",
+      "llm.call": "#/$defs/LlmCall",
+      "memory.hit": "#/$defs/MemoryHit",
+      "repair.attempt": "#/$defs/RepairAttempt",
+      "report.ready": "#/$defs/ReportReady",
+      "results.ready": "#/$defs/ResultsReady",
+      "run.failed": "#/$defs/RunFailed",
+      "run.finished": "#/$defs/RunFinished",
+      "run.started": "#/$defs/RunStarted",
+      "sandbox.finished": "#/$defs/SandboxFinished",
+      "sandbox.started": "#/$defs/SandboxStarted",
+      "schema.needs_confirmation": "#/$defs/SchemaNeedsConfirmation",
+      "schema.proposed": "#/$defs/SchemaProposed",
+      "schema.validated": "#/$defs/SchemaValidated",
+      "thresholds.proposed": "#/$defs/ThresholdsProposed",
+      "verify.claim_failed": "#/$defs/VerifyClaimFailed",
+      "verify.summary": "#/$defs/VerifySummary"
+    },
+    "propertyName": "type"
+  },
+  "oneOf": [
+    {
+      "$ref": "#/$defs/RunStarted"
+    },
+    {
+      "$ref": "#/$defs/MemoryHit"
+    },
+    {
+      "$ref": "#/$defs/SchemaProposed"
+    },
+    {
+      "$ref": "#/$defs/SchemaValidated"
+    },
+    {
+      "$ref": "#/$defs/SchemaNeedsConfirmation"
+    },
+    {
+      "$ref": "#/$defs/LlmCall"
+    },
+    {
+      "$ref": "#/$defs/CodeGenerated"
+    },
+    {
+      "$ref": "#/$defs/SandboxStarted"
+    },
+    {
+      "$ref": "#/$defs/SandboxFinished"
+    },
+    {
+      "$ref": "#/$defs/RepairAttempt"
+    },
+    {
+      "$ref": "#/$defs/AnalysisProgress"
+    },
+    {
+      "$ref": "#/$defs/ThresholdsProposed"
+    },
+    {
+      "$ref": "#/$defs/ResultsReady"
+    },
+    {
+      "$ref": "#/$defs/VerifyClaimFailed"
+    },
+    {
+      "$ref": "#/$defs/VerifySummary"
+    },
+    {
+      "$ref": "#/$defs/ReportReady"
+    },
+    {
+      "$ref": "#/$defs/RunFailed"
+    },
+    {
+      "$ref": "#/$defs/RunFinished"
+    }
+  ],
+  "x-contract-version": 0
+}

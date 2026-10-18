@@ -1,0 +1,4390 @@
+{
+ "v": 0,
+ "run_id": "fixture-64ch",
+ "data_label": "SYNTHETIC",
+ "source_name": "fixture-64ch (UI development only)",
+ "mapping": {
+  "format": "csv",
+  "encoding": "utf-8",
+  "delimiter": ";",
+  "decimal": ",",
+  "header_row": 2,
+  "sheet_pattern": null,
+  "struct_path": null,
+  "orientation": "long",
+  "channel_source": "column",
+  "wide_column_prefix": null,
+  "time_format": "hh:mm:ss",
+  "current_sign": "charge_positive",
+  "columns": [
+   {
+    "source": "Chan",
+    "role": "channel_id",
+    "unit": "",
+    "scale": 1.0
+   },
+   {
+    "source": "Cyc",
+    "role": "cycle",
+    "unit": "",
+    "scale": 1.0
+   },
+   {
+    "source": "Stp",
+    "role": "step",
+    "unit": "",
+    "scale": 1.0
+   },
+   {
+    "source": "Test Time",
+    "role": "time_s",
+    "unit": "hh:mm:ss",
+    "scale": 1.0
+   },
+   {
+    "source": "Volts (mV)",
+    "role": "voltage_v",
+    "unit": "mV",
+    "scale": 0.001
+   },
+   {
+    "source": "Amps (mA)",
+    "role": "current_a",
+    "unit": "mA",
+    "scale": 0.001
+   },
+   {
+    "source": "Temp",
+    "role": "temperature_c",
+    "unit": "degC",
+    "scale": 1.0
+   }
+  ],
+  "confidence": 0.86,
+  "notes": "Semicolon CSV with decimal commas and a 2-line preamble; no capacity column."
+ },
+ "thresholds": {
+  "basis": "batch_median",
+  "nominal_capacity_ah": null,
+  "capacity_min_pct": {
+   "A": 98.0,
+   "B": 95.0,
+   "C": 90.0
+  },
+  "ir_max_pct": {
+   "A": 115.0,
+   "B": 130.0,
+   "C": 160.0
+  },
+  "reject_on_flags": [
+   "NOISY_OR_DEAD_CHANNEL"
+  ],
+  "max_grade_by_severity": {
+   "high": "C",
+   "medium": "B"
+  },
+  "source": "default",
+  "rationale": ""
+ },
+ "summary": {
+  "n_channels": 64,
+  "n_flagged": 7,
+  "grade_counts": {
+   "A": 57,
+   "B": 1,
+   "C": 4,
+   "REJECT": 2
+  },
+  "flag_counts": {
+   "LOW_CAPACITY": 2,
+   "HIGH_IR": 1,
+   "CAPACITY_CREEP_UP": 1,
+   "NOISY_OR_DEAD_CHANNEL": 1,
+   "CURVE_SHAPE": 1,
+   "LOW_CE": 1
+  },
+  "reference_capacity_ah": 2.3001,
+  "median_ir_mohm": 38.04
+ },
+ "channels": [
+  {
+   "channel_id": "A-01",
+   "position": [
+    0,
+    0
+   ],
+   "grade": "A",
+   "capacity_ah": 2.3172,
+   "ir_mohm": 38.19,
+   "cycles": [
+    {
+     "cycle": 1,
+     "discharge_capacity_ah": 2.3048,
+     "charge_capacity_ah": 2.5753,
+     "ce": 0.895,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.6007,
+     "dqdv_peak_v": 3.4223,
+     "noise_mv": 0.782
+    },
+    {
+     "cycle": 2,
+     "discharge_capacity_ah": 2.3089,
+     "charge_capacity_ah": 2.3125,
+     "ce": 0.9985,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.5983,
+     "dqdv_peak_v": 3.4223,
+     "noise_mv": 0.782
+    },
+    {
+     "cycle": 3,
+     "discharge_capacity_ah": 2.3131,
+     "charge_capacity_ah": 2.3218,
+     "ce": 0.9962,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.5998,
+     "dqdv_peak_v": 3.4223,
+     "noise_mv": 0.782
+    },
+    {
+     "cycle": 4,
+     "discharge_capacity_ah": 2.3172,
+     "charge_capacity_ah": 2.3239,
+     "ce": 0.9971,
+     "ir_mohm": 38.19,
+     "mid_voltage_v": 3.6004,
+     "dqdv_peak_v": 3.4223,
+     "noise_mv": 0.782
+    }
+   ],
+   "flags": [],
+   "explanation": null,
+   "provenance": {
+    "run_id": "fixture-64ch",
+    "code_ids": [
+     "c1",
+     "c2"
+    ],
+    "code_sha256": "f64b436f664b81597cf50a3c544998919a778e4efa8c67f2547c18991dc508d2",
+    "artifacts": [
+     "sandbox/shard-0/shard.json"
+    ]
+   }
+  },
+  {
+   "channel_id": "A-02",
+   "position": [
+    0,
+    1
+   ],
+   "grade": "A",
+   "capacity_ah": 2.299,
+   "ir_mohm": 38.05,
+   "cycles": [
+    {
+     "cycle": 1,
+     "discharge_capacity_ah": 2.2912,
+     "charge_capacity_ah": 2.6063,
+     "ce": 0.8791,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.6008,
+     "dqdv_peak_v": 3.4254,
+     "noise_mv": 0.709
+    },
+    {
+     "cycle": 2,
+     "discharge_capacity_ah": 2.2938,
+     "charge_capacity_ah": 2.3039,
+     "ce": 0.9956,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.5996,
+     "dqdv_peak_v": 3.4254,
+     "noise_mv": 0.709
+    },
+    {
+     "cycle": 3,
+     "discharge_capacity_ah": 2.2964,
+     "charge_capacity_ah": 2.3069,
+     "ce": 0.9954,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.6014,
+     "dqdv_peak_v": 3.4254,
+     "noise_mv": 0.709
+    },
+    {
+     "cycle": 4,
+     "discharge_capacity_ah": 2.299,
+     "charge_capacity_ah": 2.3041,
+     "ce": 0.9978,
+     "ir_mohm": 38.05,
+     "mid_voltage_v": 3.5974,
+     "dqdv_peak_v": 3.4254,
+     "noise_mv": 0.709
+    }
+   ],
+   "flags": [],
+   "explanation": null,
+   "provenance": {
+    "run_id": "fixture-64ch",
+    "code_ids": [
+     "c1",
+     "c2"
+    ],
+    "code_sha256": "f64b436f664b81597cf50a3c544998919a778e4efa8c67f2547c18991dc508d2",
+    "artifacts": [
+     "sandbox/shard-0/shard.json"
+    ]
+   }
+  },
+  {
+   "channel_id": "A-03",
+   "position": [
+    0,
+    2
+   ],
+   "grade": "C",
+   "capacity_ah": 2.1798,
+   "ir_mohm": 37.24,
+   "cycles": [
+    {
+     "cycle": 1,
+     "discharge_capacity_ah": 2.1719,
+     "charge_capacity_ah": 2.447,
+     "ce": 0.8876,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.5985,
+     "dqdv_peak_v": 3.4197,
+     "noise_mv": 0.883
+    },
+    {
+     "cycle": 2,
+     "discharge_capacity_ah": 2.1745,
+     "charge_capacity_ah": 2.1825,
+     "ce": 0.9963,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.6008,
+     "dqdv_peak_v": 3.4197,
+     "noise_mv": 0.883
+    },
+    {
+     "cycle": 3,
+     "discharge_capacity_ah": 2.1772,
+     "charge_capacity_ah": 2.1828,
+     "ce": 0.9974,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.6007,
+     "dqdv_peak_v": 3.4197,
+     "noise_mv": 0.883
+    },
+    {
+     "cycle": 4,
+     "discharge_capacity_ah": 2.1798,
+     "charge_capacity_ah": 2.1876,
+     "ce": 0.9964,
+     "ir_mohm": 37.24,
+     "mid_voltage_v": 3.6027,
+     "dqdv_peak_v": 3.4197,
+     "noise_mv": 0.883
+    }
+   ],
+   "flags": [
+    {
+     "type": "LOW_CAPACITY",
+     "severity": "high",
+     "evidence": [
+      {
+       "metric": "capacity_ah",
+       "value": 2.17979,
+       "unit": "Ah",
+       "batch_median": 2.30083,
+       "robust_z": -9.57,
+       "threshold": "robust_z < -3.5",
+       "cycle": null
+      }
+     ],
+     "explanation": "low capacity: capacity_ah = 2.17979 Ah versus batch median 2.30083 Ah (robust z -9.57)."
+    }
+   ],
+   "explanation": "low capacity: capacity_ah = 2.17979 Ah versus batch median 2.30083 Ah (robust z -9.57).",
+   "provenance": {
+    "run_id": "fixture-64ch",
+    "code_ids": [
+     "c1",
+     "c2"
+    ],
+    "code_sha256": "f64b436f664b81597cf50a3c544998919a778e4efa8c67f2547c18991dc508d2",
+    "artifacts": [
+     "sandbox/shard-0/shard.json"
+    ]
+   }
+  },
+  {
+   "channel_id": "A-04",
+   "position": [
+    0,
+    3
+   ],
+   "grade": "A",
+   "capacity_ah": 2.3121,
+   "ir_mohm": 37.82,
+   "cycles": [
+    {
+     "cycle": 1,
+     "discharge_capacity_ah": 2.3003,
+     "charge_capacity_ah": 2.5859,
+     "ce": 0.8896,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.6009,
+     "dqdv_peak_v": 3.4139,
+     "noise_mv": 0.779
+    },
+    {
+     "cycle": 2,
+     "discharge_capacity_ah": 2.3042,
+     "charge_capacity_ah": 2.3117,
+     "ce": 0.9968,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.5991,
+     "dqdv_peak_v": 3.4139,
+     "noise_mv": 0.779
+    },
+    {
+     "cycle": 3,
+     "discharge_capacity_ah": 2.3081,
+     "charge_capacity_ah": 2.3182,
+     "ce": 0.9957,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.5952,
+     "dqdv_peak_v": 3.4139,
+     "noise_mv": 0.779
+    },
+    {
+     "cycle": 4,
+     "discharge_capacity_ah": 2.3121,
+     "charge_capacity_ah": 2.3168,
+     "ce": 0.9979,
+     "ir_mohm": 37.82,
+     "mid_voltage_v": 3.6002,
+     "dqdv_peak_v": 3.4139,
+     "noise_mv": 0.779
+    }
+   ],
+   "flags": [],
+   "explanation": null,
+   "provenance": {
+    "run_id": "fixture-64ch",
+    "code_ids": [
+     "c1",
+     "c2"
+    ],
+    "code_sha256": "f64b436f664b81597cf50a3c544998919a778e4efa8c67f2547c18991dc508d2",
+    "artifacts": [
+     "sandbox/shard-0/shard.json"
+    ]
+   }
+  },
+  {
+   "channel_id": "A-05",
+   "position": [
+    0,
+    4
+   ],
+   "grade": "A",
+   "capacity_ah": 2.3096,
+   "ir_mohm": 39.92,
+   "cycles": [
+    {
+     "cycle": 1,
+     "discharge_capacity_ah": 2.3017,
+     "charge_capacity_ah": 2.5856,
+     "ce": 0.8902,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.599,
+     "dqdv_peak_v": 3.4143,
+     "noise_mv": 0.797
+    },
+    {
+     "cycle": 2,
+     "discharge_capacity_ah": 2.3044,
+     "charge_capacity_ah": 2.313,
+     "ce": 0.9963,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.5963,
+     "dqdv_peak_v": 3.4143,
+     "noise_mv": 0.797
+    },
+    {
+     "cycle": 3,
+     "discharge_capacity_ah": 2.307,
+     "charge_capacity_ah": 2.3138,
+     "ce": 0.9971,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.5999,
+     "dqdv_peak_v": 3.4143,
+     "noise_mv": 0.797
+    },
+    {
+     "cycle": 4,
+     "discharge_capacity_ah": 2.3096,
+     "charge_capacity_ah": 2.3188,
+     "ce": 0.996,
+     "ir_mohm": 39.92,
+     "mid_voltage_v": 3.6011,
+     "dqdv_peak_v": 3.4143,
+     "noise_mv": 0.797
+    }
+   ],
+   "flags": [],
+   "explanation": null,
+   "provenance": {
+    "run_id": "fixture-64ch",
+    "code_ids": [
+     "c1",
+     "c2"
+    ],
+    "code_sha256": "f64b436f664b81597cf50a3c544998919a778e4efa8c67f2547c18991dc508d2",
+    "artifacts": [
+     "sandbox/shard-0/shard.json"
+    ]
+   }
+  },
+  {
+   "channel_id": "A-06",
+   "position": [
+    0,
+    5
+   ],
+   "grade": "A",
+   "capacity_ah": 2.3173,
+   "ir_mohm": 38.69,
+   "cycles": [
+    {
+     "cycle": 1,
+     "discharge_capacity_ah": 2.3024,
+     "charge_capacity_ah": 2.5603,
+     "ce": 0.8993,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.5997,
+     "dqdv_peak_v": 3.4188,
+     "noise_mv": 0.679
+    },
+    {
+     "cycle": 2,
+     "discharge_capacity_ah": 2.3074,
+     "charge_capacity_ah": 2.3126,
+     "ce": 0.9978,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.6038,
+     "dqdv_peak_v": 3.4188,
+     "noise_mv": 0.679
+    },
+    {
+     "cycle": 3,
+     "discharge_capacity_ah": 2.3124,
+     "charge_capacity_ah": 2.3217,
+     "ce": 0.996,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.6004,
+     "dqdv_peak_v": 3.4188,
+     "noise_mv": 0.679
+    },
+    {
+     "cycle": 4,
+     "discharge_capacity_ah": 2.3173,
+     "charge_capacity_ah": 2.3262,
+     "ce": 0.9962,
+     "ir_mohm": 38.69,
+     "mid_voltage_v": 3.5996,
+     "dqdv_peak_v": 3.4188,
+     "noise_mv": 0.679
+    }
+   ],
+   "flags": [],
+   "explanation": null,
+   "provenance": {
+    "run_id": "fixture-64ch",
+    "code_ids": [
+     "c1",
+     "c2"
+    ],
+    "code_sha256": "f64b436f664b81597cf50a3c544998919a778e4efa8c67f2547c18991dc508d2",
+    "artifacts": [
+     "sandbox/shard-0/shard.json"
+    ]
+   }
+  },
+  {
+   "channel_id": "A-07",
+   "position": [
+    0,
+    6
+   ],
+   "grade": "A",
+   "capacity_ah": 2.2987,
+   "ir_mohm": 37.89,
+   "cycles": [
+    {
+     "cycle": 1,
+     "discharge_capacity_ah": 2.2903,
+     "charge_capacity_ah": 2.6011,
+     "ce": 0.8805,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.6022,
+     "dqdv_peak_v": 3.4214,
+     "noise_mv": 0.73
+    },
+    {
+     "cycle": 2,
+     "discharge_capacity_ah": 2.2931,
+     "charge_capacity_ah": 2.2968,
+     "ce": 0.9984,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.6044,
+     "dqdv_peak_v": 3.4214,
+     "noise_mv": 0.73
+    },
+    {
+     "cycle": 3,
+     "discharge_capacity_ah": 2.2959,
+     "charge_capacity_ah": 2.3027,
+     "ce": 0.9971,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.6014,
+     "dqdv_peak_v": 3.4214,
+     "noise_mv": 0.73
+    },
+    {
+     "cycle": 4,
+     "discharge_capacity_ah": 2.2987,
+     "charge_capacity_ah": 2.3097,
+     "ce": 0.9952,
+     "ir_mohm": 37.89,
+     "mid_voltage_v": 3.5998,
+     "dqdv_peak_v": 3.4214,
+     "noise_mv": 0.73
+    }
+   ],
+   "flags": [],
+   "explanation": null,
+   "provenance": {
+    "run_id": "fixture-64ch",
+    "code_ids": [
+     "c1",
+     "c2"
+    ],
+    "code_sha256": "f64b436f664b81597cf50a3c544998919a778e4efa8c67f2547c18991dc508d2",
+    "artifacts": [
+     "sandbox/shard-0/shard.json"
+    ]
+   }
+  },
+  {
+   "channel_id": "A-08",
+   "position": [
+    0,
+    7
+   ],
+   "grade": "A",
+   "capacity_ah": 2.3008,
+   "ir_mohm": 38.71,
+   "cycles": [
+    {
+     "cycle": 1,
+     "discharge_capacity_ah": 2.2918,
+     "charge_capacity_ah": 2.612,
+     "ce": 0.8774,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.6003,
+     "dqdv_peak_v": 3.4282,
+     "noise_mv": 0.803
+    },
+    {
+     "cycle": 2,
+     "discharge_capacity_ah": 2.2948,
+     "charge_capacity_ah": 2.3027,
+     "ce": 0.9966,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.6017,
+     "dqdv_peak_v": 3.4282,
+     "noise_mv": 0.803
+    },
+    {
+     "cycle": 3,
+     "discharge_capacity_ah": 2.2978,
+     "charge_capacity_ah": 2.3061,
+     "ce": 0.9964,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.5987,
+     "dqdv_peak_v": 3.4282,
+     "noise_mv": 0.803
+    },
+    {
+     "cycle": 4,
+     "discharge_capacity_ah": 2.3008,
+     "charge_capacity_ah": 2.3111,
+     "ce": 0.9956,
+     "ir_mohm": 38.71,
+     "mid_voltage_v": 3.6016,
+     "dqdv_peak_v": 3.4282,
+     "noise_mv": 0.803
+    }
+   ],
+   "flags": [],
+   "explanation": null,
+   "provenance": {
+    "run_id": "fixture-64ch",
+    "code_ids": [
+     "c1",
+     "c2"
+    ],
+    "code_sha256": "f64b436f664b81597cf50a3c544998919a778e4efa8c67f2547c18991dc508d2",
+    "artifacts": [
+     "sandbox/shard-0/shard.json"
+    ]
+   }
+  },
+  {
+   "channel_id": "B-01",
+   "position": [
+    1,
+    0
+   ],
+   "grade": "A",
+   "capacity_ah": 2.3166,
+   "ir_mohm": 36.17,
+   "cycles": [
+    {
+     "cycle": 1,
+     "discharge_capacity_ah": 2.3046,
+     "charge_capacity_ah": 2.6116,
+     "ce": 0.8825,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.5997,
+     "dqdv_peak_v": 3.4243,
+     "noise_mv": 0.76
+    },
+    {
+     "cycle": 2,
+     "discharge_capacity_ah": 2.3086,
+     "charge_capacity_ah": 2.3168,
+     "ce": 0.9965,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.5991,
+     "dqdv_peak_v": 3.4243,
+     "noise_mv": 0.76
+    },
+    {
+     "cycle": 3,
+     "discharge_capacity_ah": 2.3126,
+     "charge_capacity_ah": 2.3246,
+     "ce": 0.9949,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.6002,
+     "dqdv_peak_v": 3.4243,
+     "noise_mv": 0.76
+    },
+    {
+     "cycle": 4,
+     "discharge_capacity_ah": 2.3166,
+     "charge_capacity_ah": 2.3268,
+     "ce": 0.9956,
+     "ir_mohm": 36.17,
+     "mid_voltage_v": 3.5985,
+     "dqdv_peak_v": 3.4243,
+     "noise_mv": 0.76
+    }
+   ],
+   "flags": [],
+   "explanation": null,
+   "provenance": {
+    "run_id": "fixture-64ch",
+    "code_ids": [
+     "c1",
+     "c2"
+    ],
+    "code_sha256": "f64b436f664b81597cf50a3c544998919a778e4efa8c67f2547c18991dc508d2",
+    "artifacts": [
+     "sandbox/shard-0/shard.json"
+    ]
+   }
+  },
+  {
+   "channel_id": "B-02",
+   "position": [
+    1,
+    1
+   ],
+   "grade": "A",
+   "capacity_ah": 2.2879,
+   "ir_mohm": 38.69,
+   "cycles": [
+    {
+     "cycle": 1,
+     "discharge_capacity_ah": 2.2816,
+     "charge_capacity_ah": 2.6053,
+     "ce": 0.8757,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.5992,
+     "dqdv_peak_v": 3.4199,
+     "noise_mv": 0.813
+    },
+    {
+     "cycle": 2,
+     "discharge_capacity_ah": 2.2837,
+     "charge_capacity_ah": 2.2932,
+     "ce": 0.9959,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.5965,
+     "dqdv_peak_v": 3.4199,
+     "noise_mv": 0.813
+    },
+    {
+     "cycle": 3,
+     "discharge_capacity_ah": 2.2858,
+     "charge_capacity_ah": 2.2912,
+     "ce": 0.9976,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.6004,
+     "dqdv_peak_v": 3.4199,
+     "noise_mv": 0.813
+    },
+    {
+     "cycle": 4,
+     "discharge_capacity_ah": 2.2879,
+     "charge_capacity_ah": 2.2956,
+     "ce": 0.9966,
+     "ir_mohm": 38.69,
+     "mid_voltage_v": 3.5986,
+     "dqdv_peak_v": 3.4199,
+     "noise_mv": 0.813
+    }
+   ],
+   "flags": [],
+   "explanation": null,
+   "provenance": {
+    "run_id": "fixture-64ch",
+    "code_ids": [
+     "c1",
+     "c2"
+    ],
+    "code_sha256": "f64b436f664b81597cf50a3c544998919a778e4efa8c67f2547c18991dc508d2",
+    "artifacts": [
+     "sandbox/shard-0/shard.json"
+    ]
+   }
+  },
+  {
+   "channel_id": "B-03",
+   "position": [
+    1,
+    2
+   ],
+   "grade": "A",
+   "capacity_ah": 2.2992,
+   "ir_mohm": 37.28,
+   "cycles": [
+    {
+     "cycle": 1,
+     "discharge_capacity_ah": 2.2884,
+     "charge_capacity_ah": 2.5921,
+     "ce": 0.8829,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.6,
+     "dqdv_peak_v": 3.4217,
+     "noise_mv": 0.846
+    },
+    {
+     "cycle": 2,
+     "discharge_capacity_ah": 2.292,
+     "charge_capacity_ah": 2.3,
+     "ce": 0.9965,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.6014,
+     "dqdv_peak_v": 3.4217,
+     "noise_mv": 0.846
+    },
+    {
+     "cycle": 3,
+     "discharge_capacity_ah": 2.2956,
+     "charge_capacity_ah": 2.3021,
+     "ce": 0.9972,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.6003,
+     "dqdv_peak_v": 3.4217,
+     "noise_mv": 0.846
+    },
+    {
+     "cycle": 4,
+     "discharge_capacity_ah": 2.2992,
+     "charge_capacity_ah": 2.3071,
+     "ce": 0.9966,
+     "ir_mohm": 37.28,
+     "mid_voltage_v": 3.6035,
+     "dqdv_peak_v": 3.4217,
+     "noise_mv": 0.846
+    }
+   ],
+   "flags": [],
+   "explanation": null,
+   "provenance": {
+    "run_id": "fixture-64ch",
+    "code_ids": [
+     "c1",
+     "c2"
+    ],
+    "code_sha256": "f64b436f664b81597cf50a3c544998919a778e4efa8c67f2547c18991dc508d2",
+    "artifacts": [
+     "sandbox/shard-0/shard.json"
+    ]
+   }
+  },
+  {
+   "channel_id": "B-04",
+   "position": [
+    1,
+    3
+   ],
+   "grade": "A",
+   "capacity_ah": 2.2896,
+   "ir_mohm": 37.95,
+   "cycles": [
+    {
+     "cycle": 1,
+     "discharge_capacity_ah": 2.2815,
+     "charge_capacity_ah": 2.5503,
+     "ce": 0.8946,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.5979,
+     "dqdv_peak_v": 3.4218,
+     "noise_mv": 0.888
+    },
+    {
+     "cycle": 2,
+     "discharge_capacity_ah": 2.2842,
+     "charge_capacity_ah": 2.2918,
+     "ce": 0.9967,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.6029,
+     "dqdv_peak_v": 3.4218,
+     "noise_mv": 0.888
+    },
+    {
+     "cycle": 3,
+     "discharge_capacity_ah": 2.2869,
+     "charge_capacity_ah": 2.2944,
+     "ce": 0.9967,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.5995,
+     "dqdv_peak_v": 3.4218,
+     "noise_mv": 0.888
+    },
+    {
+     "cycle": 4,
+     "discharge_capacity_ah": 2.2896,
+     "charge_capacity_ah": 2.2973,
+     "ce": 0.9966,
+     "ir_mohm": 37.95,
+     "mid_voltage_v": 3.5986,
+     "dqdv_peak_v": 3.4218,
+     "noise_mv": 0.888
+    }
+   ],
+   "flags": [],
+   "explanation": null,
+   "provenance": {
+    "run_id": "fixture-64ch",
+    "code_ids": [
+     "c1",
+     "c2"
+    ],
+    "code_sha256": "f64b436f664b81597cf50a3c544998919a778e4efa8c67f2547c18991dc508d2",
+    "artifacts": [
+     "sandbox/shard-0/shard.json"
+    ]
+   }
+  },
+  {
+   "channel_id": "B-05",
+   "position": [
+    1,
+    4
+   ],
+   "grade": "A",
+   "capacity_ah": 2.2834,
+   "ir_mohm": 36.95,
+   "cycles": [
+    {
+     "cycle": 1,
+     "discharge_capacity_ah": 2.2742,
+     "charge_capacity_ah": 2.5655,
+     "ce": 0.8864,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.6001,
+     "dqdv_peak_v": 3.421,
+     "noise_mv": 0.899
+    },
+    {
+     "cycle": 2,
+     "discharge_capacity_ah": 2.2773,
+     "charge_capacity_ah": 2.2862,
+     "ce": 0.9961,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.5995,
+     "dqdv_peak_v": 3.421,
+     "noise_mv": 0.899
+    },
+    {
+     "cycle": 3,
+     "discharge_capacity_ah": 2.2804,
+     "charge_capacity_ah": 2.2862,
+     "ce": 0.9974,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.5979,
+     "dqdv_peak_v": 3.421,
+     "noise_mv": 0.899
+    },
+    {
+     "cycle": 4,
+     "discharge_capacity_ah": 2.2834,
+     "charge_capacity_ah": 2.2924,
+     "ce": 0.9961,
+     "ir_mohm": 36.95,
+     "mid_voltage_v": 3.5993,
+     "dqdv_peak_v": 3.421,
+     "noise_mv": 0.899
+    }
+   ],
+   "flags": [],
+   "explanation": null,
+   "provenance": {
+    "run_id": "fixture-64ch",
+    "code_ids": [
+     "c1",
+     "c2"
+    ],
+    "code_sha256": "f64b436f664b81597cf50a3c544998919a778e4efa8c67f2547c18991dc508d2",
+    "artifacts": [
+     "sandbox/shard-0/shard.json"
+    ]
+   }
+  },
+  {
+   "channel_id": "B-06",
+   "position": [
+    1,
+    5
+   ],
+   "grade": "A",
+   "capacity_ah": 2.3035,
+   "ir_mohm": 38.05,
+   "cycles": [
+    {
+     "cycle": 1,
+     "discharge_capacity_ah": 2.2914,
+     "charge_capacity_ah": 2.6009,
+     "ce": 0.881,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.5983,
+     "dqdv_peak_v": 3.4135,
+     "noise_mv": 0.866
+    },
+    {
+     "cycle": 2,
+     "discharge_capacity_ah": 2.2955,
+     "charge_capacity_ah": 2.3001,
+     "ce": 0.998,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.6003,
+     "dqdv_peak_v": 3.4135,
+     "noise_mv": 0.866
+    },
+    {
+     "cycle": 3,
+     "discharge_capacity_ah": 2.2995,
+     "charge_capacity_ah": 2.3076,
+     "ce": 0.9965,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.6023,
+     "dqdv_peak_v": 3.4135,
+     "noise_mv": 0.866
+    },
+    {
+     "cycle": 4,
+     "discharge_capacity_ah": 2.3035,
+     "charge_capacity_ah": 2.3083,
+     "ce": 0.9979,
+     "ir_mohm": 38.05,
+     "mid_voltage_v": 3.6003,
+     "dqdv_peak_v": 3.4135,
+     "noise_mv": 0.866
+    }
+   ],
+   "flags": [],
+   "explanation": null,
+   "provenance": {
+    "run_id": "fixture-64ch",
+    "code_ids": [
+     "c1",
+     "c2"
+    ],
+    "code_sha256": "f64b436f664b81597cf50a3c544998919a778e4efa8c67f2547c18991dc508d2",
+    "artifacts": [
+     "sandbox/shard-0/shard.json"
+    ]
+   }
+  },
+  {
+   "channel_id": "B-07",
+   "position": [
+    1,
+    6
+   ],
+   "grade": "A",
+   "capacity_ah": 2.2742,
+   "ir_mohm": 37.64,
+   "cycles": [
+    {
+     "cycle": 1,
+     "discharge_capacity_ah": 2.2651,
+     "charge_capacity_ah": 2.5503,
+     "ce": 0.8882,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.6022,
+     "dqdv_peak_v": 3.4147,
+     "noise_mv": 0.977
+    },
+    {
+     "cycle": 2,
+     "discharge_capacity_ah": 2.2681,
+     "charge_capacity_ah": 2.2757,
+     "ce": 0.9967,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.597,
+     "dqdv_peak_v": 3.4147,
+     "noise_mv": 0.977
+    },
+    {
+     "cycle": 3,
+     "discharge_capacity_ah": 2.2711,
+     "charge_capacity_ah": 2.2709,
+     "ce": 1.0001,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.5977,
+     "dqdv_peak_v": 3.4147,
+     "noise_mv": 0.977
+    },
+    {
+     "cycle": 4,
+     "discharge_capacity_ah": 2.2742,
+     "charge_capacity_ah": 2.2803,
+     "ce": 0.9973,
+     "ir_mohm": 37.64,
+     "mid_voltage_v": 3.5991,
+     "dqdv_peak_v": 3.4147,
+     "noise_mv": 0.977
+    }
+   ],
+   "flags": [],
+   "explanation": null,
+   "provenance": {
+    "run_id": "fixture-64ch",
+    "code_ids": [
+     "c1",
+     "c2"
+    ],
+    "code_sha256": "f64b436f664b81597cf50a3c544998919a778e4efa8c67f2547c18991dc508d2",
+    "artifacts": [
+     "sandbox/shard-0/shard.json"
+    ]
+   }
+  },
+  {
+   "channel_id": "B-08",
+   "position": [
+    1,
+    7
+   ],
+   "grade": "A",
+   "capacity_ah": 2.3128,
+   "ir_mohm": 38.54,
+   "cycles": [
+    {
+     "cycle": 1,
+     "discharge_capacity_ah": 2.298,
+     "charge_capacity_ah": 2.5942,
+     "ce": 0.8858,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.5955,
+     "dqdv_peak_v": 3.4185,
+     "noise_mv": 0.818
+    },
+    {
+     "cycle": 2,
+     "discharge_capacity_ah": 2.3029,
+     "charge_capacity_ah": 2.3076,
+     "ce": 0.998,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.6012,
+     "dqdv_peak_v": 3.4185,
+     "noise_mv": 0.818
+    },
+    {
+     "cycle": 3,
+     "discharge_capacity_ah": 2.3079,
+     "charge_capacity_ah": 2.3161,
+     "ce": 0.9964,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.6013,
+     "dqdv_peak_v": 3.4185,
+     "noise_mv": 0.818
+    },
+    {
+     "cycle": 4,
+     "discharge_capacity_ah": 2.3128,
+     "charge_capacity_ah": 2.3169,
+     "ce": 0.9982,
+     "ir_mohm": 38.54,
+     "mid_voltage_v": 3.605,
+     "dqdv_peak_v": 3.4185,
+     "noise_mv": 0.818
+    }
+   ],
+   "flags": [],
+   "explanation": null,
+   "provenance": {
+    "run_id": "fixture-64ch",
+    "code_ids": [
+     "c1",
+     "c2"
+    ],
+    "code_sha256": "f64b436f664b81597cf50a3c544998919a778e4efa8c67f2547c18991dc508d2",
+    "artifacts": [
+     "sandbox/shard-0/shard.json"
+    ]
+   }
+  },
+  {
+   "channel_id": "C-01",
+   "position": [
+    2,
+    0
+   ],
+   "grade": "A",
+   "capacity_ah": 2.2962,
+   "ir_mohm": 37.56,
+   "cycles": [
+    {
+     "cycle": 1,
+     "discharge_capacity_ah": 2.2875,
+     "charge_capacity_ah": 2.5918,
+     "ce": 0.8826,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.5965,
+     "dqdv_peak_v": 3.4204,
+     "noise_mv": 0.97
+    },
+    {
+     "cycle": 2,
+     "discharge_capacity_ah": 2.2904,
+     "charge_capacity_ah": 2.3008,
+     "ce": 0.9955,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.5977,
+     "dqdv_peak_v": 3.4204,
+     "noise_mv": 0.97
+    },
+    {
+     "cycle": 3,
+     "discharge_capacity_ah": 2.2933,
+     "charge_capacity_ah": 2.2981,
+     "ce": 0.9979,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.602,
+     "dqdv_peak_v": 3.4204,
+     "noise_mv": 0.97
+    },
+    {
+     "cycle": 4,
+     "discharge_capacity_ah": 2.2962,
+     "charge_capacity_ah": 2.3054,
+     "ce": 0.996,
+     "ir_mohm": 37.56,
+     "mid_voltage_v": 3.6013,
+     "dqdv_peak_v": 3.4204,
+     "noise_mv": 0.97
+    }
+   ],
+   "flags": [],
+   "explanation": null,
+   "provenance": {
+    "run_id": "fixture-64ch",
+    "code_ids": [
+     "c1",
+     "c2"
+    ],
+    "code_sha256": "f64b436f664b81597cf50a3c544998919a778e4efa8c67f2547c18991dc508d2",
+    "artifacts": [
+     "sandbox/shard-1/shard.json"
+    ]
+   }
+  },
+  {
+   "channel_id": "C-02",
+   "position": [
+    2,
+    1
+   ],
+   "grade": "A",
+   "capacity_ah": 2.2923,
+   "ir_mohm": 38.13,
+   "cycles": [
+    {
+     "cycle": 1,
+     "discharge_capacity_ah": 2.285,
+     "charge_capacity_ah": 2.5751,
+     "ce": 0.8873,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.6054,
+     "dqdv_peak_v": 3.4203,
+     "noise_mv": 0.879
+    },
+    {
+     "cycle": 2,
+     "discharge_capacity_ah": 2.2874,
+     "charge_capacity_ah": 2.2945,
+     "ce": 0.9969,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.6011,
+     "dqdv_peak_v": 3.4203,
+     "noise_mv": 0.879
+    },
+    {
+     "cycle": 3,
+     "discharge_capacity_ah": 2.2899,
+     "charge_capacity_ah": 2.2961,
+     "ce": 0.9973,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.5999,
+     "dqdv_peak_v": 3.4203,
+     "noise_mv": 0.879
+    },
+    {
+     "cycle": 4,
+     "discharge_capacity_ah": 2.2923,
+     "charge_capacity_ah": 2.2971,
+     "ce": 0.9979,
+     "ir_mohm": 38.13,
+     "mid_voltage_v": 3.6014,
+     "dqdv_peak_v": 3.4203,
+     "noise_mv": 0.879
+    }
+   ],
+   "flags": [],
+   "explanation": null,
+   "provenance": {
+    "run_id": "fixture-64ch",
+    "code_ids": [
+     "c1",
+     "c2"
+    ],
+    "code_sha256": "f64b436f664b81597cf50a3c544998919a778e4efa8c67f2547c18991dc508d2",
+    "artifacts": [
+     "sandbox/shard-1/shard.json"
+    ]
+   }
+  },
+  {
+   "channel_id": "C-03",
+   "position": [
+    2,
+    2
+   ],
+   "grade": "A",
+   "capacity_ah": 2.3094,
+   "ir_mohm": 38.72,
+   "cycles": [
+    {
+     "cycle": 1,
+     "discharge_capacity_ah": 2.3042,
+     "charge_capacity_ah": 2.6012,
+     "ce": 0.8858,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.5979,
+     "dqdv_peak_v": 3.426,
+     "noise_mv": 0.892
+    },
+    {
+     "cycle": 2,
+     "discharge_capacity_ah": 2.3059,
+     "charge_capacity_ah": 2.3143,
+     "ce": 0.9964,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.6029,
+     "dqdv_peak_v": 3.426,
+     "noise_mv": 0.892
+    },
+    {
+     "cycle": 3,
+     "discharge_capacity_ah": 2.3077,
+     "charge_capacity_ah": 2.3128,
+     "ce": 0.9978,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.601,
+     "dqdv_peak_v": 3.426,
+     "noise_mv": 0.892
+    },
+    {
+     "cycle": 4,
+     "discharge_capacity_ah": 2.3094,
+     "charge_capacity_ah": 2.3157,
+     "ce": 0.9973,
+     "ir_mohm": 38.72,
+     "mid_voltage_v": 3.5956,
+     "dqdv_peak_v": 3.426,
+     "noise_mv": 0.892
+    }
+   ],
+   "flags": [],
+   "explanation": null,
+   "provenance": {
+    "run_id": "fixture-64ch",
+    "code_ids": [
+     "c1",
+     "c2"
+    ],
+    "code_sha256": "f64b436f664b81597cf50a3c544998919a778e4efa8c67f2547c18991dc508d2",
+    "artifacts": [
+     "sandbox/shard-1/shard.json"
+    ]
+   }
+  },
+  {
+   "channel_id": "C-04",
+   "position": [
+    2,
+    3
+   ],
+   "grade": "A",
+   "capacity_ah": 2.2859,
+   "ir_mohm": 38.13,
+   "cycles": [
+    {
+     "cycle": 1,
+     "discharge_capacity_ah": 2.2747,
+     "charge_capacity_ah": 2.5777,
+     "ce": 0.8824,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.5993,
+     "dqdv_peak_v": 3.4244,
+     "noise_mv": 0.796
+    },
+    {
+     "cycle": 2,
+     "discharge_capacity_ah": 2.2784,
+     "charge_capacity_ah": 2.2842,
+     "ce": 0.9975,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.6025,
+     "dqdv_peak_v": 3.4244,
+     "noise_mv": 0.796
+    },
+    {
+     "cycle": 3,
+     "discharge_capacity_ah": 2.2821,
+     "charge_capacity_ah": 2.292,
+     "ce": 0.9957,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.5997,
+     "dqdv_peak_v": 3.4244,
+     "noise_mv": 0.796
+    },
+    {
+     "cycle": 4,
+     "discharge_capacity_ah": 2.2859,
+     "charge_capacity_ah": 2.2931,
+     "ce": 0.9969,
+     "ir_mohm": 38.13,
+     "mid_voltage_v": 3.6022,
+     "dqdv_peak_v": 3.4244,
+     "noise_mv": 0.796
+    }
+   ],
+   "flags": [],
+   "explanation": null,
+   "provenance": {
+    "run_id": "fixture-64ch",
+    "code_ids": [
+     "c1",
+     "c2"
+    ],
+    "code_sha256": "f64b436f664b81597cf50a3c544998919a778e4efa8c67f2547c18991dc508d2",
+    "artifacts": [
+     "sandbox/shard-1/shard.json"
+    ]
+   }
+  },
+  {
+   "channel_id": "C-05",
+   "position": [
+    2,
+    4
+   ],
+   "grade": "REJECT",
+   "capacity_ah": 2.3102,
+   "ir_mohm": 61.16,
+   "cycles": [
+    {
+     "cycle": 1,
+     "discharge_capacity_ah": 2.3096,
+     "charge_capacity_ah": 2.6057,
+     "ce": 0.8864,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.6004,
+     "dqdv_peak_v": 3.4252,
+     "noise_mv": 0.749
+    },
+    {
+     "cycle": 2,
+     "discharge_capacity_ah": 2.3098,
+     "charge_capacity_ah": 2.3174,
+     "ce": 0.9967,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.5997,
+     "dqdv_peak_v": 3.4252,
+     "noise_mv": 0.749
+    },
+    {
+     "cycle": 3,
+     "discharge_capacity_ah": 2.31,
+     "charge_capacity_ah": 2.3155,
+     "ce": 0.9976,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.5987,
+     "dqdv_peak_v": 3.4252,
+     "noise_mv": 0.749
+    },
+    {
+     "cycle": 4,
+     "discharge_capacity_ah": 2.3102,
+     "charge_capacity_ah": 2.3222,
+     "ce": 0.9948,
+     "ir_mohm": 61.16,
+     "mid_voltage_v": 3.5965,
+     "dqdv_peak_v": 3.4252,
+     "noise_mv": 0.749
+    }
+   ],
+   "flags": [
+    {
+     "type": "HIGH_IR",
+     "severity": "high",
+     "evidence": [
+      {
+       "metric": "ir_mohm",
+       "value": 61.1644,
+       "unit": "mOhm",
+       "batch_median": 38.03587,
+       "robust_z": 28.21,
+       "threshold": "robust_z > 3.5",
+       "cycle": null
+      }
+     ],
+     "explanation": "high ir: ir_mohm = 61.1644 mOhm versus batch median 38.03587 mOhm (robust z 28.21)."
+    }
+   ],
+   "explanation": "high ir: ir_mohm = 61.1644 mOhm versus batch median 38.03587 mOhm (robust z 28.21).",
+   "provenance": {
+    "run_id": "fixture-64ch",
+    "code_ids": [
+     "c1",
+     "c2"
+    ],
+    "code_sha256": "f64b436f664b81597cf50a3c544998919a778e4efa8c67f2547c18991dc508d2",
+    "artifacts": [
+     "sandbox/shard-1/shard.json"
+    ]
+   }
+  },
+  {
+   "channel_id": "C-06",
+   "position": [
+    2,
+    5
+   ],
+   "grade": "A",
+   "capacity_ah": 2.3098,
+   "ir_mohm": 38.43,
+   "cycles": [
+    {
+     "cycle": 1,
+     "discharge_capacity_ah": 2.2973,
+     "charge_capacity_ah": 2.5922,
+     "ce": 0.8862,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.5993,
+     "dqdv_peak_v": 3.4244,
+     "noise_mv": 0.826
+    },
+    {
+     "cycle": 2,
+     "discharge_capacity_ah": 2.3015,
+     "charge_capacity_ah": 2.3131,
+     "ce": 0.995,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.5996,
+     "dqdv_peak_v": 3.4244,
+     "noise_mv": 0.826
+    },
+    {
+     "cycle": 3,
+     "discharge_capacity_ah": 2.3056,
+     "charge_capacity_ah": 2.3134,
+     "ce": 0.9966,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.5968,
+     "dqdv_peak_v": 3.4244,
+     "noise_mv": 0.826
+    },
+    {
+     "cycle": 4,
+     "discharge_capacity_ah": 2.3098,
+     "charge_capacity_ah": 2.3186,
+     "ce": 0.9962,
+     "ir_mohm": 38.43,
+     "mid_voltage_v": 3.5977,
+     "dqdv_peak_v": 3.4244,
+     "noise_mv": 0.826
+    }
+   ],
+   "flags": [],
+   "explanation": null,
+   "provenance": {
+    "run_id": "fixture-64ch",
+    "code_ids": [
+     "c1",
+     "c2"
+    ],
+    "code_sha256": "f64b436f664b81597cf50a3c544998919a778e4efa8c67f2547c18991dc508d2",
+    "artifacts": [
+     "sandbox/shard-1/shard.json"
+    ]
+   }
+  },
+  {
+   "channel_id": "C-07",
+   "position": [
+    2,
+    6
+   ],
+   "grade": "A",
+   "capacity_ah": 2.3047,
+   "ir_mohm": 37.61,
+   "cycles": [
+    {
+     "cycle": 1,
+     "discharge_capacity_ah": 2.294,
+     "charge_capacity_ah": 2.6124,
+     "ce": 0.8781,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.5985,
+     "dqdv_peak_v": 3.4268,
+     "noise_mv": 0.686
+    },
+    {
+     "cycle": 2,
+     "discharge_capacity_ah": 2.2975,
+     "charge_capacity_ah": 2.3076,
+     "ce": 0.9956,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.6007,
+     "dqdv_peak_v": 3.4268,
+     "noise_mv": 0.686
+    },
+    {
+     "cycle": 3,
+     "discharge_capacity_ah": 2.3011,
+     "charge_capacity_ah": 2.3065,
+     "ce": 0.9976,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.5997,
+     "dqdv_peak_v": 3.4268,
+     "noise_mv": 0.686
+    },
+    {
+     "cycle": 4,
+     "discharge_capacity_ah": 2.3047,
+     "charge_capacity_ah": 2.311,
+     "ce": 0.9973,
+     "ir_mohm": 37.61,
+     "mid_voltage_v": 3.6004,
+     "dqdv_peak_v": 3.4268,
+     "noise_mv": 0.686
+    }
+   ],
+   "flags": [],
+   "explanation": null,
+   "provenance": {
+    "run_id": "fixture-64ch",
+    "code_ids": [
+     "c1",
+     "c2"
+    ],
+    "code_sha256": "f64b436f664b81597cf50a3c544998919a778e4efa8c67f2547c18991dc508d2",
+    "artifacts": [
+     "sandbox/shard-1/shard.json"
+    ]
+   }
+  },
+  {
+   "channel_id": "C-08",
+   "position": [
+    2,
+    7
+   ],
+   "grade": "A",
+   "capacity_ah": 2.2872,
+   "ir_mohm": 37.1,
+   "cycles": [
+    {
+     "cycle": 1,
+     "discharge_capacity_ah": 2.2712,
+     "charge_capacity_ah": 2.5607,
+     "ce": 0.8869,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.5966,
+     "dqdv_peak_v": 3.4154,
+     "noise_mv": 0.701
+    },
+    {
+     "cycle": 2,
+     "discharge_capacity_ah": 2.2765,
+     "charge_capacity_ah": 2.2822,
+     "ce": 0.9975,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.6019,
+     "dqdv_peak_v": 3.4154,
+     "noise_mv": 0.701
+    },
+    {
+     "cycle": 3,
+     "discharge_capacity_ah": 2.2819,
+     "charge_capacity_ah": 2.2896,
+     "ce": 0.9966,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.6009,
+     "dqdv_peak_v": 3.4154,
+     "noise_mv": 0.701
+    },
+    {
+     "cycle": 4,
+     "discharge_capacity_ah": 2.2872,
+     "charge_capacity_ah": 2.2939,
+     "ce": 0.9971,
+     "ir_mohm": 37.1,
+     "mid_voltage_v": 3.5991,
+     "dqdv_peak_v": 3.4154,
+     "noise_mv": 0.701
+    }
+   ],
+   "flags": [],
+   "explanation": null,
+   "provenance": {
+    "run_id": "fixture-64ch",
+    "code_ids": [
+     "c1",
+     "c2"
+    ],
+    "code_sha256": "f64b436f664b81597cf50a3c544998919a778e4efa8c67f2547c18991dc508d2",
+    "artifacts": [
+     "sandbox/shard-1/shard.json"
+    ]
+   }
+  },
+  {
+   "channel_id": "D-01",
+   "position": [
+    3,
+    0
+   ],
+   "grade": "A",
+   "capacity_ah": 2.2915,
+   "ir_mohm": 37.86,
+   "cycles": [
+    {
+     "cycle": 1,
+     "discharge_capacity_ah": 2.2846,
+     "charge_capacity_ah": 2.5923,
+     "ce": 0.8813,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.6003,
+     "dqdv_peak_v": 3.4193,
+     "noise_mv": 0.918
+    },
+    {
+     "cycle": 2,
+     "discharge_capacity_ah": 2.2869,
+     "charge_capacity_ah": 2.2976,
+     "ce": 0.9953,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.598,
+     "dqdv_peak_v": 3.4193,
+     "noise_mv": 0.918
+    },
+    {
+     "cycle": 3,
+     "discharge_capacity_ah": 2.2892,
+     "charge_capacity_ah": 2.2971,
+     "ce": 0.9966,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.5975,
+     "dqdv_peak_v": 3.4193,
+     "noise_mv": 0.918
+    },
+    {
+     "cycle": 4,
+     "discharge_capacity_ah": 2.2915,
+     "charge_capacity_ah": 2.2983,
+     "ce": 0.997,
+     "ir_mohm": 37.86,
+     "mid_voltage_v": 3.5996,
+     "dqdv_peak_v": 3.4193,
+     "noise_mv": 0.918
+    }
+   ],
+   "flags": [],
+   "explanation": null,
+   "provenance": {
+    "run_id": "fixture-64ch",
+    "code_ids": [
+     "c1",
+     "c2"
+    ],
+    "code_sha256": "f64b436f664b81597cf50a3c544998919a778e4efa8c67f2547c18991dc508d2",
+    "artifacts": [
+     "sandbox/shard-1/shard.json"
+    ]
+   }
+  },
+  {
+   "channel_id": "D-02",
+   "position": [
+    3,
+    1
+   ],
+   "grade": "C",
+   "capacity_ah": 2.3025,
+   "ir_mohm": 39.11,
+   "cycles": [
+    {
+     "cycle": 1,
+     "discharge_capacity_ah": 2.192,
+     "charge_capacity_ah": 2.4877,
+     "ce": 0.8811,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.6014,
+     "dqdv_peak_v": 3.4239,
+     "noise_mv": 0.835
+    },
+    {
+     "cycle": 2,
+     "discharge_capacity_ah": 2.2288,
+     "charge_capacity_ah": 2.2374,
+     "ce": 0.9962,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.602,
+     "dqdv_peak_v": 3.4239,
+     "noise_mv": 0.835
+    },
+    {
+     "cycle": 3,
+     "discharge_capacity_ah": 2.2656,
+     "charge_capacity_ah": 2.2705,
+     "ce": 0.9979,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.6015,
+     "dqdv_peak_v": 3.4239,
+     "noise_mv": 0.835
+    },
+    {
+     "cycle": 4,
+     "discharge_capacity_ah": 2.3025,
+     "charge_capacity_ah": 2.3127,
+     "ce": 0.9956,
+     "ir_mohm": 39.11,
+     "mid_voltage_v": 3.5998,
+     "dqdv_peak_v": 3.4239,
+     "noise_mv": 0.835
+    }
+   ],
+   "flags": [
+    {
+     "type": "CAPACITY_CREEP_UP",
+     "severity": "high",
+     "evidence": [
+      {
+       "metric": "capacity_slope_pct_per_cycle",
+       "value": 1.6,
+       "unit": "%/cycle",
+       "batch_median": 0.14793,
+       "robust_z": 33.15,
+       "threshold": "robust_z > 3.5",
+       "cycle": null
+      }
+     ],
+     "explanation": "capacity creep up: capacity_slope_pct_per_cycle = 1.6 %/cycle versus batch median 0.14793 %/cycle (robust z 33.15)."
+    }
+   ],
+   "explanation": "capacity creep up: capacity_slope_pct_per_cycle = 1.6 %/cycle versus batch median 0.14793 %/cycle (robust z 33.15).",
+   "provenance": {
+    "run_id": "fixture-64ch",
+    "code_ids": [
+     "c1",
+     "c2"
+    ],
+    "code_sha256": "f64b436f664b81597cf50a3c544998919a778e4efa8c67f2547c18991dc508d2",
+    "artifacts": [
+     "sandbox/shard-1/shard.json"
+    ]
+   }
+  },
+  {
+   "channel_id": "D-03",
+   "position": [
+    3,
+    2
+   ],
+   "grade": "A",
+   "capacity_ah": 2.3049,
+   "ir_mohm": 36.92,
+   "cycles": [
+    {
+     "cycle": 1,
+     "discharge_capacity_ah": 2.292,
+     "charge_capacity_ah": 2.5715,
+     "ce": 0.8913,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.6025,
+     "dqdv_peak_v": 3.4266,
+     "noise_mv": 0.838
+    },
+    {
+     "cycle": 2,
+     "discharge_capacity_ah": 2.2963,
+     "charge_capacity_ah": 2.3034,
+     "ce": 0.9969,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.602,
+     "dqdv_peak_v": 3.4266,
+     "noise_mv": 0.838
+    },
+    {
+     "cycle": 3,
+     "discharge_capacity_ah": 2.3006,
+     "charge_capacity_ah": 2.3081,
+     "ce": 0.9967,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.5996,
+     "dqdv_peak_v": 3.4266,
+     "noise_mv": 0.838
+    },
+    {
+     "cycle": 4,
+     "discharge_capacity_ah": 2.3049,
+     "charge_capacity_ah": 2.3101,
+     "ce": 0.9978,
+     "ir_mohm": 36.92,
+     "mid_voltage_v": 3.6004,
+     "dqdv_peak_v": 3.4266,
+     "noise_mv": 0.838
+    }
+   ],
+   "flags": [],
+   "explanation": null,
+   "provenance": {
+    "run_id": "fixture-64ch",
+    "code_ids": [
+     "c1",
+     "c2"
+    ],
+    "code_sha256": "f64b436f664b81597cf50a3c544998919a778e4efa8c67f2547c18991dc508d2",
+    "artifacts": [
+     "sandbox/shard-1/shard.json"
+    ]
+   }
+  },
+  {
+   "channel_id": "D-04",
+   "position": [
+    3,
+    3
+   ],
+   "grade": "A",
+   "capacity_ah": 2.3065,
+   "ir_mohm": 38.87,
+   "cycles": [
+    {
+     "cycle": 1,
+     "discharge_capacity_ah": 2.2997,
+     "charge_capacity_ah": 2.5865,
+     "ce": 0.8891,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.6014,
+     "dqdv_peak_v": 3.4261,
+     "noise_mv": 0.769
+    },
+    {
+     "cycle": 2,
+     "discharge_capacity_ah": 2.302,
+     "charge_capacity_ah": 2.3076,
+     "ce": 0.9975,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.5993,
+     "dqdv_peak_v": 3.4261,
+     "noise_mv": 0.769
+    },
+    {
+     "cycle": 3,
+     "discharge_capacity_ah": 2.3043,
+     "charge_capacity_ah": 2.3104,
+     "ce": 0.9974,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.5995,
+     "dqdv_peak_v": 3.4261,
+     "noise_mv": 0.769
+    },
+    {
+     "cycle": 4,
+     "discharge_capacity_ah": 2.3065,
+     "charge_capacity_ah": 2.3196,
+     "ce": 0.9944,
+     "ir_mohm": 38.87,
+     "mid_voltage_v": 3.6016,
+     "dqdv_peak_v": 3.4261,
+     "noise_mv": 0.769
+    }
+   ],
+   "flags": [],
+   "explanation": null,
+   "provenance": {
+    "run_id": "fixture-64ch",
+    "code_ids": [
+     "c1",
+     "c2"
+    ],
+    "code_sha256": "f64b436f664b81597cf50a3c544998919a778e4efa8c67f2547c18991dc508d2",
+    "artifacts": [
+     "sandbox/shard-1/shard.json"
+    ]
+   }
+  },
+  {
+   "channel_id": "D-05",
+   "position": [
+    3,
+    4
+   ],
+   "grade": "A",
+   "capacity_ah": 2.2953,
+   "ir_mohm": 35.7,
+   "cycles": [
+    {
+     "cycle": 1,
+     "discharge_capacity_ah": 2.2792,
+     "charge_capacity_ah": 2.5883,
+     "ce": 0.8806,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.6021,
+     "dqdv_peak_v": 3.4158,
+     "noise_mv": 0.605
+    },
+    {
+     "cycle": 2,
+     "discharge_capacity_ah": 2.2846,
+     "charge_capacity_ah": 2.2902,
+     "ce": 0.9975,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.6006,
+     "dqdv_peak_v": 3.4158,
+     "noise_mv": 0.605
+    },
+    {
+     "cycle": 3,
+     "discharge_capacity_ah": 2.2899,
+     "charge_capacity_ah": 2.3019,
+     "ce": 0.9948,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.6032,
+     "dqdv_peak_v": 3.4158,
+     "noise_mv": 0.605
+    },
+    {
+     "cycle": 4,
+     "discharge_capacity_ah": 2.2953,
+     "charge_capacity_ah": 2.3073,
+     "ce": 0.9948,
+     "ir_mohm": 35.7,
+     "mid_voltage_v": 3.5988,
+     "dqdv_peak_v": 3.4158,
+     "noise_mv": 0.605
+    }
+   ],
+   "flags": [],
+   "explanation": null,
+   "provenance": {
+    "run_id": "fixture-64ch",
+    "code_ids": [
+     "c1",
+     "c2"
+    ],
+    "code_sha256": "f64b436f664b81597cf50a3c544998919a778e4efa8c67f2547c18991dc508d2",
+    "artifacts": [
+     "sandbox/shard-1/shard.json"
+    ]
+   }
+  },
+  {
+   "channel_id": "D-06",
+   "position": [
+    3,
+    5
+   ],
+   "grade": "A",
+   "capacity_ah": 2.3095,
+   "ir_mohm": 37.31,
+   "cycles": [
+    {
+     "cycle": 1,
+     "discharge_capacity_ah": 2.3,
+     "charge_capacity_ah": 2.5947,
+     "ce": 0.8864,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.5987,
+     "dqdv_peak_v": 3.4221,
+     "noise_mv": 0.783
+    },
+    {
+     "cycle": 2,
+     "discharge_capacity_ah": 2.3032,
+     "charge_capacity_ah": 2.3125,
+     "ce": 0.996,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.5985,
+     "dqdv_peak_v": 3.4221,
+     "noise_mv": 0.783
+    },
+    {
+     "cycle": 3,
+     "discharge_capacity_ah": 2.3063,
+     "charge_capacity_ah": 2.3137,
+     "ce": 0.9968,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.6006,
+     "dqdv_peak_v": 3.4221,
+     "noise_mv": 0.783
+    },
+    {
+     "cycle": 4,
+     "discharge_capacity_ah": 2.3095,
+     "charge_capacity_ah": 2.3139,
+     "ce": 0.9981,
+     "ir_mohm": 37.31,
+     "mid_voltage_v": 3.5942,
+     "dqdv_peak_v": 3.4221,
+     "noise_mv": 0.783
+    }
+   ],
+   "flags": [],
+   "explanation": null,
+   "provenance": {
+    "run_id": "fixture-64ch",
+    "code_ids": [
+     "c1",
+     "c2"
+    ],
+    "code_sha256": "f64b436f664b81597cf50a3c544998919a778e4efa8c67f2547c18991dc508d2",
+    "artifacts": [
+     "sandbox/shard-1/shard.json"
+    ]
+   }
+  },
+  {
+   "channel_id": "D-07",
+   "position": [
+    3,
+    6
+   ],
+   "grade": "A",
+   "capacity_ah": 2.3094,
+   "ir_mohm": 37.37,
+   "cycles": [
+    {
+     "cycle": 1,
+     "discharge_capacity_ah": 2.2986,
+     "charge_capacity_ah": 2.5997,
+     "ce": 0.8842,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.6003,
+     "dqdv_peak_v": 3.4213,
+     "noise_mv": 0.678
+    },
+    {
+     "cycle": 2,
+     "discharge_capacity_ah": 2.3022,
+     "charge_capacity_ah": 2.3125,
+     "ce": 0.9955,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.5981,
+     "dqdv_peak_v": 3.4213,
+     "noise_mv": 0.678
+    },
+    {
+     "cycle": 3,
+     "discharge_capacity_ah": 2.3058,
+     "charge_capacity_ah": 2.3107,
+     "ce": 0.9978,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.6019,
+     "dqdv_peak_v": 3.4213,
+     "noise_mv": 0.678
+    },
+    {
+     "cycle": 4,
+     "discharge_capacity_ah": 2.3094,
+     "charge_capacity_ah": 2.3161,
+     "ce": 0.9971,
+     "ir_mohm": 37.37,
+     "mid_voltage_v": 3.6009,
+     "dqdv_peak_v": 3.4213,
+     "noise_mv": 0.678
+    }
+   ],
+   "flags": [],
+   "explanation": null,
+   "provenance": {
+    "run_id": "fixture-64ch",
+    "code_ids": [
+     "c1",
+     "c2"
+    ],
+    "code_sha256": "f64b436f664b81597cf50a3c544998919a778e4efa8c67f2547c18991dc508d2",
+    "artifacts": [
+     "sandbox/shard-1/shard.json"
+    ]
+   }
+  },
+  {
+   "channel_id": "D-08",
+   "position": [
+    3,
+    7
+   ],
+   "grade": "A",
+   "capacity_ah": 2.3084,
+   "ir_mohm": 39.27,
+   "cycles": [
+    {
+     "cycle": 1,
+     "discharge_capacity_ah": 2.2967,
+     "charge_capacity_ah": 2.5934,
+     "ce": 0.8856,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.5983,
+     "dqdv_peak_v": 3.4198,
+     "noise_mv": 0.742
+    },
+    {
+     "cycle": 2,
+     "discharge_capacity_ah": 2.3006,
+     "charge_capacity_ah": 2.3046,
+     "ce": 0.9982,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.6021,
+     "dqdv_peak_v": 3.4198,
+     "noise_mv": 0.742
+    },
+    {
+     "cycle": 3,
+     "discharge_capacity_ah": 2.3045,
+     "charge_capacity_ah": 2.3115,
+     "ce": 0.997,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.6022,
+     "dqdv_peak_v": 3.4198,
+     "noise_mv": 0.742
+    },
+    {
+     "cycle": 4,
+     "discharge_capacity_ah": 2.3084,
+     "charge_capacity_ah": 2.3144,
+     "ce": 0.9974,
+     "ir_mohm": 39.27,
+     "mid_voltage_v": 3.6016,
+     "dqdv_peak_v": 3.4198,
+     "noise_mv": 0.742
+    }
+   ],
+   "flags": [],
+   "explanation": null,
+   "provenance": {
+    "run_id": "fixture-64ch",
+    "code_ids": [
+     "c1",
+     "c2"
+    ],
+    "code_sha256": "f64b436f664b81597cf50a3c544998919a778e4efa8c67f2547c18991dc508d2",
+    "artifacts": [
+     "sandbox/shard-1/shard.json"
+    ]
+   }
+  },
+  {
+   "channel_id": "E-01",
+   "position": [
+    4,
+    0
+   ],
+   "grade": "A",
+   "capacity_ah": 2.3134,
+   "ir_mohm": 38.66,
+   "cycles": [
+    {
+     "cycle": 1,
+     "discharge_capacity_ah": 2.3015,
+     "charge_capacity_ah": 2.5916,
+     "ce": 0.8881,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.5993,
+     "dqdv_peak_v": 3.4202,
+     "noise_mv": 0.73
+    },
+    {
+     "cycle": 2,
+     "discharge_capacity_ah": 2.3055,
+     "charge_capacity_ah": 2.3145,
+     "ce": 0.9961,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.5982,
+     "dqdv_peak_v": 3.4202,
+     "noise_mv": 0.73
+    },
+    {
+     "cycle": 3,
+     "discharge_capacity_ah": 2.3094,
+     "charge_capacity_ah": 2.3143,
+     "ce": 0.9979,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.5992,
+     "dqdv_peak_v": 3.4202,
+     "noise_mv": 0.73
+    },
+    {
+     "cycle": 4,
+     "discharge_capacity_ah": 2.3134,
+     "charge_capacity_ah": 2.3222,
+     "ce": 0.9962,
+     "ir_mohm": 38.66,
+     "mid_voltage_v": 3.6004,
+     "dqdv_peak_v": 3.4202,
+     "noise_mv": 0.73
+    }
+   ],
+   "flags": [],
+   "explanation": null,
+   "provenance": {
+    "run_id": "fixture-64ch",
+    "code_ids": [
+     "c1",
+     "c2"
+    ],
+    "code_sha256": "f64b436f664b81597cf50a3c544998919a778e4efa8c67f2547c18991dc508d2",
+    "artifacts": [
+     "sandbox/shard-2/shard.json"
+    ]
+   }
+  },
+  {
+   "channel_id": "E-02",
+   "position": [
+    4,
+    1
+   ],
+   "grade": "A",
+   "capacity_ah": 2.292,
+   "ir_mohm": 38.28,
+   "cycles": [
+    {
+     "cycle": 1,
+     "discharge_capacity_ah": 2.2851,
+     "charge_capacity_ah": 2.5669,
+     "ce": 0.8902,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.5996,
+     "dqdv_peak_v": 3.4257,
+     "noise_mv": 0.66
+    },
+    {
+     "cycle": 2,
+     "discharge_capacity_ah": 2.2874,
+     "charge_capacity_ah": 2.2937,
+     "ce": 0.9973,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.6024,
+     "dqdv_peak_v": 3.4257,
+     "noise_mv": 0.66
+    },
+    {
+     "cycle": 3,
+     "discharge_capacity_ah": 2.2897,
+     "charge_capacity_ah": 2.2938,
+     "ce": 0.9982,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.5997,
+     "dqdv_peak_v": 3.4257,
+     "noise_mv": 0.66
+    },
+    {
+     "cycle": 4,
+     "discharge_capacity_ah": 2.292,
+     "charge_capacity_ah": 2.2974,
+     "ce": 0.9977,
+     "ir_mohm": 38.28,
+     "mid_voltage_v": 3.6022,
+     "dqdv_peak_v": 3.4257,
+     "noise_mv": 0.66
+    }
+   ],
+   "flags": [],
+   "explanation": null,
+   "provenance": {
+    "run_id": "fixture-64ch",
+    "code_ids": [
+     "c1",
+     "c2"
+    ],
+    "code_sha256": "f64b436f664b81597cf50a3c544998919a778e4efa8c67f2547c18991dc508d2",
+    "artifacts": [
+     "sandbox/shard-2/shard.json"
+    ]
+   }
+  },
+  {
+   "channel_id": "E-03",
+   "position": [
+    4,
+    2
+   ],
+   "grade": "A",
+   "capacity_ah": 2.3158,
+   "ir_mohm": 38.37,
+   "cycles": [
+    {
+     "cycle": 1,
+     "discharge_capacity_ah": 2.3126,
+     "charge_capacity_ah": 2.599,
+     "ce": 0.8898,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.5998,
+     "dqdv_peak_v": 3.422,
+     "noise_mv": 0.666
+    },
+    {
+     "cycle": 2,
+     "discharge_capacity_ah": 2.3137,
+     "charge_capacity_ah": 2.3207,
+     "ce": 0.997,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.5989,
+     "dqdv_peak_v": 3.422,
+     "noise_mv": 0.666
+    },
+    {
+     "cycle": 3,
+     "discharge_capacity_ah": 2.3148,
+     "charge_capacity_ah": 2.3245,
+     "ce": 0.9958,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.6001,
+     "dqdv_peak_v": 3.422,
+     "noise_mv": 0.666
+    },
+    {
+     "cycle": 4,
+     "discharge_capacity_ah": 2.3158,
+     "charge_capacity_ah": 2.324,
+     "ce": 0.9965,
+     "ir_mohm": 38.37,
+     "mid_voltage_v": 3.5995,
+     "dqdv_peak_v": 3.422,
+     "noise_mv": 0.666
+    }
+   ],
+   "flags": [],
+   "explanation": null,
+   "provenance": {
+    "run_id": "fixture-64ch",
+    "code_ids": [
+     "c1",
+     "c2"
+    ],
+    "code_sha256": "f64b436f664b81597cf50a3c544998919a778e4efa8c67f2547c18991dc508d2",
+    "artifacts": [
+     "sandbox/shard-2/shard.json"
+    ]
+   }
+  },
+  {
+   "channel_id": "E-04",
+   "position": [
+    4,
+    3
+   ],
+   "grade": "A",
+   "capacity_ah": 2.321,
+   "ir_mohm": 37.69,
+   "cycles": [
+    {
+     "cycle": 1,
+     "discharge_capacity_ah": 2.3069,
+     "charge_capacity_ah": 2.6076,
+     "ce": 0.8847,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.6012,
+     "dqdv_peak_v": 3.4219,
+     "noise_mv": 0.803
+    },
+    {
+     "cycle": 2,
+     "discharge_capacity_ah": 2.3116,
+     "charge_capacity_ah": 2.3169,
+     "ce": 0.9977,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.5992,
+     "dqdv_peak_v": 3.4219,
+     "noise_mv": 0.803
+    },
+    {
+     "cycle": 3,
+     "discharge_capacity_ah": 2.3163,
+     "charge_capacity_ah": 2.3203,
+     "ce": 0.9983,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.6001,
+     "dqdv_peak_v": 3.4219,
+     "noise_mv": 0.803
+    },
+    {
+     "cycle": 4,
+     "discharge_capacity_ah": 2.321,
+     "charge_capacity_ah": 2.3322,
+     "ce": 0.9952,
+     "ir_mohm": 37.69,
+     "mid_voltage_v": 3.5967,
+     "dqdv_peak_v": 3.4219,
+     "noise_mv": 0.803
+    }
+   ],
+   "flags": [],
+   "explanation": null,
+   "provenance": {
+    "run_id": "fixture-64ch",
+    "code_ids": [
+     "c1",
+     "c2"
+    ],
+    "code_sha256": "f64b436f664b81597cf50a3c544998919a778e4efa8c67f2547c18991dc508d2",
+    "artifacts": [
+     "sandbox/shard-2/shard.json"
+    ]
+   }
+  },
+  {
+   "channel_id": "E-05",
+   "position": [
+    4,
+    4
+   ],
+   "grade": "A",
+   "capacity_ah": 2.2907,
+   "ir_mohm": 38.59,
+   "cycles": [
+    {
+     "cycle": 1,
+     "discharge_capacity_ah": 2.2823,
+     "charge_capacity_ah": 2.5836,
+     "ce": 0.8834,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.6033,
+     "dqdv_peak_v": 3.4206,
+     "noise_mv": 0.736
+    },
+    {
+     "cycle": 2,
+     "discharge_capacity_ah": 2.2851,
+     "charge_capacity_ah": 2.2906,
+     "ce": 0.9976,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.6021,
+     "dqdv_peak_v": 3.4206,
+     "noise_mv": 0.736
+    },
+    {
+     "cycle": 3,
+     "discharge_capacity_ah": 2.2879,
+     "charge_capacity_ah": 2.2983,
+     "ce": 0.9955,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.5979,
+     "dqdv_peak_v": 3.4206,
+     "noise_mv": 0.736
+    },
+    {
+     "cycle": 4,
+     "discharge_capacity_ah": 2.2907,
+     "charge_capacity_ah": 2.2995,
+     "ce": 0.9962,
+     "ir_mohm": 38.59,
+     "mid_voltage_v": 3.5978,
+     "dqdv_peak_v": 3.4206,
+     "noise_mv": 0.736
+    }
+   ],
+   "flags": [],
+   "explanation": null,
+   "provenance": {
+    "run_id": "fixture-64ch",
+    "code_ids": [
+     "c1",
+     "c2"
+    ],
+    "code_sha256": "f64b436f664b81597cf50a3c544998919a778e4efa8c67f2547c18991dc508d2",
+    "artifacts": [
+     "sandbox/shard-2/shard.json"
+    ]
+   }
+  },
+  {
+   "channel_id": "E-06",
+   "position": [
+    4,
+    5
+   ],
+   "grade": "A",
+   "capacity_ah": 2.2936,
+   "ir_mohm": 36.75,
+   "cycles": [
+    {
+     "cycle": 1,
+     "discharge_capacity_ah": 2.2806,
+     "charge_capacity_ah": 2.5735,
+     "ce": 0.8862,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.5991,
+     "dqdv_peak_v": 3.42,
+     "noise_mv": 0.918
+    },
+    {
+     "cycle": 2,
+     "discharge_capacity_ah": 2.2849,
+     "charge_capacity_ah": 2.2908,
+     "ce": 0.9974,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.5989,
+     "dqdv_peak_v": 3.42,
+     "noise_mv": 0.918
+    },
+    {
+     "cycle": 3,
+     "discharge_capacity_ah": 2.2892,
+     "charge_capacity_ah": 2.2949,
+     "ce": 0.9975,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.5976,
+     "dqdv_peak_v": 3.42,
+     "noise_mv": 0.918
+    },
+    {
+     "cycle": 4,
+     "discharge_capacity_ah": 2.2936,
+     "charge_capacity_ah": 2.2999,
+     "ce": 0.9972,
+     "ir_mohm": 36.75,
+     "mid_voltage_v": 3.6005,
+     "dqdv_peak_v": 3.42,
+     "noise_mv": 0.918
+    }
+   ],
+   "flags": [],
+   "explanation": null,
+   "provenance": {
+    "run_id": "fixture-64ch",
+    "code_ids": [
+     "c1",
+     "c2"
+    ],
+    "code_sha256": "f64b436f664b81597cf50a3c544998919a778e4efa8c67f2547c18991dc508d2",
+    "artifacts": [
+     "sandbox/shard-2/shard.json"
+    ]
+   }
+  },
+  {
+   "channel_id": "E-07",
+   "position": [
+    4,
+    6
+   ],
+   "grade": "REJECT",
+   "capacity_ah": 0.02,
+   "ir_mohm": 37.25,
+   "cycles": [
+    {
+     "cycle": 1,
+     "discharge_capacity_ah": 0.0199,
+     "charge_capacity_ah": 0.0225,
+     "ce": 0.887,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.5992,
+     "dqdv_peak_v": 3.4198,
+     "noise_mv": 15.0
+    },
+    {
+     "cycle": 2,
+     "discharge_capacity_ah": 0.02,
+     "charge_capacity_ah": 0.02,
+     "ce": 0.9969,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.5965,
+     "dqdv_peak_v": 3.4198,
+     "noise_mv": 15.0
+    },
+    {
+     "cycle": 3,
+     "discharge_capacity_ah": 0.02,
+     "charge_capacity_ah": 0.0201,
+     "ce": 0.9966,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.6,
+     "dqdv_peak_v": 3.4198,
+     "noise_mv": 15.0
+    },
+    {
+     "cycle": 4,
+     "discharge_capacity_ah": 0.02,
+     "charge_capacity_ah": 0.0201,
+     "ce": 0.9971,
+     "ir_mohm": 37.25,
+     "mid_voltage_v": 3.6033,
+     "dqdv_peak_v": 3.4198,
+     "noise_mv": 15.0
+    }
+   ],
+   "flags": [
+    {
+     "type": "NOISY_OR_DEAD_CHANNEL",
+     "severity": "high",
+     "evidence": [
+      {
+       "metric": "capacity_ah",
+       "value": 0.02,
+       "unit": "Ah",
+       "batch_median": 2.3001,
+       "robust_z": null,
+       "threshold": "capacity < 10% of batch median",
+       "cycle": null
+      }
+     ],
+     "explanation": "noisy or dead channel: capacity_ah = 0.02 Ah versus batch median 2.3001 Ah (capacity < 10% of batch median)."
+    }
+   ],
+   "explanation": "noisy or dead channel: capacity_ah = 0.02 Ah versus batch median 2.3001 Ah (capacity < 10% of batch median).",
+   "provenance": {
+    "run_id": "fixture-64ch",
+    "code_ids": [
+     "c1",
+     "c2"
+    ],
+    "code_sha256": "f64b436f664b81597cf50a3c544998919a778e4efa8c67f2547c18991dc508d2",
+    "artifacts": [
+     "sandbox/shard-2/shard.json"
+    ]
+   }
+  },
+  {
+   "channel_id": "E-08",
+   "position": [
+    4,
+    7
+   ],
+   "grade": "A",
+   "capacity_ah": 2.2987,
+   "ir_mohm": 37.59,
+   "cycles": [
+    {
+     "cycle": 1,
+     "discharge_capacity_ah": 2.2857,
+     "charge_capacity_ah": 2.5932,
+     "ce": 0.8814,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.5964,
+     "dqdv_peak_v": 3.421,
+     "noise_mv": 0.714
+    },
+    {
+     "cycle": 2,
+     "discharge_capacity_ah": 2.2901,
+     "charge_capacity_ah": 2.2985,
+     "ce": 0.9963,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.6001,
+     "dqdv_peak_v": 3.421,
+     "noise_mv": 0.714
+    },
+    {
+     "cycle": 3,
+     "discharge_capacity_ah": 2.2944,
+     "charge_capacity_ah": 2.3049,
+     "ce": 0.9954,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.5988,
+     "dqdv_peak_v": 3.421,
+     "noise_mv": 0.714
+    },
+    {
+     "cycle": 4,
+     "discharge_capacity_ah": 2.2987,
+     "charge_capacity_ah": 2.3042,
+     "ce": 0.9976,
+     "ir_mohm": 37.59,
+     "mid_voltage_v": 3.5978,
+     "dqdv_peak_v": 3.421,
+     "noise_mv": 0.714
+    }
+   ],
+   "flags": [],
+   "explanation": null,
+   "provenance": {
+    "run_id": "fixture-64ch",
+    "code_ids": [
+     "c1",
+     "c2"
+    ],
+    "code_sha256": "f64b436f664b81597cf50a3c544998919a778e4efa8c67f2547c18991dc508d2",
+    "artifacts": [
+     "sandbox/shard-2/shard.json"
+    ]
+   }
+  },
+  {
+   "channel_id": "F-01",
+   "position": [
+    5,
+    0
+   ],
+   "grade": "C",
+   "capacity_ah": 2.2875,
+   "ir_mohm": 38.19,
+   "cycles": [
+    {
+     "cycle": 1,
+     "discharge_capacity_ah": 2.2772,
+     "charge_capacity_ah": 2.5574,
+     "ce": 0.8904,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.5982,
+     "dqdv_peak_v": 3.4681,
+     "noise_mv": 0.854
+    },
+    {
+     "cycle": 2,
+     "discharge_capacity_ah": 2.2806,
+     "charge_capacity_ah": 2.2878,
+     "ce": 0.9969,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.6009,
+     "dqdv_peak_v": 3.4681,
+     "noise_mv": 0.854
+    },
+    {
+     "cycle": 3,
+     "discharge_capacity_ah": 2.284,
+     "charge_capacity_ah": 2.2886,
+     "ce": 0.998,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.6006,
+     "dqdv_peak_v": 3.4681,
+     "noise_mv": 0.854
+    },
+    {
+     "cycle": 4,
+     "discharge_capacity_ah": 2.2875,
+     "charge_capacity_ah": 2.299,
+     "ce": 0.995,
+     "ir_mohm": 38.19,
+     "mid_voltage_v": 3.5998,
+     "dqdv_peak_v": 3.4681,
+     "noise_mv": 0.854
+    }
+   ],
+   "flags": [
+    {
+     "type": "CURVE_SHAPE",
+     "severity": "high",
+     "evidence": [
+      {
+       "metric": "dqdv_peak_v",
+       "value": 3.46809,
+       "unit": "V",
+       "batch_median": 3.42065,
+       "robust_z": 12.59,
+       "threshold": "|robust_z| > 3.5",
+       "cycle": null
+      }
+     ],
+     "explanation": "curve shape: dqdv_peak_v = 3.46809 V versus batch median 3.42065 V (robust z 12.59)."
+    }
+   ],
+   "explanation": "curve shape: dqdv_peak_v = 3.46809 V versus batch median 3.42065 V (robust z 12.59).",
+   "provenance": {
+    "run_id": "fixture-64ch",
+    "code_ids": [
+     "c1",
+     "c2"
+    ],
+    "code_sha256": "f64b436f664b81597cf50a3c544998919a778e4efa8c67f2547c18991dc508d2",
+    "artifacts": [
+     "sandbox/shard-2/shard.json"
+    ]
+   }
+  },
+  {
+   "channel_id": "F-02",
+   "position": [
+    5,
+    1
+   ],
+   "grade": "A",
+   "capacity_ah": 2.296,
+   "ir_mohm": 38.33,
+   "cycles": [
+    {
+     "cycle": 1,
+     "discharge_capacity_ah": 2.289,
+     "charge_capacity_ah": 2.6041,
+     "ce": 0.879,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.6016,
+     "dqdv_peak_v": 3.4227,
+     "noise_mv": 0.93
+    },
+    {
+     "cycle": 2,
+     "discharge_capacity_ah": 2.2914,
+     "charge_capacity_ah": 2.3016,
+     "ce": 0.9955,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.5986,
+     "dqdv_peak_v": 3.4227,
+     "noise_mv": 0.93
+    },
+    {
+     "cycle": 3,
+     "discharge_capacity_ah": 2.2937,
+     "charge_capacity_ah": 2.2983,
+     "ce": 0.998,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.6,
+     "dqdv_peak_v": 3.4227,
+     "noise_mv": 0.93
+    },
+    {
+     "cycle": 4,
+     "discharge_capacity_ah": 2.296,
+     "charge_capacity_ah": 2.2981,
+     "ce": 0.9991,
+     "ir_mohm": 38.33,
+     "mid_voltage_v": 3.5984,
+     "dqdv_peak_v": 3.4227,
+     "noise_mv": 0.93
+    }
+   ],
+   "flags": [],
+   "explanation": null,
+   "provenance": {
+    "run_id": "fixture-64ch",
+    "code_ids": [
+     "c1",
+     "c2"
+    ],
+    "code_sha256": "f64b436f664b81597cf50a3c544998919a778e4efa8c67f2547c18991dc508d2",
+    "artifacts": [
+     "sandbox/shard-2/shard.json"
+    ]
+   }
+  },
+  {
+   "channel_id": "F-03",
+   "position": [
+    5,
+    2
+   ],
+   "grade": "A",
+   "capacity_ah": 2.2902,
+   "ir_mohm": 38.71,
+   "cycles": [
+    {
+     "cycle": 1,
+     "discharge_capacity_ah": 2.2801,
+     "charge_capacity_ah": 2.5585,
+     "ce": 0.8912,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.6032,
+     "dqdv_peak_v": 3.4185,
+     "noise_mv": 0.911
+    },
+    {
+     "cycle": 2,
+     "discharge_capacity_ah": 2.2834,
+     "charge_capacity_ah": 2.2874,
+     "ce": 0.9983,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.6015,
+     "dqdv_peak_v": 3.4185,
+     "noise_mv": 0.911
+    },
+    {
+     "cycle": 3,
+     "discharge_capacity_ah": 2.2868,
+     "charge_capacity_ah": 2.2969,
+     "ce": 0.9956,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.6012,
+     "dqdv_peak_v": 3.4185,
+     "noise_mv": 0.911
+    },
+    {
+     "cycle": 4,
+     "discharge_capacity_ah": 2.2902,
+     "charge_capacity_ah": 2.2983,
+     "ce": 0.9965,
+     "ir_mohm": 38.71,
+     "mid_voltage_v": 3.5982,
+     "dqdv_peak_v": 3.4185,
+     "noise_mv": 0.911
+    }
+   ],
+   "flags": [],
+   "explanation": null,
+   "provenance": {
+    "run_id": "fixture-64ch",
+    "code_ids": [
+     "c1",
+     "c2"
+    ],
+    "code_sha256": "f64b436f664b81597cf50a3c544998919a778e4efa8c67f2547c18991dc508d2",
+    "artifacts": [
+     "sandbox/shard-2/shard.json"
+    ]
+   }
+  },
+  {
+   "channel_id": "F-04",
+   "position": [
+    5,
+    3
+   ],
+   "grade": "A",
+   "capacity_ah": 2.3016,
+   "ir_mohm": 37.68,
+   "cycles": [
+    {
+     "cycle": 1,
+     "discharge_capacity_ah": 2.2913,
+     "charge_capacity_ah": 2.576,
+     "ce": 0.8895,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.6019,
+     "dqdv_peak_v": 3.4279,
+     "noise_mv": 0.808
+    },
+    {
+     "cycle": 2,
+     "discharge_capacity_ah": 2.2947,
+     "charge_capacity_ah": 2.3035,
+     "ce": 0.9962,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.5993,
+     "dqdv_peak_v": 3.4279,
+     "noise_mv": 0.808
+    },
+    {
+     "cycle": 3,
+     "discharge_capacity_ah": 2.2981,
+     "charge_capacity_ah": 2.3062,
+     "ce": 0.9965,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.6009,
+     "dqdv_peak_v": 3.4279,
+     "noise_mv": 0.808
+    },
+    {
+     "cycle": 4,
+     "discharge_capacity_ah": 2.3016,
+     "charge_capacity_ah": 2.3083,
+     "ce": 0.9971,
+     "ir_mohm": 37.68,
+     "mid_voltage_v": 3.6002,
+     "dqdv_peak_v": 3.4279,
+     "noise_mv": 0.808
+    }
+   ],
+   "flags": [],
+   "explanation": null,
+   "provenance": {
+    "run_id": "fixture-64ch",
+    "code_ids": [
+     "c1",
+     "c2"
+    ],
+    "code_sha256": "f64b436f664b81597cf50a3c544998919a778e4efa8c67f2547c18991dc508d2",
+    "artifacts": [
+     "sandbox/shard-2/shard.json"
+    ]
+   }
+  },
+  {
+   "channel_id": "F-05",
+   "position": [
+    5,
+    4
+   ],
+   "grade": "A",
+   "capacity_ah": 2.289,
+   "ir_mohm": 37.91,
+   "cycles": [
+    {
+     "cycle": 1,
+     "discharge_capacity_ah": 2.2735,
+     "charge_capacity_ah": 2.5647,
+     "ce": 0.8865,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.6027,
+     "dqdv_peak_v": 3.4249,
+     "noise_mv": 0.788
+    },
+    {
+     "cycle": 2,
+     "discharge_capacity_ah": 2.2787,
+     "charge_capacity_ah": 2.2845,
+     "ce": 0.9975,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.5978,
+     "dqdv_peak_v": 3.4249,
+     "noise_mv": 0.788
+    },
+    {
+     "cycle": 3,
+     "discharge_capacity_ah": 2.2838,
+     "charge_capacity_ah": 2.2912,
+     "ce": 0.9968,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.5998,
+     "dqdv_peak_v": 3.4249,
+     "noise_mv": 0.788
+    },
+    {
+     "cycle": 4,
+     "discharge_capacity_ah": 2.289,
+     "charge_capacity_ah": 2.2947,
+     "ce": 0.9975,
+     "ir_mohm": 37.91,
+     "mid_voltage_v": 3.6007,
+     "dqdv_peak_v": 3.4249,
+     "noise_mv": 0.788
+    }
+   ],
+   "flags": [],
+   "explanation": null,
+   "provenance": {
+    "run_id": "fixture-64ch",
+    "code_ids": [
+     "c1",
+     "c2"
+    ],
+    "code_sha256": "f64b436f664b81597cf50a3c544998919a778e4efa8c67f2547c18991dc508d2",
+    "artifacts": [
+     "sandbox/shard-2/shard.json"
+    ]
+   }
+  },
+  {
+   "channel_id": "F-06",
+   "position": [
+    5,
+    5
+   ],
+   "grade": "A",
+   "capacity_ah": 2.3068,
+   "ir_mohm": 37.88,
+   "cycles": [
+    {
+     "cycle": 1,
+     "discharge_capacity_ah": 2.295,
+     "charge_capacity_ah": 2.5571,
+     "ce": 0.8975,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.6018,
+     "dqdv_peak_v": 3.42,
+     "noise_mv": 0.791
+    },
+    {
+     "cycle": 2,
+     "discharge_capacity_ah": 2.2989,
+     "charge_capacity_ah": 2.3063,
+     "ce": 0.9968,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.5997,
+     "dqdv_peak_v": 3.42,
+     "noise_mv": 0.791
+    },
+    {
+     "cycle": 3,
+     "discharge_capacity_ah": 2.3028,
+     "charge_capacity_ah": 2.3058,
+     "ce": 0.9987,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.6007,
+     "dqdv_peak_v": 3.42,
+     "noise_mv": 0.791
+    },
+    {
+     "cycle": 4,
+     "discharge_capacity_ah": 2.3068,
+     "charge_capacity_ah": 2.3109,
+     "ce": 0.9982,
+     "ir_mohm": 37.88,
+     "mid_voltage_v": 3.5976,
+     "dqdv_peak_v": 3.42,
+     "noise_mv": 0.791
+    }
+   ],
+   "flags": [],
+   "explanation": null,
+   "provenance": {
+    "run_id": "fixture-64ch",
+    "code_ids": [
+     "c1",
+     "c2"
+    ],
+    "code_sha256": "f64b436f664b81597cf50a3c544998919a778e4efa8c67f2547c18991dc508d2",
+    "artifacts": [
+     "sandbox/shard-2/shard.json"
+    ]
+   }
+  },
+  {
+   "channel_id": "F-07",
+   "position": [
+    5,
+    6
+   ],
+   "grade": "A",
+   "capacity_ah": 2.2989,
+   "ir_mohm": 37.55,
+   "cycles": [
+    {
+     "cycle": 1,
+     "discharge_capacity_ah": 2.289,
+     "charge_capacity_ah": 2.5956,
+     "ce": 0.8819,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.5978,
+     "dqdv_peak_v": 3.4275,
+     "noise_mv": 0.726
+    },
+    {
+     "cycle": 2,
+     "discharge_capacity_ah": 2.2923,
+     "charge_capacity_ah": 2.299,
+     "ce": 0.9971,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.6044,
+     "dqdv_peak_v": 3.4275,
+     "noise_mv": 0.726
+    },
+    {
+     "cycle": 3,
+     "discharge_capacity_ah": 2.2956,
+     "charge_capacity_ah": 2.3036,
+     "ce": 0.9965,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.5998,
+     "dqdv_peak_v": 3.4275,
+     "noise_mv": 0.726
+    },
+    {
+     "cycle": 4,
+     "discharge_capacity_ah": 2.2989,
+     "charge_capacity_ah": 2.3063,
+     "ce": 0.9968,
+     "ir_mohm": 37.55,
+     "mid_voltage_v": 3.5998,
+     "dqdv_peak_v": 3.4275,
+     "noise_mv": 0.726
+    }
+   ],
+   "flags": [],
+   "explanation": null,
+   "provenance": {
+    "run_id": "fixture-64ch",
+    "code_ids": [
+     "c1",
+     "c2"
+    ],
+    "code_sha256": "f64b436f664b81597cf50a3c544998919a778e4efa8c67f2547c18991dc508d2",
+    "artifacts": [
+     "sandbox/shard-2/shard.json"
+    ]
+   }
+  },
+  {
+   "channel_id": "F-08",
+   "position": [
+    5,
+    7
+   ],
+   "grade": "A",
+   "capacity_ah": 2.2967,
+   "ir_mohm": 38.04,
+   "cycles": [
+    {
+     "cycle": 1,
+     "discharge_capacity_ah": 2.2899,
+     "charge_capacity_ah": 2.5654,
+     "ce": 0.8926,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.5994,
+     "dqdv_peak_v": 3.4149,
+     "noise_mv": 0.844
+    },
+    {
+     "cycle": 2,
+     "discharge_capacity_ah": 2.2922,
+     "charge_capacity_ah": 2.2961,
+     "ce": 0.9983,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.5994,
+     "dqdv_peak_v": 3.4149,
+     "noise_mv": 0.844
+    },
+    {
+     "cycle": 3,
+     "discharge_capacity_ah": 2.2945,
+     "charge_capacity_ah": 2.3018,
+     "ce": 0.9968,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.6004,
+     "dqdv_peak_v": 3.4149,
+     "noise_mv": 0.844
+    },
+    {
+     "cycle": 4,
+     "discharge_capacity_ah": 2.2967,
+     "charge_capacity_ah": 2.3043,
+     "ce": 0.9967,
+     "ir_mohm": 38.04,
+     "mid_voltage_v": 3.598,
+     "dqdv_peak_v": 3.4149,
+     "noise_mv": 0.844
+    }
+   ],
+   "flags": [],
+   "explanation": null,
+   "provenance": {
+    "run_id": "fixture-64ch",
+    "code_ids": [
+     "c1",
+     "c2"
+    ],
+    "code_sha256": "f64b436f664b81597cf50a3c544998919a778e4efa8c67f2547c18991dc508d2",
+    "artifacts": [
+     "sandbox/shard-2/shard.json"
+    ]
+   }
+  },
+  {
+   "channel_id": "G-01",
+   "position": [
+    6,
+    0
+   ],
+   "grade": "A",
+   "capacity_ah": 2.2993,
+   "ir_mohm": 36.94,
+   "cycles": [
+    {
+     "cycle": 1,
+     "discharge_capacity_ah": 2.2932,
+     "charge_capacity_ah": 2.604,
+     "ce": 0.8806,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.5998,
+     "dqdv_peak_v": 3.4177,
+     "noise_mv": 0.777
+    },
+    {
+     "cycle": 2,
+     "discharge_capacity_ah": 2.2952,
+     "charge_capacity_ah": 2.3013,
+     "ce": 0.9974,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.602,
+     "dqdv_peak_v": 3.4177,
+     "noise_mv": 0.777
+    },
+    {
+     "cycle": 3,
+     "discharge_capacity_ah": 2.2973,
+     "charge_capacity_ah": 2.3066,
+     "ce": 0.996,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.5992,
+     "dqdv_peak_v": 3.4177,
+     "noise_mv": 0.777
+    },
+    {
+     "cycle": 4,
+     "discharge_capacity_ah": 2.2993,
+     "charge_capacity_ah": 2.3099,
+     "ce": 0.9954,
+     "ir_mohm": 36.94,
+     "mid_voltage_v": 3.6016,
+     "dqdv_peak_v": 3.4177,
+     "noise_mv": 0.777
+    }
+   ],
+   "flags": [],
+   "explanation": null,
+   "provenance": {
+    "run_id": "fixture-64ch",
+    "code_ids": [
+     "c1",
+     "c2"
+    ],
+    "code_sha256": "f64b436f664b81597cf50a3c544998919a778e4efa8c67f2547c18991dc508d2",
+    "artifacts": [
+     "sandbox/shard-3/shard.json"
+    ]
+   }
+  },
+  {
+   "channel_id": "G-02",
+   "position": [
+    6,
+    1
+   ],
+   "grade": "A",
+   "capacity_ah": 2.2894,
+   "ir_mohm": 37.82,
+   "cycles": [
+    {
+     "cycle": 1,
+     "discharge_capacity_ah": 2.2795,
+     "charge_capacity_ah": 2.6023,
+     "ce": 0.876,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.6017,
+     "dqdv_peak_v": 3.4179,
+     "noise_mv": 0.779
+    },
+    {
+     "cycle": 2,
+     "discharge_capacity_ah": 2.2828,
+     "charge_capacity_ah": 2.2888,
+     "ce": 0.9974,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.6036,
+     "dqdv_peak_v": 3.4179,
+     "noise_mv": 0.779
+    },
+    {
+     "cycle": 3,
+     "discharge_capacity_ah": 2.2861,
+     "charge_capacity_ah": 2.293,
+     "ce": 0.997,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.5988,
+     "dqdv_peak_v": 3.4179,
+     "noise_mv": 0.779
+    },
+    {
+     "cycle": 4,
+     "discharge_capacity_ah": 2.2894,
+     "charge_capacity_ah": 2.2953,
+     "ce": 0.9974,
+     "ir_mohm": 37.82,
+     "mid_voltage_v": 3.5984,
+     "dqdv_peak_v": 3.4179,
+     "noise_mv": 0.779
+    }
+   ],
+   "flags": [],
+   "explanation": null,
+   "provenance": {
+    "run_id": "fixture-64ch",
+    "code_ids": [
+     "c1",
+     "c2"
+    ],
+    "code_sha256": "f64b436f664b81597cf50a3c544998919a778e4efa8c67f2547c18991dc508d2",
+    "artifacts": [
+     "sandbox/shard-3/shard.json"
+    ]
+   }
+  },
+  {
+   "channel_id": "G-03",
+   "position": [
+    6,
+    2
+   ],
+   "grade": "A",
+   "capacity_ah": 2.2939,
+   "ir_mohm": 39.06,
+   "cycles": [
+    {
+     "cycle": 1,
+     "discharge_capacity_ah": 2.2808,
+     "charge_capacity_ah": 2.567,
+     "ce": 0.8885,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.6001,
+     "dqdv_peak_v": 3.4131,
+     "noise_mv": 0.809
+    },
+    {
+     "cycle": 2,
+     "discharge_capacity_ah": 2.2851,
+     "charge_capacity_ah": 2.2923,
+     "ce": 0.9969,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.6045,
+     "dqdv_peak_v": 3.4131,
+     "noise_mv": 0.809
+    },
+    {
+     "cycle": 3,
+     "discharge_capacity_ah": 2.2895,
+     "charge_capacity_ah": 2.2973,
+     "ce": 0.9966,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.5991,
+     "dqdv_peak_v": 3.4131,
+     "noise_mv": 0.809
+    },
+    {
+     "cycle": 4,
+     "discharge_capacity_ah": 2.2939,
+     "charge_capacity_ah": 2.2995,
+     "ce": 0.9975,
+     "ir_mohm": 39.06,
+     "mid_voltage_v": 3.5976,
+     "dqdv_peak_v": 3.4131,
+     "noise_mv": 0.809
+    }
+   ],
+   "flags": [],
+   "explanation": null,
+   "provenance": {
+    "run_id": "fixture-64ch",
+    "code_ids": [
+     "c1",
+     "c2"
+    ],
+    "code_sha256": "f64b436f664b81597cf50a3c544998919a778e4efa8c67f2547c18991dc508d2",
+    "artifacts": [
+     "sandbox/shard-3/shard.json"
+    ]
+   }
+  },
+  {
+   "channel_id": "G-04",
+   "position": [
+    6,
+    3
+   ],
+   "grade": "A",
+   "capacity_ah": 2.2989,
+   "ir_mohm": 38.64,
+   "cycles": [
+    {
+     "cycle": 1,
+     "discharge_capacity_ah": 2.2941,
+     "charge_capacity_ah": 2.6017,
+     "ce": 0.8818,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.5993,
+     "dqdv_peak_v": 3.4202,
+     "noise_mv": 0.704
+    },
+    {
+     "cycle": 2,
+     "discharge_capacity_ah": 2.2957,
+     "charge_capacity_ah": 2.3046,
+     "ce": 0.9961,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.599,
+     "dqdv_peak_v": 3.4202,
+     "noise_mv": 0.704
+    },
+    {
+     "cycle": 3,
+     "discharge_capacity_ah": 2.2973,
+     "charge_capacity_ah": 2.3063,
+     "ce": 0.9961,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.5989,
+     "dqdv_peak_v": 3.4202,
+     "noise_mv": 0.704
+    },
+    {
+     "cycle": 4,
+     "discharge_capacity_ah": 2.2989,
+     "charge_capacity_ah": 2.3055,
+     "ce": 0.9971,
+     "ir_mohm": 38.64,
+     "mid_voltage_v": 3.6008,
+     "dqdv_peak_v": 3.4202,
+     "noise_mv": 0.704
+    }
+   ],
+   "flags": [],
+   "explanation": null,
+   "provenance": {
+    "run_id": "fixture-64ch",
+    "code_ids": [
+     "c1",
+     "c2"
+    ],
+    "code_sha256": "f64b436f664b81597cf50a3c544998919a778e4efa8c67f2547c18991dc508d2",
+    "artifacts": [
+     "sandbox/shard-3/shard.json"
+    ]
+   }
+  },
+  {
+   "channel_id": "G-05",
+   "position": [
+    6,
+    4
+   ],
+   "grade": "A",
+   "capacity_ah": 2.3077,
+   "ir_mohm": 37.65,
+   "cycles": [
+    {
+     "cycle": 1,
+     "discharge_capacity_ah": 2.299,
+     "charge_capacity_ah": 2.6068,
+     "ce": 0.8819,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.6021,
+     "dqdv_peak_v": 3.4196,
+     "noise_mv": 0.775
+    },
+    {
+     "cycle": 2,
+     "discharge_capacity_ah": 2.3019,
+     "charge_capacity_ah": 2.3098,
+     "ce": 0.9966,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.6,
+     "dqdv_peak_v": 3.4196,
+     "noise_mv": 0.775
+    },
+    {
+     "cycle": 3,
+     "discharge_capacity_ah": 2.3048,
+     "charge_capacity_ah": 2.3125,
+     "ce": 0.9967,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.5998,
+     "dqdv_peak_v": 3.4196,
+     "noise_mv": 0.775
+    },
+    {
+     "cycle": 4,
+     "discharge_capacity_ah": 2.3077,
+     "charge_capacity_ah": 2.3138,
+     "ce": 0.9974,
+     "ir_mohm": 37.65,
+     "mid_voltage_v": 3.5961,
+     "dqdv_peak_v": 3.4196,
+     "noise_mv": 0.775
+    }
+   ],
+   "flags": [],
+   "explanation": null,
+   "provenance": {
+    "run_id": "fixture-64ch",
+    "code_ids": [
+     "c1",
+     "c2"
+    ],
+    "code_sha256": "f64b436f664b81597cf50a3c544998919a778e4efa8c67f2547c18991dc508d2",
+    "artifacts": [
+     "sandbox/shard-3/shard.json"
+    ]
+   }
+  },
+  {
+   "channel_id": "G-06",
+   "position": [
+    6,
+    5
+   ],
+   "grade": "C",
+   "capacity_ah": 2.3014,
+   "ir_mohm": 39.16,
+   "cycles": [
+    {
+     "cycle": 1,
+     "discharge_capacity_ah": 2.2924,
+     "charge_capacity_ah": 2.729,
+     "ce": 0.84,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.6016,
+     "dqdv_peak_v": 3.4232,
+     "noise_mv": 0.927
+    },
+    {
+     "cycle": 2,
+     "discharge_capacity_ah": 2.2954,
+     "charge_capacity_ah": 2.2995,
+     "ce": 0.9982,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.6023,
+     "dqdv_peak_v": 3.4232,
+     "noise_mv": 0.927
+    },
+    {
+     "cycle": 3,
+     "discharge_capacity_ah": 2.2984,
+     "charge_capacity_ah": 2.3073,
+     "ce": 0.9961,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.6002,
+     "dqdv_peak_v": 3.4232,
+     "noise_mv": 0.927
+    },
+    {
+     "cycle": 4,
+     "discharge_capacity_ah": 2.3014,
+     "charge_capacity_ah": 2.3068,
+     "ce": 0.9977,
+     "ir_mohm": 39.16,
+     "mid_voltage_v": 3.6026,
+     "dqdv_peak_v": 3.4232,
+     "noise_mv": 0.927
+    }
+   ],
+   "flags": [
+    {
+     "type": "LOW_CE",
+     "severity": "high",
+     "evidence": [
+      {
+       "metric": "first_cycle_ce",
+       "value": 0.84,
+       "unit": "",
+       "batch_median": 0.88622,
+       "robust_z": -8.28,
+       "threshold": "robust_z < -3.5",
+       "cycle": null
+      }
+     ],
+     "explanation": "low ce: first_cycle_ce = 0.84  versus batch median 0.88622  (robust z -8.28)."
+    }
+   ],
+   "explanation": "low ce: first_cycle_ce = 0.84  versus batch median 0.88622  (robust z -8.28).",
+   "provenance": {
+    "run_id": "fixture-64ch",
+    "code_ids": [
+     "c1",
+     "c2"
+    ],
+    "code_sha256": "f64b436f664b81597cf50a3c544998919a778e4efa8c67f2547c18991dc508d2",
+    "artifacts": [
+     "sandbox/shard-3/shard.json"
+    ]
+   }
+  },
+  {
+   "channel_id": "G-07",
+   "position": [
+    6,
+    6
+   ],
+   "grade": "A",
+   "capacity_ah": 2.3111,
+   "ir_mohm": 38.17,
+   "cycles": [
+    {
+     "cycle": 1,
+     "discharge_capacity_ah": 2.299,
+     "charge_capacity_ah": 2.6001,
+     "ce": 0.8842,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.5998,
+     "dqdv_peak_v": 3.4261,
+     "noise_mv": 0.937
+    },
+    {
+     "cycle": 2,
+     "discharge_capacity_ah": 2.303,
+     "charge_capacity_ah": 2.3096,
+     "ce": 0.9971,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.6017,
+     "dqdv_peak_v": 3.4261,
+     "noise_mv": 0.937
+    },
+    {
+     "cycle": 3,
+     "discharge_capacity_ah": 2.307,
+     "charge_capacity_ah": 2.3132,
+     "ce": 0.9973,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.5967,
+     "dqdv_peak_v": 3.4261,
+     "noise_mv": 0.937
+    },
+    {
+     "cycle": 4,
+     "discharge_capacity_ah": 2.3111,
+     "charge_capacity_ah": 2.3169,
+     "ce": 0.9975,
+     "ir_mohm": 38.17,
+     "mid_voltage_v": 3.6012,
+     "dqdv_peak_v": 3.4261,
+     "noise_mv": 0.937
+    }
+   ],
+   "flags": [],
+   "explanation": null,
+   "provenance": {
+    "run_id": "fixture-64ch",
+    "code_ids": [
+     "c1",
+     "c2"
+    ],
+    "code_sha256": "f64b436f664b81597cf50a3c544998919a778e4efa8c67f2547c18991dc508d2",
+    "artifacts": [
+     "sandbox/shard-3/shard.json"
+    ]
+   }
+  },
+  {
+   "channel_id": "G-08",
+   "position": [
+    6,
+    7
+   ],
+   "grade": "A",
+   "capacity_ah": 2.3102,
+   "ir_mohm": 38.14,
+   "cycles": [
+    {
+     "cycle": 1,
+     "discharge_capacity_ah": 2.2987,
+     "charge_capacity_ah": 2.584,
+     "ce": 0.8896,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.5999,
+     "dqdv_peak_v": 3.4201,
+     "noise_mv": 0.683
+    },
+    {
+     "cycle": 2,
+     "discharge_capacity_ah": 2.3025,
+     "charge_capacity_ah": 2.3068,
+     "ce": 0.9982,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.5998,
+     "dqdv_peak_v": 3.4201,
+     "noise_mv": 0.683
+    },
+    {
+     "cycle": 3,
+     "discharge_capacity_ah": 2.3064,
+     "charge_capacity_ah": 2.3144,
+     "ce": 0.9966,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.6002,
+     "dqdv_peak_v": 3.4201,
+     "noise_mv": 0.683
+    },
+    {
+     "cycle": 4,
+     "discharge_capacity_ah": 2.3102,
+     "charge_capacity_ah": 2.3166,
+     "ce": 0.9973,
+     "ir_mohm": 38.14,
+     "mid_voltage_v": 3.5952,
+     "dqdv_peak_v": 3.4201,
+     "noise_mv": 0.683
+    }
+   ],
+   "flags": [],
+   "explanation": null,
+   "provenance": {
+    "run_id": "fixture-64ch",
+    "code_ids": [
+     "c1",
+     "c2"
+    ],
+    "code_sha256": "f64b436f664b81597cf50a3c544998919a778e4efa8c67f2547c18991dc508d2",
+    "artifacts": [
+     "sandbox/shard-3/shard.json"
+    ]
+   }
+  },
+  {
+   "channel_id": "H-01",
+   "position": [
+    7,
+    0
+   ],
+   "grade": "A",
+   "capacity_ah": 2.3086,
+   "ir_mohm": 38.85,
+   "cycles": [
+    {
+     "cycle": 1,
+     "discharge_capacity_ah": 2.3016,
+     "charge_capacity_ah": 2.5943,
+     "ce": 0.8872,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.6,
+     "dqdv_peak_v": 3.4203,
+     "noise_mv": 0.76
+    },
+    {
+     "cycle": 2,
+     "discharge_capacity_ah": 2.3039,
+     "charge_capacity_ah": 2.3063,
+     "ce": 0.999,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.5984,
+     "dqdv_peak_v": 3.4203,
+     "noise_mv": 0.76
+    },
+    {
+     "cycle": 3,
+     "discharge_capacity_ah": 2.3063,
+     "charge_capacity_ah": 2.313,
+     "ce": 0.9971,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.6019,
+     "dqdv_peak_v": 3.4203,
+     "noise_mv": 0.76
+    },
+    {
+     "cycle": 4,
+     "discharge_capacity_ah": 2.3086,
+     "charge_capacity_ah": 2.3132,
+     "ce": 0.998,
+     "ir_mohm": 38.85,
+     "mid_voltage_v": 3.5998,
+     "dqdv_peak_v": 3.4203,
+     "noise_mv": 0.76
+    }
+   ],
+   "flags": [],
+   "explanation": null,
+   "provenance": {
+    "run_id": "fixture-64ch",
+    "code_ids": [
+     "c1",
+     "c2"
+    ],
+    "code_sha256": "f64b436f664b81597cf50a3c544998919a778e4efa8c67f2547c18991dc508d2",
+    "artifacts": [
+     "sandbox/shard-3/shard.json"
+    ]
+   }
+  },
+  {
+   "channel_id": "H-02",
+   "position": [
+    7,
+    1
+   ],
+   "grade": "A",
+   "capacity_ah": 2.2862,
+   "ir_mohm": 37.67,
+   "cycles": [
+    {
+     "cycle": 1,
+     "discharge_capacity_ah": 2.2701,
+     "charge_capacity_ah": 2.5668,
+     "ce": 0.8844,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.6047,
+     "dqdv_peak_v": 3.4199,
+     "noise_mv": 0.826
+    },
+    {
+     "cycle": 2,
+     "discharge_capacity_ah": 2.2755,
+     "charge_capacity_ah": 2.281,
+     "ce": 0.9976,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.5977,
+     "dqdv_peak_v": 3.4199,
+     "noise_mv": 0.826
+    },
+    {
+     "cycle": 3,
+     "discharge_capacity_ah": 2.2808,
+     "charge_capacity_ah": 2.2892,
+     "ce": 0.9963,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.5999,
+     "dqdv_peak_v": 3.4199,
+     "noise_mv": 0.826
+    },
+    {
+     "cycle": 4,
+     "discharge_capacity_ah": 2.2862,
+     "charge_capacity_ah": 2.2904,
+     "ce": 0.9982,
+     "ir_mohm": 37.67,
+     "mid_voltage_v": 3.6009,
+     "dqdv_peak_v": 3.4199,
+     "noise_mv": 0.826
+    }
+   ],
+   "flags": [],
+   "explanation": null,
+   "provenance": {
+    "run_id": "fixture-64ch",
+    "code_ids": [
+     "c1",
+     "c2"
+    ],
+    "code_sha256": "f64b436f664b81597cf50a3c544998919a778e4efa8c67f2547c18991dc508d2",
+    "artifacts": [
+     "sandbox/shard-3/shard.json"
+    ]
+   }
+  },
+  {
+   "channel_id": "H-03",
+   "position": [
+    7,
+    2
+   ],
+   "grade": "A",
+   "capacity_ah": 2.31,
+   "ir_mohm": 36.39,
+   "cycles": [
+    {
+     "cycle": 1,
+     "discharge_capacity_ah": 2.2997,
+     "charge_capacity_ah": 2.5945,
+     "ce": 0.8864,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.6002,
+     "dqdv_peak_v": 3.4241,
+     "noise_mv": 0.792
+    },
+    {
+     "cycle": 2,
+     "discharge_capacity_ah": 2.3031,
+     "charge_capacity_ah": 2.3123,
+     "ce": 0.996,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.6031,
+     "dqdv_peak_v": 3.4241,
+     "noise_mv": 0.792
+    },
+    {
+     "cycle": 3,
+     "discharge_capacity_ah": 2.3066,
+     "charge_capacity_ah": 2.3105,
+     "ce": 0.9983,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.6003,
+     "dqdv_peak_v": 3.4241,
+     "noise_mv": 0.792
+    },
+    {
+     "cycle": 4,
+     "discharge_capacity_ah": 2.31,
+     "charge_capacity_ah": 2.317,
+     "ce": 0.997,
+     "ir_mohm": 36.39,
+     "mid_voltage_v": 3.6006,
+     "dqdv_peak_v": 3.4241,
+     "noise_mv": 0.792
+    }
+   ],
+   "flags": [],
+   "explanation": null,
+   "provenance": {
+    "run_id": "fixture-64ch",
+    "code_ids": [
+     "c1",
+     "c2"
+    ],
+    "code_sha256": "f64b436f664b81597cf50a3c544998919a778e4efa8c67f2547c18991dc508d2",
+    "artifacts": [
+     "sandbox/shard-3/shard.json"
+    ]
+   }
+  },
+  {
+   "channel_id": "H-04",
+   "position": [
+    7,
+    3
+   ],
+   "grade": "B",
+   "capacity_ah": 2.2274,
+   "ir_mohm": 37.93,
+   "cycles": [
+    {
+     "cycle": 1,
+     "discharge_capacity_ah": 2.2155,
+     "charge_capacity_ah": 2.4871,
+     "ce": 0.8908,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.6007,
+     "dqdv_peak_v": 3.4233,
+     "noise_mv": 0.851
+    },
+    {
+     "cycle": 2,
+     "discharge_capacity_ah": 2.2195,
+     "charge_capacity_ah": 2.221,
+     "ce": 0.9993,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.6004,
+     "dqdv_peak_v": 3.4233,
+     "noise_mv": 0.851
+    },
+    {
+     "cycle": 3,
+     "discharge_capacity_ah": 2.2235,
+     "charge_capacity_ah": 2.2259,
+     "ce": 0.9989,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.6032,
+     "dqdv_peak_v": 3.4233,
+     "noise_mv": 0.851
+    },
+    {
+     "cycle": 4,
+     "discharge_capacity_ah": 2.2274,
+     "charge_capacity_ah": 2.2356,
+     "ce": 0.9963,
+     "ir_mohm": 37.93,
+     "mid_voltage_v": 3.5976,
+     "dqdv_peak_v": 3.4233,
+     "noise_mv": 0.851
+    }
+   ],
+   "flags": [
+    {
+     "type": "LOW_CAPACITY",
+     "severity": "medium",
+     "evidence": [
+      {
+       "metric": "capacity_ah",
+       "value": 2.22741,
+       "unit": "Ah",
+       "batch_median": 2.30083,
+       "robust_z": -5.8,
+       "threshold": "robust_z < -3.5",
+       "cycle": null
+      }
+     ],
+     "explanation": "low capacity: capacity_ah = 2.22741 Ah versus batch median 2.30083 Ah (robust z -5.8)."
+    }
+   ],
+   "explanation": "low capacity: capacity_ah = 2.22741 Ah versus batch median 2.30083 Ah (robust z -5.8).",
+   "provenance": {
+    "run_id": "fixture-64ch",
+    "code_ids": [
+     "c1",
+     "c2"
+    ],
+    "code_sha256": "f64b436f664b81597cf50a3c544998919a778e4efa8c67f2547c18991dc508d2",
+    "artifacts": [
+     "sandbox/shard-3/shard.json"
+    ]
+   }
+  },
+  {
+   "channel_id": "H-05",
+   "position": [
+    7,
+    4
+   ],
+   "grade": "A",
+   "capacity_ah": 2.3079,
+   "ir_mohm": 38.74,
+   "cycles": [
+    {
+     "cycle": 1,
+     "discharge_capacity_ah": 2.3,
+     "charge_capacity_ah": 2.5952,
+     "ce": 0.8863,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.6,
+     "dqdv_peak_v": 3.4099,
+     "noise_mv": 0.9
+    },
+    {
+     "cycle": 2,
+     "discharge_capacity_ah": 2.3027,
+     "charge_capacity_ah": 2.3101,
+     "ce": 0.9968,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.6012,
+     "dqdv_peak_v": 3.4099,
+     "noise_mv": 0.9
+    },
+    {
+     "cycle": 3,
+     "discharge_capacity_ah": 2.3053,
+     "charge_capacity_ah": 2.3105,
+     "ce": 0.9977,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.6022,
+     "dqdv_peak_v": 3.4099,
+     "noise_mv": 0.9
+    },
+    {
+     "cycle": 4,
+     "discharge_capacity_ah": 2.3079,
+     "charge_capacity_ah": 2.3106,
+     "ce": 0.9988,
+     "ir_mohm": 38.74,
+     "mid_voltage_v": 3.5993,
+     "dqdv_peak_v": 3.4099,
+     "noise_mv": 0.9
+    }
+   ],
+   "flags": [],
+   "explanation": null,
+   "provenance": {
+    "run_id": "fixture-64ch",
+    "code_ids": [
+     "c1",
+     "c2"
+    ],
+    "code_sha256": "f64b436f664b81597cf50a3c544998919a778e4efa8c67f2547c18991dc508d2",
+    "artifacts": [
+     "sandbox/shard-3/shard.json"
+    ]
+   }
+  },
+  {
+   "channel_id": "H-06",
+   "position": [
+    7,
+    5
+   ],
+   "grade": "A",
+   "capacity_ah": 2.2962,
+   "ir_mohm": 36.07,
+   "cycles": [
+    {
+     "cycle": 1,
+     "discharge_capacity_ah": 2.2868,
+     "charge_capacity_ah": 2.5719,
+     "ce": 0.8892,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.6015,
+     "dqdv_peak_v": 3.419,
+     "noise_mv": 0.785
+    },
+    {
+     "cycle": 2,
+     "discharge_capacity_ah": 2.2899,
+     "charge_capacity_ah": 2.298,
+     "ce": 0.9965,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.5978,
+     "dqdv_peak_v": 3.419,
+     "noise_mv": 0.785
+    },
+    {
+     "cycle": 3,
+     "discharge_capacity_ah": 2.2931,
+     "charge_capacity_ah": 2.2961,
+     "ce": 0.9987,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.6,
+     "dqdv_peak_v": 3.419,
+     "noise_mv": 0.785
+    },
+    {
+     "cycle": 4,
+     "discharge_capacity_ah": 2.2962,
+     "charge_capacity_ah": 2.3029,
+     "ce": 0.9971,
+     "ir_mohm": 36.07,
+     "mid_voltage_v": 3.5978,
+     "dqdv_peak_v": 3.419,
+     "noise_mv": 0.785
+    }
+   ],
+   "flags": [],
+   "explanation": null,
+   "provenance": {
+    "run_id": "fixture-64ch",
+    "code_ids": [
+     "c1",
+     "c2"
+    ],
+    "code_sha256": "f64b436f664b81597cf50a3c544998919a778e4efa8c67f2547c18991dc508d2",
+    "artifacts": [
+     "sandbox/shard-3/shard.json"
+    ]
+   }
+  },
+  {
+   "channel_id": "H-07",
+   "position": [
+    7,
+    6
+   ],
+   "grade": "A",
+   "capacity_ah": 2.301,
+   "ir_mohm": 40.6,
+   "cycles": [
+    {
+     "cycle": 1,
+     "discharge_capacity_ah": 2.2847,
+     "charge_capacity_ah": 2.5998,
+     "ce": 0.8788,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.5984,
+     "dqdv_peak_v": 3.4198,
+     "noise_mv": 0.703
+    },
+    {
+     "cycle": 2,
+     "discharge_capacity_ah": 2.2902,
+     "charge_capacity_ah": 2.2987,
+     "ce": 0.9963,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.601,
+     "dqdv_peak_v": 3.4198,
+     "noise_mv": 0.703
+    },
+    {
+     "cycle": 3,
+     "discharge_capacity_ah": 2.2956,
+     "charge_capacity_ah": 2.3016,
+     "ce": 0.9974,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.5994,
+     "dqdv_peak_v": 3.4198,
+     "noise_mv": 0.703
+    },
+    {
+     "cycle": 4,
+     "discharge_capacity_ah": 2.301,
+     "charge_capacity_ah": 2.3072,
+     "ce": 0.9973,
+     "ir_mohm": 40.6,
+     "mid_voltage_v": 3.601,
+     "dqdv_peak_v": 3.4198,
+     "noise_mv": 0.703
+    }
+   ],
+   "flags": [],
+   "explanation": null,
+   "provenance": {
+    "run_id": "fixture-64ch",
+    "code_ids": [
+     "c1",
+     "c2"
+    ],
+    "code_sha256": "f64b436f664b81597cf50a3c544998919a778e4efa8c67f2547c18991dc508d2",
+    "artifacts": [
+     "sandbox/shard-3/shard.json"
+    ]
+   }
+  },
+  {
+   "channel_id": "H-08",
+   "position": [
+    7,
+    7
+   ],
+   "grade": "A",
+   "capacity_ah": 2.3048,
+   "ir_mohm": 36.41,
+   "cycles": [
+    {
+     "cycle": 1,
+     "discharge_capacity_ah": 2.2951,
+     "charge_capacity_ah": 2.5771,
+     "ce": 0.8906,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.6019,
+     "dqdv_peak_v": 3.4181,
+     "noise_mv": 0.87
+    },
+    {
+     "cycle": 2,
+     "discharge_capacity_ah": 2.2983,
+     "charge_capacity_ah": 2.3059,
+     "ce": 0.9967,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.6009,
+     "dqdv_peak_v": 3.4181,
+     "noise_mv": 0.87
+    },
+    {
+     "cycle": 3,
+     "discharge_capacity_ah": 2.3016,
+     "charge_capacity_ah": 2.3098,
+     "ce": 0.9964,
+     "ir_mohm": null,
+     "mid_voltage_v": 3.5981,
+     "dqdv_peak_v": 3.4181,
+     "noise_mv": 0.87
+    },
+    {
+     "cycle": 4,
+     "discharge_capacity_ah": 2.3048,
+     "charge_capacity_ah": 2.3147,
+     "ce": 0.9957,
+     "ir_mohm": 36.41,
+     "mid_voltage_v": 3.6063,
+     "dqdv_peak_v": 3.4181,
+     "noise_mv": 0.87
+    }
+   ],
+   "flags": [],
+   "explanation": null,
+   "provenance": {
+    "run_id": "fixture-64ch",
+    "code_ids": [
+     "c1",
+     "c2"
+    ],
+    "code_sha256": "f64b436f664b81597cf50a3c544998919a778e4efa8c67f2547c18991dc508d2",
+    "artifacts": [
+     "sandbox/shard-3/shard.json"
+    ]
+   }
+  }
+ ]
+}

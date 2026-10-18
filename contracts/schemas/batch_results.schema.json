@@ -1,0 +1,815 @@
+{
+  "$defs": {
+    "BatchSummary": {
+      "additionalProperties": false,
+      "properties": {
+        "flag_counts": {
+          "additionalProperties": {
+            "type": "integer"
+          },
+          "propertyNames": {
+            "enum": [
+              "LOW_CAPACITY",
+              "HIGH_IR",
+              "CURVE_SHAPE",
+              "CAPACITY_CREEP_UP",
+              "NOISY_OR_DEAD_CHANNEL",
+              "LOW_CE"
+            ]
+          },
+          "title": "Flag Counts",
+          "type": "object"
+        },
+        "grade_counts": {
+          "additionalProperties": {
+            "type": "integer"
+          },
+          "propertyNames": {
+            "enum": [
+              "A",
+              "B",
+              "C",
+              "REJECT"
+            ]
+          },
+          "title": "Grade Counts",
+          "type": "object"
+        },
+        "median_ir_mohm": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Median Ir Mohm"
+        },
+        "n_channels": {
+          "title": "N Channels",
+          "type": "integer"
+        },
+        "n_flagged": {
+          "title": "N Flagged",
+          "type": "integer"
+        },
+        "reference_capacity_ah": {
+          "title": "Reference Capacity Ah",
+          "type": "number"
+        }
+      },
+      "required": [
+        "n_channels",
+        "n_flagged",
+        "grade_counts",
+        "flag_counts",
+        "reference_capacity_ah"
+      ],
+      "title": "BatchSummary",
+      "type": "object"
+    },
+    "ChannelResult": {
+      "additionalProperties": false,
+      "properties": {
+        "capacity_ah": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Grading-cycle discharge capacity",
+          "title": "Capacity Ah"
+        },
+        "channel_id": {
+          "title": "Channel Id",
+          "type": "string"
+        },
+        "cycles": {
+          "items": {
+            "$ref": "#/$defs/CycleFeatures"
+          },
+          "title": "Cycles",
+          "type": "array"
+        },
+        "explanation": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Explanation"
+        },
+        "flags": {
+          "items": {
+            "$ref": "#/$defs/Flag"
+          },
+          "title": "Flags",
+          "type": "array"
+        },
+        "grade": {
+          "enum": [
+            "A",
+            "B",
+            "C",
+            "REJECT"
+          ],
+          "title": "Grade",
+          "type": "string"
+        },
+        "ir_mohm": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Ir Mohm"
+        },
+        "position": {
+          "anyOf": [
+            {
+              "maxItems": 2,
+              "minItems": 2,
+              "prefixItems": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "integer"
+                }
+              ],
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "(row, col) on the tester tray, for the heatmap",
+          "title": "Position"
+        },
+        "provenance": {
+          "$ref": "#/$defs/Provenance"
+        }
+      },
+      "required": [
+        "channel_id",
+        "grade",
+        "cycles",
+        "flags",
+        "provenance"
+      ],
+      "title": "ChannelResult",
+      "type": "object"
+    },
+    "ColumnMap": {
+      "additionalProperties": false,
+      "properties": {
+        "role": {
+          "enum": [
+            "channel_id",
+            "cycle",
+            "step",
+            "time_s",
+            "voltage_v",
+            "current_a",
+            "capacity_ah",
+            "temperature_c",
+            "ignore"
+          ],
+          "title": "Role",
+          "type": "string"
+        },
+        "scale": {
+          "default": 1.0,
+          "description": "Multiply file values by this to reach the canonical unit",
+          "title": "Scale",
+          "type": "number"
+        },
+        "source": {
+          "description": "Column header as it appears in the file, or 0-based index as a string",
+          "title": "Source",
+          "type": "string"
+        },
+        "unit": {
+          "description": "Unit in the file, e.g. 'mV', 'A', 'mAh', 'hh:mm:ss', 's'",
+          "title": "Unit",
+          "type": "string"
+        }
+      },
+      "required": [
+        "source",
+        "role",
+        "unit"
+      ],
+      "title": "ColumnMap",
+      "type": "object"
+    },
+    "CycleFeatures": {
+      "additionalProperties": false,
+      "properties": {
+        "ce": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Ce"
+        },
+        "charge_capacity_ah": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Charge Capacity Ah"
+        },
+        "cycle": {
+          "title": "Cycle",
+          "type": "integer"
+        },
+        "discharge_capacity_ah": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Discharge Capacity Ah"
+        },
+        "dqdv_peak_v": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Dqdv Peak V"
+        },
+        "ir_mohm": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Ir Mohm"
+        },
+        "mid_voltage_v": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Mid Voltage V"
+        },
+        "noise_mv": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Noise Mv"
+        }
+      },
+      "required": [
+        "cycle"
+      ],
+      "title": "CycleFeatures",
+      "type": "object"
+    },
+    "Evidence": {
+      "additionalProperties": false,
+      "properties": {
+        "batch_median": {
+          "title": "Batch Median",
+          "type": "number"
+        },
+        "cycle": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Cycle"
+        },
+        "metric": {
+          "title": "Metric",
+          "type": "string"
+        },
+        "robust_z": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "None when an absolute sanity limit fired, not a batch statistic",
+          "title": "Robust Z"
+        },
+        "threshold": {
+          "description": "Human-readable rule that fired, e.g. 'robust_z < -3.5'",
+          "title": "Threshold",
+          "type": "string"
+        },
+        "unit": {
+          "title": "Unit",
+          "type": "string"
+        },
+        "value": {
+          "title": "Value",
+          "type": "number"
+        }
+      },
+      "required": [
+        "metric",
+        "value",
+        "unit",
+        "batch_median",
+        "robust_z",
+        "threshold"
+      ],
+      "title": "Evidence",
+      "type": "object"
+    },
+    "Flag": {
+      "additionalProperties": false,
+      "properties": {
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/Evidence"
+          },
+          "minItems": 1,
+          "title": "Evidence",
+          "type": "array"
+        },
+        "explanation": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Explanation"
+        },
+        "severity": {
+          "enum": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "title": "Severity",
+          "type": "string"
+        },
+        "type": {
+          "enum": [
+            "LOW_CAPACITY",
+            "HIGH_IR",
+            "CURVE_SHAPE",
+            "CAPACITY_CREEP_UP",
+            "NOISY_OR_DEAD_CHANNEL",
+            "LOW_CE"
+          ],
+          "title": "Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "severity",
+        "evidence"
+      ],
+      "title": "Flag",
+      "type": "object"
+    },
+    "GradeThresholds": {
+      "additionalProperties": false,
+      "description": "Capacity bins are % of the reference capacity; IR bins are % of the batch-median IR.",
+      "properties": {
+        "basis": {
+          "default": "batch_median",
+          "enum": [
+            "batch_median",
+            "nominal"
+          ],
+          "title": "Basis",
+          "type": "string"
+        },
+        "capacity_min_pct": {
+          "additionalProperties": {
+            "type": "number"
+          },
+          "default": {
+            "A": 98.0,
+            "B": 95.0,
+            "C": 90.0
+          },
+          "propertyNames": {
+            "enum": [
+              "A",
+              "B",
+              "C"
+            ]
+          },
+          "title": "Capacity Min Pct",
+          "type": "object"
+        },
+        "ir_max_pct": {
+          "additionalProperties": {
+            "type": "number"
+          },
+          "default": {
+            "A": 115.0,
+            "B": 130.0,
+            "C": 160.0
+          },
+          "propertyNames": {
+            "enum": [
+              "A",
+              "B",
+              "C"
+            ]
+          },
+          "title": "Ir Max Pct",
+          "type": "object"
+        },
+        "max_grade_by_severity": {
+          "additionalProperties": {
+            "enum": [
+              "A",
+              "B",
+              "C",
+              "REJECT"
+            ],
+            "type": "string"
+          },
+          "default": {
+            "high": "C",
+            "medium": "B"
+          },
+          "description": "A flagged cell can grade no better than this",
+          "propertyNames": {
+            "enum": [
+              "low",
+              "medium",
+              "high"
+            ]
+          },
+          "title": "Max Grade By Severity",
+          "type": "object"
+        },
+        "nominal_capacity_ah": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Nominal Capacity Ah"
+        },
+        "rationale": {
+          "default": "",
+          "title": "Rationale",
+          "type": "string"
+        },
+        "reject_on_flags": {
+          "default": [
+            "NOISY_OR_DEAD_CHANNEL"
+          ],
+          "items": {
+            "enum": [
+              "LOW_CAPACITY",
+              "HIGH_IR",
+              "CURVE_SHAPE",
+              "CAPACITY_CREEP_UP",
+              "NOISY_OR_DEAD_CHANNEL",
+              "LOW_CE"
+            ],
+            "type": "string"
+          },
+          "title": "Reject On Flags",
+          "type": "array"
+        },
+        "source": {
+          "default": "default",
+          "enum": [
+            "default",
+            "agent",
+            "user"
+          ],
+          "title": "Source",
+          "type": "string"
+        }
+      },
+      "title": "GradeThresholds",
+      "type": "object"
+    },
+    "LayoutMapping": {
+      "additionalProperties": false,
+      "description": "Declarative description of a tester export (tier-1 ingestion). Applied by a generic reader.",
+      "properties": {
+        "channel_source": {
+          "default": "column",
+          "enum": [
+            "column",
+            "sheet",
+            "file",
+            "wide_column_prefix"
+          ],
+          "title": "Channel Source",
+          "type": "string"
+        },
+        "columns": {
+          "items": {
+            "$ref": "#/$defs/ColumnMap"
+          },
+          "title": "Columns",
+          "type": "array"
+        },
+        "confidence": {
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Confidence",
+          "type": "number"
+        },
+        "current_sign": {
+          "default": "charge_positive",
+          "enum": [
+            "charge_positive",
+            "discharge_positive"
+          ],
+          "title": "Current Sign",
+          "type": "string"
+        },
+        "decimal": {
+          "default": ".",
+          "enum": [
+            ".",
+            ","
+          ],
+          "title": "Decimal",
+          "type": "string"
+        },
+        "delimiter": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Delimiter"
+        },
+        "encoding": {
+          "default": "utf-8",
+          "title": "Encoding",
+          "type": "string"
+        },
+        "format": {
+          "enum": [
+            "csv",
+            "excel",
+            "mat",
+            "hdf5"
+          ],
+          "title": "Format",
+          "type": "string"
+        },
+        "header_row": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "0-based line (csv) or row (excel) holding column names",
+          "title": "Header Row"
+        },
+        "notes": {
+          "default": "",
+          "title": "Notes",
+          "type": "string"
+        },
+        "orientation": {
+          "default": "long",
+          "enum": [
+            "long",
+            "wide"
+          ],
+          "title": "Orientation",
+          "type": "string"
+        },
+        "sheet_pattern": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Regex of sheet names to read (excel)",
+          "title": "Sheet Pattern"
+        },
+        "struct_path": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Dotted path to the data struct (mat/hdf5)",
+          "title": "Struct Path"
+        },
+        "time_format": {
+          "default": "seconds",
+          "enum": [
+            "seconds",
+            "minutes",
+            "hours",
+            "hh:mm:ss",
+            "timestamp"
+          ],
+          "title": "Time Format",
+          "type": "string"
+        },
+        "wide_column_prefix": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Wide Column Prefix"
+        }
+      },
+      "required": [
+        "format",
+        "columns",
+        "confidence"
+      ],
+      "title": "LayoutMapping",
+      "type": "object"
+    },
+    "Provenance": {
+      "additionalProperties": false,
+      "properties": {
+        "artifacts": {
+          "description": "Run-relative artifact paths",
+          "items": {
+            "type": "string"
+          },
+          "title": "Artifacts",
+          "type": "array"
+        },
+        "code_ids": {
+          "description": "code.generated ids whose execution produced these numbers",
+          "items": {
+            "type": "string"
+          },
+          "title": "Code Ids",
+          "type": "array"
+        },
+        "code_sha256": {
+          "title": "Code Sha256",
+          "type": "string"
+        },
+        "run_id": {
+          "title": "Run Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "run_id",
+        "code_ids",
+        "code_sha256"
+      ],
+      "title": "Provenance",
+      "type": "object"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "channels": {
+      "items": {
+        "$ref": "#/$defs/ChannelResult"
+      },
+      "title": "Channels",
+      "type": "array"
+    },
+    "data_label": {
+      "enum": [
+        "REAL",
+        "REAL+PLANTED",
+        "SYNTHETIC"
+      ],
+      "title": "Data Label",
+      "type": "string"
+    },
+    "mapping": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/LayoutMapping"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "run_id": {
+      "title": "Run Id",
+      "type": "string"
+    },
+    "source_name": {
+      "title": "Source Name",
+      "type": "string"
+    },
+    "summary": {
+      "$ref": "#/$defs/BatchSummary"
+    },
+    "thresholds": {
+      "$ref": "#/$defs/GradeThresholds"
+    },
+    "v": {
+      "const": 0,
+      "default": 0,
+      "title": "V",
+      "type": "integer"
+    }
+  },
+  "required": [
+    "run_id",
+    "data_label",
+    "source_name",
+    "thresholds",
+    "summary",
+    "channels"
+  ],
+  "title": "BatchResults",
+  "type": "object",
+  "x-contract-version": 0
+}

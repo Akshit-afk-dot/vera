@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "events_url": {
+      "title": "Events Url",
+      "type": "string"
+    },
+    "mode": {
+      "enum": [
+        "live",
+        "replay"
+      ],
+      "title": "Mode",
+      "type": "string"
+    },
+    "run_id": {
+      "title": "Run Id",
+      "type": "string"
+    }
+  },
+  "required": [
+    "run_id",
+    "events_url",
+    "mode"
+  ],
+  "title": "RunCreated",
+  "type": "object",
+  "x-contract-version": 0
+}
