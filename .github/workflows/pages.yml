@@ -1,0 +1,35 @@
+name: pages
+
+# Publishes web/ (the static demo: recorded runs only, no model calls) to GitHub Pages.
+# Needs the repository to be public (or a paid plan) and Pages source set to "GitHub Actions".
+on:
+  push:
+    branches: [main]
+    paths: ["web/**", ".github/workflows/pages.yml"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Drop local-only dev runs
+        run: rm -rf web/runs/dev-* web/runs/index.local.json web/package.json
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: web
+      - id: deployment
+        uses: actions/deploy-pages@v4

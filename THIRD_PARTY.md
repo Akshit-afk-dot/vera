@@ -39,3 +39,17 @@ NVIDIA Nemotron models; the exact IDs and their licence terms are recorded from 
 | NASA PCoE Li-ion battery aging | Use at own risk; repository and donors acknowledged | REAL, file-format variety |
 | Oxford Battery Degradation Dataset 1 | ODbL 1.0; credited, not re-hosted | REAL, file-format variety |
 | CALCE battery data | All rights reserved; cited, not re-hosted | REAL, file-format variety |
+
+## Published demo runs (`web/runs/`)
+
+Recorded runs contain per-cell features and down-sampled discharge curves (60 points per cycle) computed from the
+input file. For runs on public datasets:
+
+- `real-oxford`: derived from the Oxford Battery Degradation Dataset 1 (Birkl, University of Oxford), made available
+  under the Open Database License (ODbL 1.0); individual contents under the Database Contents License (DbCL 1.0).
+  The derived run data in `web/runs/real-oxford/` are offered under ODbL 1.0 as well.
+- `real-nasa-*`: derived from the NASA Prognostics Center of Excellence Li-ion battery aging datasets
+  (B. Saha and K. Goebel, NASA Ames Research Center). Acknowledged as the repository requests.
+- `demo-*`: SYNTHETIC batches from Vera's own simulator; Apache-2.0 with the rest of the repository.
+
+The web demo uses no third-party JavaScript or fonts.

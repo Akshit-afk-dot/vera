@@ -144,6 +144,9 @@ def main() -> None:
     out.mkdir(exist_ok=True)
     (out / "r2_detection.json").write_text(json.dumps(report, indent=1, default=float), encoding="utf-8", newline="\n")
     (out / "r2_detection.md").write_text(to_markdown(report), encoding="utf-8", newline="\n")
+    web = ROOT / "web" / "data"
+    web.mkdir(parents=True, exist_ok=True)
+    (web / "r2.json").write_text(json.dumps(report, default=float), encoding="utf-8", newline="\n")
     print(to_markdown(report))
 
 
@@ -159,7 +162,7 @@ def to_markdown(r: dict) -> str:
     for name, e in r["methods"].items():
         d = e["detection"]
         typed = _f(e["typed_micro"]["f1"]) if "typed_micro" in e else "untyped"
-        lines.append(f"| {name} | {_f(d['precision'])} | {_f(d['recall'])} | {_f(d['f1'])} | {typed} | "
+        lines.append(f"| {name.replace('|', chr(92) + '|')} | {_f(d['precision'])} | {_f(d['recall'])} | {_f(d['f1'])} | {typed} | "
                      f"{100 * d['false_alarm_rate_clean_batches']:.2f}% |")
     vera = next(iter(r["methods"].values()))
     lines += ["", "Recall by fault type and severity (Vera rules):", "",

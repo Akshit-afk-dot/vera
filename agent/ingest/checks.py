@@ -23,7 +23,9 @@ def peek_for_prompt(path) -> tuple[dict, str]:
     if pk.get("kind") == "text":
         delim = pk.get("sniffed_delimiter") or ","
         trimmed = []
-        for ln in pk.get("first_lines", [])[:30]:
+        lines = pk.get("first_lines", [])
+        wide = any(len(ln) > MAX_LINE for ln in lines)
+        for ln in lines[: 12 if wide else 30]:
             if len(ln) > MAX_LINE:
                 fields = ln.split(delim)
                 ln = (f"{ln[:MAX_LINE]} ... [line has {len(fields)} fields; last 4: "

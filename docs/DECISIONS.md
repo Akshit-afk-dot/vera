@@ -25,3 +25,9 @@ One line each: date (IST) · decision · why. Newest at the bottom.
 - 2026-10-30 · CURVE_SHAPE uses an offset-aligned Q(V) distance to the batch median curve instead of the dQ/dV peak · a raw peak flagged high-IR and low-capacity cells (uniform voltage shifts).
 - 2026-10-30 · Positive skewed metrics (curve distance, noise) are z-scored on a log scale; flags from noise-sensitive metrics are dropped on channels already flagged noisy · fixes cross-type confusion seen in R2 (typed F1 0.85 → 0.95).
 - 2026-10-30 · Keep |z| > 3.5 (pre-registered); the sweep in results/r2_detection.md shows 4.0 trades 1 point of recall for zero false alarms. Caveat stated publicly: rules were developed on the same simulator, so R2 is optimistic until real-cell validation.
+- 2026-10-30 · Ingestion is model-written code from the start (no declarative tier) with a trusted wrapper doing all I/O and deterministic validation deciding acceptance · the code path is the showcase and handles every layout; a declarative mapping was redundant for the time left.
+- 2026-10-30 · Features run in-process from our own library on the validated canonical table; only model-written code goes to the isolated runner · untrusted code is isolated, trusted numbers stay reproducible.
+- 2026-10-30 · Web demo is static HTML/JS (no React, no build) on GitHub Pages, replaying recorded runs only · free hosting that never sleeps, zero model cost per visitor, nothing to keep alive until judging ends.
+- 2026-10-30 · Browser regrading mirrors analysis/grading.py and a parity test runs both through Node on five threshold variants.
+- 2026-10-30 · Structural peeks collapse repeated keys (channels, cycles) to one example plus names and fall back to compact JSON · keeps every layout's prompt complete (Oxford 12k truncated → 4.7k complete).
+- 2026-10-30 · `scripts/finish.py` is the single step from "key in .env" to a finished project: live demo runs, publish, R1/R4/R5, README tables, tests.

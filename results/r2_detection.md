@@ -2,8 +2,8 @@
 
 | Method | Precision | Recall | F1 | Typed F1 | False alarms on clean batches |
 |---|---|---|---|---|---|
-| Vera rules (robust z, |z|>3.5) | 0.98 | 0.93 | 0.95 | 0.95 | 0.39% |
-| Baseline: mean/std z-score (|z|>3) | 0.81 | 0.47 | 0.60 | 0.52 | 3.32% |
+| Vera rules (robust z, \|z\|>3.5) | 0.98 | 0.93 | 0.95 | 0.95 | 0.39% |
+| Baseline: mean/std z-score (\|z\|>3) | 0.81 | 0.47 | 0.60 | 0.52 | 3.32% |
 | Baseline: Isolation Forest (untyped) | 0.48 | 0.41 | 0.44 | untyped | 13.28% |
 
 Recall by fault type and severity (Vera rules):

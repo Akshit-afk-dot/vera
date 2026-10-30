@@ -7,6 +7,7 @@ Parses untrusted bytes, so in production it runs inside the sandbox (plain numpy
 
 from __future__ import annotations
 
+import re
 import zipfile
 from collections import Counter
 from pathlib import Path
@@ -72,11 +73,25 @@ def peek_excel(p: Path, n_rows: int = 8, max_sheets: int = 6) -> dict[str, Any]:
     return {"sheet_names": wb.sheetnames, "n_sheets": len(wb.sheetnames), "sheets": sheets}
 
 
+DATA_SUFFIXES = (".mat", ".csv", ".txt", ".tsv", ".xlsx", ".h5")
+
+
 def peek_zip(p: Path) -> dict[str, Any]:
+    """Member list, plus a peek at the first data member so the structure inside is visible too."""
+    import tempfile
+
     with zipfile.ZipFile(p) as z:
         infos = [i for i in z.infolist() if not i.is_dir()]
-        return {"n_members": len(infos),
-                "members": [{"name": i.filename, "bytes": i.file_size} for i in infos[:200]]}
+        out: dict[str, Any] = {"n_members": len(infos),
+                               "members": [{"name": i.filename, "bytes": i.file_size} for i in infos[:200]]}
+        first = next((i for i in infos if i.filename.lower().endswith(DATA_SUFFIXES) and "readme" not in i.filename.lower()), None)
+        if first is not None and first.file_size < 300_000_000:
+            with tempfile.TemporaryDirectory() as tmp:
+                member = Path(tmp) / Path(first.filename).name
+                member.write_bytes(z.read(first))
+                inner = peek(member)
+                out["first_data_member"] = {"name": first.filename, **{k: v for k, v in inner.items() if k != "name"}}
+        return out
 
 
 def peek_mat(p: Path) -> dict[str, Any]:
@@ -84,7 +99,7 @@ def peek_mat(p: Path) -> dict[str, Any]:
 
     try:
         data = loadmat(p, simplify_cells=True)
-        tree = {k: summarize(v) for k, v in data.items() if not k.startswith("__")}
+        tree = summarize({k: v for k, v in data.items() if not k.startswith("__")})
         return {"mat_version": "v5", "tree": tree}
     except (NotImplementedError, ValueError):
         import h5py
@@ -97,10 +112,19 @@ def summarize(v: Any, depth: int = 0) -> Any:
     if depth > MAX_DEPTH:
         return "…"
     if isinstance(v, dict):
-        keys = list(v)[:MAX_FIELDS]
-        out = {k: summarize(v[k], depth + 1) for k in keys}
-        if len(v) > MAX_FIELDS:
-            out["…"] = f"{len(v) - MAX_FIELDS} more fields"
+        # Many keys sharing one pattern (ch_A01 ... ch_H16, Cell1 ... Cell8): show 2 examples and the full name list
+        groups: dict[str, list[str]] = {}
+        for k in v:
+            groups.setdefault(re.sub(r"[A-Za-z]?\d+", "#", str(k)), []).append(k)
+        out: dict[str, Any] = {}
+        for pattern, ks in groups.items():
+            shown = ks if len(ks) <= 4 else ks[:1]
+            for k in shown[:MAX_FIELDS]:
+                out[k] = summarize(v[k], depth + 1)
+            if len(ks) > len(shown):
+                rest = ks[len(shown):]
+                names = rest if len(rest) <= 12 else rest[:8] + ["…"] + rest[-3:]
+                out[f"… {len(rest)} more keys like '{pattern}' with the same structure"] = names
         return out
     if isinstance(v, (list, tuple)) or (isinstance(v, np.ndarray) and v.dtype == object):
         items = list(v)
@@ -172,6 +196,8 @@ def to_text(summary: dict[str, Any], limit: int = 12_000) -> str:
     import json
 
     s = json.dumps(summary, default=str, indent=1)
+    if len(s) > limit:  # indentation is most of the bulk; compact JSON keeps the whole structure visible
+        s = json.dumps(summary, default=str, separators=(",", ":"))
     return s if len(s) <= limit else s[:limit] + "\n… (truncated)"
 
 

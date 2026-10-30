@@ -1,5 +1,9 @@
 # CLAUDE.md: Battery Cell QC Agent
 
+> **Status Oct 30, 2026:** the Nebius × NVIDIA deadline passed before submission (no model key was available).
+> Vera now targets **Arbiter Hacks V1 (Dec 20, 2026)** and optionally Codegeist 2026; see docs/HACKATHONS.md.
+> The model layer is provider-agnostic (NVIDIA API Catalog or Nebius Token Factory). Sections below are the original brief.
+
 Nebius × NVIDIA Global AI Hackathon · track **Best Apps & Agents** · team of 2 · submission closes **Fri Oct 30, 2026, 10:00 am PT (= 10:30 pm IST)**. Written Sun Oct 18, 2026 (IST); about 12 days remain. The project name is a working title: propose five human-sounding names in `docs/DESIGN.md`. **Chosen Oct 19: Vera** (repo at `C:\dev\vera` on Akshit's machine).
 
 Tags used below: **VERIFIED** = read in the official docs or rules on Oct 17–18, 2026. **VERIFY** = unconfirmed, test it live before relying on it.
