@@ -90,9 +90,9 @@
   "n_channels": 64,
   "n_flagged": 7,
   "grade_counts": {
-   "A": 57,
+   "A": 58,
    "B": 1,
-   "C": 4,
+   "C": 3,
    "REJECT": 2
   },
   "flag_counts": {
@@ -2781,7 +2781,7 @@
     5,
     0
    ],
-   "grade": "C",
+   "grade": "A",
    "capacity_ah": 2.2875,
    "ir_mohm": 38.19,
    "cycles": [
@@ -2829,22 +2829,22 @@
    "flags": [
     {
      "type": "CURVE_SHAPE",
-     "severity": "high",
+     "severity": "low",
      "evidence": [
       {
-       "metric": "dqdv_peak_v",
-       "value": 3.46809,
-       "unit": "V",
-       "batch_median": 3.42065,
-       "robust_z": 12.59,
-       "threshold": "|robust_z| > 3.5",
+       "metric": "curve_dist_pct",
+       "value": 0.80128,
+       "unit": "%",
+       "batch_median": 0.11458,
+       "robust_z": 4.46,
+       "threshold": "robust_z (log scale) > 3.5",
        "cycle": null
       }
      ],
-     "explanation": "curve shape: dqdv_peak_v = 3.46809 V versus batch median 3.42065 V (robust z 12.59)."
+     "explanation": "curve shape: curve_dist_pct = 0.80128 % versus batch median 0.11458 % (robust z 4.46)."
     }
    ],
-   "explanation": "curve shape: dqdv_peak_v = 3.46809 V versus batch median 3.42065 V (robust z 12.59).",
+   "explanation": "curve shape: curve_dist_pct = 0.80128 % versus batch median 0.11458 % (robust z 4.46).",
    "provenance": {
     "run_id": "fixture-64ch",
     "code_ids": [

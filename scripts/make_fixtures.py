@@ -85,7 +85,7 @@ def main() -> None:
         "capacity_ah": [chans[c]["cap"] for c in ids],
         "ir_mohm": [chans[c]["ir"] for c in ids],
         "first_cycle_ce": [chans[c]["ce1"] for c in ids],
-        "dqdv_peak_v": [chans[c]["peak"] for c in ids],
+        "curve_dist_pct": [0.08 + 15 * abs(chans[c]["peak"] - 3.420) for c in ids],
         "capacity_slope_pct_per_cycle": [chans[c]["slope"] for c in ids],
         "noise_mv": [chans[c]["noise"] for c in ids],
     }

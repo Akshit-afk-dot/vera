@@ -1,8 +1,9 @@
-"""Batch anomaly rules over per-channel scalar features (v0).
+"""Batch anomaly rules over per-channel scalar features.
 
 Every rule compares a channel with its own batch via robust z-scores (median/MAD) plus absolute sanity
-limits. Thresholds are v0 defaults to be tuned on R2 planted-fault results, not domain-validated yet.
-Returns plain dicts shaped like contracts.models.Flag so the sandbox needs no pydantic.
+limits. Positive, right-skewed metrics (noise, curve distance) are scored on a log scale so that their
+natural skew does not read as anomalies. The threshold is pre-registered at |z| > 3.5 and reported, with a
+sweep, in results/r2_detection.md. Returns plain dicts shaped like contracts.models.Flag (no pydantic).
 """
 
 from __future__ import annotations
@@ -15,15 +16,18 @@ from analysis.stats import robust_z
 
 Z_FLAG = 3.5
 DEAD_CAPACITY_FRACTION = 0.10  # absolute limit: below 10% of batch median capacity = dead channel
+# On a channel already flagged noisy, metrics measured from a few samples are not trustworthy; flags from them
+# are dropped (the channel is rejected for noise anyway). Without this, noise reads as resistance or shape faults.
+NOISE_SENSITIVE = {"HIGH_IR", "CURVE_SHAPE"}
 
-# feature -> (fault type, direction, unit); direction -1 flags low values, +1 high, 0 both
-RULES: dict[str, tuple[str, int, str]] = {
-    "capacity_ah": ("LOW_CAPACITY", -1, "Ah"),
-    "ir_mohm": ("HIGH_IR", +1, "mOhm"),
-    "first_cycle_ce": ("LOW_CE", -1, ""),
-    "dqdv_peak_v": ("CURVE_SHAPE", 0, "V"),
-    "capacity_slope_pct_per_cycle": ("CAPACITY_CREEP_UP", +1, "%/cycle"),
-    "noise_mv": ("NOISY_OR_DEAD_CHANNEL", +1, "mV"),
+# feature -> (fault type, direction, unit, scale); direction -1 flags low values, +1 high
+RULES: dict[str, tuple[str, int, str, str]] = {
+    "capacity_ah": ("LOW_CAPACITY", -1, "Ah", "linear"),
+    "ir_mohm": ("HIGH_IR", +1, "mOhm", "linear"),
+    "first_cycle_ce": ("LOW_CE", -1, "", "linear"),
+    "curve_dist_pct": ("CURVE_SHAPE", +1, "%", "log"),  # offset-aligned Q(V) gap to the batch median curve
+    "capacity_slope_pct_per_cycle": ("CAPACITY_CREEP_UP", +1, "%/cycle", "linear"),
+    "noise_mv": ("NOISY_OR_DEAD_CHANNEL", +1, "mV", "log"),
 }
 
 
@@ -32,10 +36,15 @@ def severity(z: float) -> str:
     return "low" if a < 5 else "medium" if a < 8 else "high"
 
 
-def detect(channel_ids: Sequence[str], features: Mapping[str, Sequence[float | None]]) -> dict[str, list[dict]]:
+def _as_array(values: Sequence[float | None]) -> np.ndarray:
+    return np.array([np.nan if x is None else x for x in values], dtype=float)
+
+
+def detect(channel_ids: Sequence[str], features: Mapping[str, Sequence[float | None]],
+           z_flag: float = Z_FLAG) -> dict[str, list[dict]]:
     """features: name -> one value per channel (None/NaN = not measured). Returns channel_id -> flags."""
     flags: dict[str, list[dict]] = {ch: [] for ch in channel_ids}
-    cap = np.array([np.nan if x is None else x for x in features.get("capacity_ah", [])], dtype=float)
+    cap = _as_array(features.get("capacity_ah", []))
     dead = set()
     if cap.size:
         med_cap = float(np.nanmedian(cap))
@@ -47,26 +56,24 @@ def detect(channel_ids: Sequence[str], features: Mapping[str, Sequence[float | N
                     "batch_median": round(med_cap, 4), "robust_z": None,
                     "threshold": f"capacity < {DEAD_CAPACITY_FRACTION:.0%} of batch median"}]})
 
-    for name, (fault, direction, unit) in RULES.items():
+    live = np.array([ch not in dead for ch in channel_ids])
+    for name, (fault, direction, unit, scale) in RULES.items():
         if name not in features:
             continue
-        vals = np.array([np.nan if x is None else x for x in features[name]], dtype=float)
-        live = np.array([ch not in dead for ch in channel_ids])
-        if live.sum() < 5:
+        vals = _as_array(features[name])
+        scored = np.log(np.where(vals > 0, vals, np.nan)) if scale == "log" else vals
+        if np.isfinite(scored[live]).sum() < 5:
             continue
-        z_live, med, _ = robust_z(vals[live])
         z = np.full(vals.shape, np.nan)
-        z[live] = z_live
+        z[live] = robust_z(scored[live])[0]
+        med = float(np.nanmedian(vals[live]))
+        rule = f"robust_z{' (log scale)' if scale == 'log' else ''} {'<' if direction < 0 else '>'} {-z_flag if direction < 0 else z_flag}"
         for ch, value, zi in zip(channel_ids, vals, z, strict=True):
-            if not np.isfinite(zi):
-                continue
-            hit = zi < -Z_FLAG if direction < 0 else zi > Z_FLAG if direction > 0 else abs(zi) > Z_FLAG
-            if not hit:
-                continue
-            rule = f"robust_z {'<' if direction < 0 else '>'} {'-' if direction < 0 else ''}{Z_FLAG}"
-            if direction == 0:
-                rule = f"|robust_z| > {Z_FLAG}"
-            flags[ch].append({"type": fault, "severity": severity(zi), "evidence": [{
-                "metric": name, "value": round(float(value), 5), "unit": unit,
-                "batch_median": round(float(med), 5), "robust_z": round(float(zi), 2), "threshold": rule}]})
+            if np.isfinite(zi) and (zi < -z_flag if direction < 0 else zi > z_flag):
+                flags[ch].append({"type": fault, "severity": severity(zi), "evidence": [{
+                    "metric": name, "value": round(float(value), 5), "unit": unit,
+                    "batch_median": round(med, 5), "robust_z": round(float(zi), 2), "threshold": rule}]})
+    for ch, fs in flags.items():
+        if any(f["type"] == "NOISY_OR_DEAD_CHANNEL" for f in fs):
+            flags[ch] = [f for f in fs if f["type"] not in NOISE_SENSITIVE]
     return flags

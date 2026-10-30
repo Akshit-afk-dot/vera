@@ -19,3 +19,9 @@ One line each: date (IST) · decision · why. Newest at the bottom.
 - 2026-10-19 · Repo moved from `OneDrive\Desktop\Hackathon` to `C:\dev\vera` · OneDrive was syncing `.venv`, and would sync `node_modules` and GBs of data.
 - 2026-10-19 · R1 answer keys are written from the files themselves, with README errors listed as pitfalls · both NASA and Oxford READMEs contradict their data (field names; time unit).
 - 2026-10-19 · OPEN for Phase 1 (before contract freeze): extend `LayoutMapping` with record paths for nested `.mat` structs and a `derived` current source (dq/dt), or route such files to the tier-2 normalizer · NASA and Oxford cannot be expressed in v0.
+- 2026-10-30 · Nebius × NVIDIA deadline missed (no key, nothing submitted). New targets: Arbiter Hacks V1 (Dec 20) and optionally Codegeist 2026 (Dec 22); see docs/HACKATHONS.md.
+- 2026-10-30 · LLM layer becomes provider-agnostic (NVIDIA API Catalog or Nebius Token Factory, both OpenAI-compatible) · no card needed for NVIDIA's free tier; Nemotron stays the model.
+- 2026-10-30 · Synthetic cells come from a small equivalent-circuit simulator (PCHIP OCV, R0 + R1 polarisation, CC-CV, first-cycle loss) · capacity, IR and curve shape interact as on a real line; plausibility model, not electrochemistry.
+- 2026-10-30 · CURVE_SHAPE uses an offset-aligned Q(V) distance to the batch median curve instead of the dQ/dV peak · a raw peak flagged high-IR and low-capacity cells (uniform voltage shifts).
+- 2026-10-30 · Positive skewed metrics (curve distance, noise) are z-scored on a log scale; flags from noise-sensitive metrics are dropped on channels already flagged noisy · fixes cross-type confusion seen in R2 (typed F1 0.85 → 0.95).
+- 2026-10-30 · Keep |z| > 3.5 (pre-registered); the sweep in results/r2_detection.md shows 4.0 trades 1 point of recall for zero false alarms. Caveat stated publicly: rules were developed on the same simulator, so R2 is optimistic until real-cell validation.
