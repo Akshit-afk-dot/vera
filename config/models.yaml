@@ -1,13 +1,22 @@
-# Role -> ordered preference. At startup the agent picks, per role, the first ID that is both in the
-# live catalog (GET /v1/models) and marked as passing in docs/phase0/models_probe.json.
+# Model selection per provider. At startup Vera lists the provider's live catalog, then picks per role the first
+# preferred ID that exists; if none exists it falls back to the best-ranked Nemotron chat model (see agent/llm.py).
 # Never list retired models as candidates.
-planner:  # schema inference fallback, planning, code writing, repair: needs strong reasoning + tools
-  - nvidia/nemotron-3-ultra-550b-a55b   # VERIFY: ID seen only on a third-party gateway listing
-  - nvidia/nemotron-3-super-120b-a12b
-worker:   # explanations, report sentences, threshold rationale: fast and cheap
-  - nvidia/Nemotron-3_5-Lightning
-  - nvidia/nemotron-3-super-120b-a12b
-retired:  # left serverless on Aug 31, 2026
+providers:
+  nvidia:            # NVIDIA API Catalog (build.nvidia.com): OpenAI-compatible, free trial credits, no card
+    base_url: https://integrate.api.nvidia.com/v1
+    key_env: NVIDIA_API_KEY
+    planner: []      # empty = choose the largest Nemotron chat model in the live catalog
+    worker: []       # empty = choose the smallest Nemotron chat model in the live catalog
+  nebius:            # Nebius Token Factory
+    base_url: https://api.tokenfactory.nebius.com/v1/
+    key_env: NEBIUS_API_KEY
+    planner:
+      - nvidia/nemotron-3-ultra-550b-a55b   # VERIFY: ID seen only on a third-party gateway listing
+      - nvidia/nemotron-3-super-120b-a12b
+    worker:
+      - nvidia/Nemotron-3_5-Lightning
+      - nvidia/nemotron-3-super-120b-a12b
+retired:  # left Nebius serverless on Aug 31, 2026
   - nvidia/Nemotron-3-Nano-Omni
   - nvidia/Llama-3_1-Nemotron-Ultra-253B-v1
   - nvidia/Cosmos3-Super-Reasoner

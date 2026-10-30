@@ -947,6 +947,19 @@
           "title": "Models",
           "type": "object"
         },
+        "provider": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Model provider, e.g. 'nvidia' (API Catalog) or 'nebius' (Token Factory)",
+          "title": "Provider"
+        },
         "run_id": {
           "title": "Run Id",
           "type": "string"

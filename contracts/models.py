@@ -186,6 +186,7 @@ class RunStarted(EventBase):
     mode: Literal["live", "replay"]
     runner: RunnerKind
     models: dict[Role, str]
+    provider: str | None = Field(None, description="Model provider, e.g. 'nvidia' (API Catalog) or 'nebius' (Token Factory)")
 
 
 class MemoryHit(EventBase):

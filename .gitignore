@@ -45,3 +45,7 @@ Thumbs.db
 desktop.ini
 .idea/
 .vscode/
+
+# Local-only demo runs (scripted model, UI development); never published
+web/runs/dev-*/
+web/runs/index.local.json
