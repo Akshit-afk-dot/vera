@@ -1,0 +1,137 @@
+# Vera for Jira (Codegeist 2026 edition). `forge register` fills in app.id.
+modules:
+  jira:issuePanel:
+    - key: vera-panel
+      resource: panel
+      resolver:
+        function: resolver
+      render: native
+      title: Vera cell QC
+      icon: resource:static;vera.svg
+
+  rovo:agent:
+    - key: vera-agent
+      name: Vera
+      description: Battery cell QC agent. Reads formation and grading tester exports attached to Jira issues, grades every cell, flags the bad ones with evidence and opens non-conformance issues.
+      icon: resource:static;vera.svg
+      prompt: resource:prompts;agent.md
+      conversationStarters:
+        - Analyse the tester export on this issue
+        - Which cells in this batch should not ship?
+        - Explain the worst flagged cell
+        - Open non-conformance issues for the rejected cells
+      actions:
+        - vera-analyse-attachment
+        - vera-get-batch-results
+        - vera-explain-cell
+        - vera-create-nonconformances
+
+  action:
+    - key: vera-analyse-attachment
+      name: Analyse tester export
+      function: action-analyse
+      actionVerb: TRIGGER
+      description: Starts Vera's analysis of a formation or grading tester export (CSV, TSV or semicolon text) attached to a Jira issue. Analysis runs in the background; ask for results afterwards.
+      inputs:
+        issueKey:
+          title: Issue key
+          type: string
+          required: true
+          description: Key of the Jira issue that holds the tester export, e.g. QC-12
+        attachmentName:
+          title: Attachment file name
+          type: string
+          required: false
+          description: File name of the export; if omitted, the newest CSV/TSV/TXT attachment is used
+        dataLabel:
+          title: Data label
+          type: string
+          required: false
+          description: REAL for measured data, SYNTHETIC for simulated data; defaults to REAL
+    - key: vera-get-batch-results
+      name: Get batch QC results
+      function: action-results
+      actionVerb: GET
+      description: Returns the latest Vera results for a Jira issue: run status, grade counts, flagged cells with the measured evidence, and the verified summary. Every number comes from Vera's code.
+      inputs:
+        issueKey:
+          title: Issue key
+          type: string
+          required: true
+          description: Key of the Jira issue that holds the analysed batch
+    - key: vera-explain-cell
+      name: Explain one cell
+      function: action-explain
+      actionVerb: GET
+      description: Returns everything Vera computed for one tester channel (cell): grade, capacity, resistance, per-cycle values, flags with evidence and the explanation.
+      inputs:
+        issueKey:
+          title: Issue key
+          type: string
+          required: true
+          description: Key of the Jira issue that holds the analysed batch
+        channelId:
+          title: Channel
+          type: string
+          required: true
+          description: Tester channel / cell identifier, e.g. C05
+    - key: vera-create-nonconformances
+      name: Create non-conformance issues
+      function: action-ncr
+      actionVerb: CREATE
+      description: Creates one linked Jira issue per rejected or flagged cell in the analysed batch, with the evidence in the description.
+      inputs:
+        issueKey:
+          title: Issue key
+          type: string
+          required: true
+          description: Key of the Jira issue that holds the analysed batch
+        scope:
+          title: Which cells
+          type: string
+          required: false
+          description: "rejected" (default) for REJECT grades only, or "flagged" for every flagged cell
+
+  consumer:
+    - key: vera-analyse-consumer
+      queue: vera-analyse
+      function: consumer
+
+  function:
+    - key: resolver
+      handler: index.resolver
+    - key: consumer
+      handler: index.consumer
+      timeoutSeconds: 900
+    - key: action-analyse
+      handler: index.actionAnalyse
+    - key: action-results
+      handler: index.actionResults
+    - key: action-explain
+      handler: index.actionExplain
+    - key: action-ncr
+      handler: index.actionNcr
+
+resources:
+  - key: panel
+    path: src/frontend/index.tsx
+  - key: static
+    path: static
+  - key: prompts
+    path: prompts
+
+permissions:
+  scopes:
+    - read:jira-work
+    - write:jira-work
+    - storage:app
+  external:
+    fetch:
+      backend:
+        - address: integrate.api.nvidia.com
+
+app:
+  runtime:
+    name: nodejs24.x
+    memoryMB: 1024
+  id: ari:cloud:ecosystem::app/REPLACE-WITH-forge-register

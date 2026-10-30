@@ -1,0 +1,25 @@
+{
+  "name": "vera-for-jira",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Vera for Jira: battery cell QC agent as an Atlassian Forge app (Codegeist 2026 edition)",
+  "license": "Apache-2.0",
+  "scripts": {
+    "test": "node --test \"test/**/*.test.ts\""
+  },
+  "dependencies": {
+    "@forge/api": "^8.4.0",
+    "@forge/bridge": "^7.2.1",
+    "@forge/events": "^3.0.9",
+    "@forge/kvs": "^2.1.1",
+    "@forge/react": "^12.4.0",
+    "@forge/resolver": "^2.0.2",
+    "react": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "@types/react": "^18.3.31",
+    "typescript": "^7.0.2"
+  }
+}

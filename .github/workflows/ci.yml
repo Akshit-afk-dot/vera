@@ -34,3 +34,19 @@ jobs:
       - run: uv run python scripts/secret_scan.py --all
       - run: uv run python scripts/export_contracts.py --check
       - run: uv run pytest -q
+
+  forge-app:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: forge-app
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: npm
+          cache-dependency-path: forge-app/package-lock.json
+      - run: npm ci --no-audit --no-fund
+      - run: npx tsc --noEmit -p .
+      - run: npm test

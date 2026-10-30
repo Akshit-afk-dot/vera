@@ -1,0 +1,836 @@
+{
+ "data_label": "SYNTHETIC",
+ "planted": {
+  "A01": "",
+  "A02": "",
+  "A03": "",
+  "A04": "NOISY_OR_DEAD_CHANNEL",
+  "A05": "",
+  "A06": "LOW_CE",
+  "A07": "LOW_CE",
+  "A08": "",
+  "A09": "CAPACITY_CREEP_UP",
+  "A10": "CAPACITY_CREEP_UP",
+  "A11": "",
+  "A12": "HIGH_IR",
+  "A13": "",
+  "A14": "",
+  "A15": "",
+  "A16": ""
+ },
+ "features": {
+  "A01": {
+   "capacity_ah": 2.47962,
+   "ir_mohm": 24.416,
+   "first_cycle_ce": 0.87855,
+   "capacity_slope_pct_per_cycle": 0.1113,
+   "dqdv_peak_v": 3.636,
+   "noise_mv": 0.6325,
+   "mid_voltage_v": 3.7026,
+   "n_cycles": 4.0,
+   "curve_dist_pct": 0.0826
+  },
+  "A02": {
+   "capacity_ah": 2.473,
+   "ir_mohm": 23.951,
+   "first_cycle_ce": 0.88574,
+   "capacity_slope_pct_per_cycle": 0.123,
+   "dqdv_peak_v": 3.632,
+   "noise_mv": 0.4633,
+   "mid_voltage_v": 3.7056,
+   "n_cycles": 4.0,
+   "curve_dist_pct": 0.1409
+  },
+  "A03": {
+   "capacity_ah": 2.51508,
+   "ir_mohm": 23.779,
+   "first_cycle_ce": 0.88202,
+   "capacity_slope_pct_per_cycle": 0.0768,
+   "dqdv_peak_v": 3.634,
+   "noise_mv": 0.4754,
+   "mid_voltage_v": 3.7005,
+   "n_cycles": 4.0,
+   "curve_dist_pct": 0.0793
+  },
+  "A04": {
+   "capacity_ah": 2.5092,
+   "ir_mohm": 26.119,
+   "first_cycle_ce": 0.87996,
+   "capacity_slope_pct_per_cycle": 0.148,
+   "dqdv_peak_v": 3.632,
+   "noise_mv": 6.3523,
+   "mid_voltage_v": 3.6973,
+   "n_cycles": 4.0,
+   "curve_dist_pct": 0.5165
+  },
+  "A05": {
+   "capacity_ah": 2.47814,
+   "ir_mohm": 25.026,
+   "first_cycle_ce": 0.88357,
+   "capacity_slope_pct_per_cycle": 0.0924,
+   "dqdv_peak_v": 3.632,
+   "noise_mv": 0.4633,
+   "mid_voltage_v": 3.7021,
+   "n_cycles": 4.0,
+   "curve_dist_pct": 0.065
+  },
+  "A06": {
+   "capacity_ah": 2.4994,
+   "ir_mohm": 24.047,
+   "first_cycle_ce": 0.85707,
+   "capacity_slope_pct_per_cycle": 0.0779,
+   "dqdv_peak_v": 3.634,
+   "noise_mv": 0.6062,
+   "mid_voltage_v": 3.7017,
+   "n_cycles": 4.0,
+   "curve_dist_pct": 0.1163
+  },
+  "A07": {
+   "capacity_ah": 2.49221,
+   "ir_mohm": 24.119,
+   "first_cycle_ce": 0.85404,
+   "capacity_slope_pct_per_cycle": 0.0717,
+   "dqdv_peak_v": 3.632,
+   "noise_mv": 0.2957,
+   "mid_voltage_v": 3.7019,
+   "n_cycles": 4.0,
+   "curve_dist_pct": 0.0631
+  },
+  "A08": {
+   "capacity_ah": 2.51715,
+   "ir_mohm": 25.763,
+   "first_cycle_ce": 0.87455,
+   "capacity_slope_pct_per_cycle": 0.1301,
+   "dqdv_peak_v": 3.636,
+   "noise_mv": 0.6664,
+   "mid_voltage_v": 3.6949,
+   "n_cycles": 4.0,
+   "curve_dist_pct": 0.1367
+  },
+  "A09": {
+   "capacity_ah": 2.4975,
+   "ir_mohm": 25.914,
+   "first_cycle_ce": 0.87523,
+   "capacity_slope_pct_per_cycle": 0.4709,
+   "dqdv_peak_v": 3.63,
+   "noise_mv": 0.5626,
+   "mid_voltage_v": 3.7007,
+   "n_cycles": 4.0,
+   "curve_dist_pct": 0.0953
+  },
+  "A10": {
+   "capacity_ah": 2.50979,
+   "ir_mohm": 25.017,
+   "first_cycle_ce": 0.87917,
+   "capacity_slope_pct_per_cycle": 0.9717,
+   "dqdv_peak_v": 3.628,
+   "noise_mv": 0.6492,
+   "mid_voltage_v": 3.6988,
+   "n_cycles": 4.0,
+   "curve_dist_pct": 0.0977
+  },
+  "A11": {
+   "capacity_ah": 2.50554,
+   "ir_mohm": 24.319,
+   "first_cycle_ce": 0.8791,
+   "capacity_slope_pct_per_cycle": 0.0623,
+   "dqdv_peak_v": 3.634,
+   "noise_mv": 0.3556,
+   "mid_voltage_v": 3.7021,
+   "n_cycles": 4.0,
+   "curve_dist_pct": 0.0809
+  },
+  "A12": {
+   "capacity_ah": 2.48966,
+   "ir_mohm": 40.563,
+   "first_cycle_ce": 0.87751,
+   "capacity_slope_pct_per_cycle": 0.0664,
+   "dqdv_peak_v": 3.622,
+   "noise_mv": 0.7266,
+   "mid_voltage_v": 3.6693,
+   "n_cycles": 4.0,
+   "curve_dist_pct": 0.1048
+  },
+  "A13": {
+   "capacity_ah": 2.49404,
+   "ir_mohm": 26.3,
+   "first_cycle_ce": 0.8824,
+   "capacity_slope_pct_per_cycle": 0.1213,
+   "dqdv_peak_v": 3.636,
+   "noise_mv": 0.5387,
+   "mid_voltage_v": 3.6982,
+   "n_cycles": 4.0,
+   "curve_dist_pct": 0.0891
+  },
+  "A14": {
+   "capacity_ah": 2.51071,
+   "ir_mohm": 24.278,
+   "first_cycle_ce": 0.87807,
+   "capacity_slope_pct_per_cycle": 0.0339,
+   "dqdv_peak_v": 3.632,
+   "noise_mv": 0.545,
+   "mid_voltage_v": 3.703,
+   "n_cycles": 4.0,
+   "curve_dist_pct": 0.1092
+  },
+  "A15": {
+   "capacity_ah": 2.49504,
+   "ir_mohm": 23.824,
+   "first_cycle_ce": 0.87838,
+   "capacity_slope_pct_per_cycle": 0.1263,
+   "dqdv_peak_v": 3.634,
+   "noise_mv": 0.4903,
+   "mid_voltage_v": 3.7006,
+   "n_cycles": 4.0,
+   "curve_dist_pct": 0.1234
+  },
+  "A16": {
+   "capacity_ah": 2.51708,
+   "ir_mohm": 26.317,
+   "first_cycle_ce": 0.87512,
+   "capacity_slope_pct_per_cycle": -0.0791,
+   "dqdv_peak_v": 3.632,
+   "noise_mv": 0.5423,
+   "mid_voltage_v": 3.6989,
+   "n_cycles": 4.0,
+   "curve_dist_pct": 0.1099
+  }
+ },
+ "cycles": {
+  "A01": [
+   {
+    "cycle": 1,
+    "discharge_capacity_ah": 2.47162,
+    "charge_capacity_ah": 2.81328,
+    "ce": 0.87855,
+    "ir_mohm": 23.164,
+    "mid_voltage_v": 3.7311
+   },
+   {
+    "cycle": 2,
+    "discharge_capacity_ah": 2.4752,
+    "charge_capacity_ah": 2.4827,
+    "ce": 0.99698,
+    "ir_mohm": 24.855,
+    "mid_voltage_v": 3.731
+   },
+   {
+    "cycle": 3,
+    "discharge_capacity_ah": 2.47879,
+    "charge_capacity_ah": 2.4863,
+    "ce": 0.99698,
+    "ir_mohm": 25.624,
+    "mid_voltage_v": 3.73
+   },
+   {
+    "cycle": 4,
+    "discharge_capacity_ah": 2.47962,
+    "charge_capacity_ah": 2.49019,
+    "ce": 0.99575,
+    "ir_mohm": 24.416,
+    "mid_voltage_v": 3.7026
+   }
+  ],
+  "A02": [
+   {
+    "cycle": 1,
+    "discharge_capacity_ah": 2.46405,
+    "charge_capacity_ah": 2.78193,
+    "ce": 0.88574,
+    "ir_mohm": 23.469,
+    "mid_voltage_v": 3.7329
+   },
+   {
+    "cycle": 2,
+    "discharge_capacity_ah": 2.46763,
+    "charge_capacity_ah": 2.47528,
+    "ce": 0.99691,
+    "ir_mohm": 24.251,
+    "mid_voltage_v": 3.7333
+   },
+   {
+    "cycle": 3,
+    "discharge_capacity_ah": 2.47121,
+    "charge_capacity_ah": 2.47886,
+    "ce": 0.99691,
+    "ir_mohm": 26.546,
+    "mid_voltage_v": 3.7329
+   },
+   {
+    "cycle": 4,
+    "discharge_capacity_ah": 2.473,
+    "charge_capacity_ah": 2.48276,
+    "ce": 0.99607,
+    "ir_mohm": 23.951,
+    "mid_voltage_v": 3.7056
+   }
+  ],
+  "A03": [
+   {
+    "cycle": 1,
+    "discharge_capacity_ah": 2.50948,
+    "charge_capacity_ah": 2.84515,
+    "ce": 0.88202,
+    "ir_mohm": 27.442,
+    "mid_voltage_v": 3.7302
+   },
+   {
+    "cycle": 2,
+    "discharge_capacity_ah": 2.51228,
+    "charge_capacity_ah": 2.51995,
+    "ce": 0.99696,
+    "ir_mohm": 24.672,
+    "mid_voltage_v": 3.7298
+   },
+   {
+    "cycle": 3,
+    "discharge_capacity_ah": 2.5148,
+    "charge_capacity_ah": 2.52276,
+    "ce": 0.99685,
+    "ir_mohm": 22.965,
+    "mid_voltage_v": 3.7294
+   },
+   {
+    "cycle": 4,
+    "discharge_capacity_ah": 2.51508,
+    "charge_capacity_ah": 2.52558,
+    "ce": 0.99584,
+    "ir_mohm": 23.779,
+    "mid_voltage_v": 3.7005
+   }
+  ],
+  "A04": [
+   {
+    "cycle": 1,
+    "discharge_capacity_ah": 2.49831,
+    "charge_capacity_ah": 2.83912,
+    "ce": 0.87996,
+    "ir_mohm": 13.271,
+    "mid_voltage_v": 3.728
+   },
+   {
+    "cycle": 2,
+    "discharge_capacity_ah": 2.50278,
+    "charge_capacity_ah": 2.51046,
+    "ce": 0.99694,
+    "ir_mohm": 5.966,
+    "mid_voltage_v": 3.732
+   },
+   {
+    "cycle": 3,
+    "discharge_capacity_ah": 2.50725,
+    "charge_capacity_ah": 2.51494,
+    "ce": 0.99694,
+    "ir_mohm": 21.252,
+    "mid_voltage_v": 3.7298
+   },
+   {
+    "cycle": 4,
+    "discharge_capacity_ah": 2.5092,
+    "charge_capacity_ah": 2.51971,
+    "ce": 0.99583,
+    "ir_mohm": 26.119,
+    "mid_voltage_v": 3.6973
+   }
+  ],
+  "A05": [
+   {
+    "cycle": 1,
+    "discharge_capacity_ah": 2.47152,
+    "charge_capacity_ah": 2.7972,
+    "ce": 0.88357,
+    "ir_mohm": 24.768,
+    "mid_voltage_v": 3.7303
+   },
+   {
+    "cycle": 2,
+    "discharge_capacity_ah": 2.47456,
+    "charge_capacity_ah": 2.48221,
+    "ce": 0.99692,
+    "ir_mohm": 23.623,
+    "mid_voltage_v": 3.7298
+   },
+   {
+    "cycle": 3,
+    "discharge_capacity_ah": 2.47759,
+    "charge_capacity_ah": 2.48525,
+    "ce": 0.99692,
+    "ir_mohm": 21.613,
+    "mid_voltage_v": 3.7295
+   },
+   {
+    "cycle": 4,
+    "discharge_capacity_ah": 2.47814,
+    "charge_capacity_ah": 2.48859,
+    "ce": 0.9958,
+    "ir_mohm": 25.026,
+    "mid_voltage_v": 3.7021
+   }
+  ],
+  "A06": [
+   {
+    "cycle": 1,
+    "discharge_capacity_ah": 2.49384,
+    "charge_capacity_ah": 2.90973,
+    "ce": 0.85707,
+    "ir_mohm": 23.472,
+    "mid_voltage_v": 3.7313
+   },
+   {
+    "cycle": 2,
+    "discharge_capacity_ah": 2.49662,
+    "charge_capacity_ah": 2.50421,
+    "ce": 0.99697,
+    "ir_mohm": 24.479,
+    "mid_voltage_v": 3.7301
+   },
+   {
+    "cycle": 3,
+    "discharge_capacity_ah": 2.4994,
+    "charge_capacity_ah": 2.507,
+    "ce": 0.99697,
+    "ir_mohm": 25.252,
+    "mid_voltage_v": 3.7319
+   },
+   {
+    "cycle": 4,
+    "discharge_capacity_ah": 2.4994,
+    "charge_capacity_ah": 2.51008,
+    "ce": 0.99575,
+    "ir_mohm": 24.047,
+    "mid_voltage_v": 3.7017
+   }
+  ],
+  "A07": [
+   {
+    "cycle": 1,
+    "discharge_capacity_ah": 2.48708,
+    "charge_capacity_ah": 2.91213,
+    "ce": 0.85404,
+    "ir_mohm": 24.23,
+    "mid_voltage_v": 3.7311
+   },
+   {
+    "cycle": 2,
+    "discharge_capacity_ah": 2.4893,
+    "charge_capacity_ah": 2.49706,
+    "ce": 0.99689,
+    "ir_mohm": 23.505,
+    "mid_voltage_v": 3.7314
+   },
+   {
+    "cycle": 3,
+    "discharge_capacity_ah": 2.49179,
+    "charge_capacity_ah": 2.49928,
+    "ce": 0.997,
+    "ir_mohm": 26.073,
+    "mid_voltage_v": 3.7307
+   },
+   {
+    "cycle": 4,
+    "discharge_capacity_ah": 2.49221,
+    "charge_capacity_ah": 2.50208,
+    "ce": 0.99605,
+    "ir_mohm": 24.119,
+    "mid_voltage_v": 3.7019
+   }
+  ],
+  "A08": [
+   {
+    "cycle": 1,
+    "discharge_capacity_ah": 2.50763,
+    "charge_capacity_ah": 2.86734,
+    "ce": 0.87455,
+    "ir_mohm": 25.853,
+    "mid_voltage_v": 3.727
+   },
+   {
+    "cycle": 2,
+    "discharge_capacity_ah": 2.51155,
+    "charge_capacity_ah": 2.51929,
+    "ce": 0.99693,
+    "ir_mohm": 27.095,
+    "mid_voltage_v": 3.7272
+   },
+   {
+    "cycle": 3,
+    "discharge_capacity_ah": 2.51575,
+    "charge_capacity_ah": 2.52323,
+    "ce": 0.99704,
+    "ir_mohm": 26.835,
+    "mid_voltage_v": 3.7273
+   },
+   {
+    "cycle": 4,
+    "discharge_capacity_ah": 2.51715,
+    "charge_capacity_ah": 2.52771,
+    "ce": 0.99582,
+    "ir_mohm": 25.763,
+    "mid_voltage_v": 3.6949
+   }
+  ],
+  "A09": [
+   {
+    "cycle": 1,
+    "discharge_capacity_ah": 2.46247,
+    "charge_capacity_ah": 2.81352,
+    "ce": 0.87523,
+    "ir_mohm": 24.811,
+    "mid_voltage_v": 3.7298
+   },
+   {
+    "cycle": 2,
+    "discharge_capacity_ah": 2.47498,
+    "charge_capacity_ah": 2.48254,
+    "ce": 0.99696,
+    "ir_mohm": 26.153,
+    "mid_voltage_v": 3.73
+   },
+   {
+    "cycle": 3,
+    "discharge_capacity_ah": 2.48749,
+    "charge_capacity_ah": 2.49508,
+    "ce": 0.99696,
+    "ir_mohm": 25.533,
+    "mid_voltage_v": 3.7297
+   },
+   {
+    "cycle": 4,
+    "discharge_capacity_ah": 2.4975,
+    "charge_capacity_ah": 2.50791,
+    "ce": 0.99585,
+    "ir_mohm": 25.914,
+    "mid_voltage_v": 3.7007
+   }
+  ],
+  "A10": [
+   {
+    "cycle": 1,
+    "discharge_capacity_ah": 2.43688,
+    "charge_capacity_ah": 2.77181,
+    "ce": 0.87917,
+    "ir_mohm": 26.884,
+    "mid_voltage_v": 3.7291
+   },
+   {
+    "cycle": 2,
+    "discharge_capacity_ah": 2.46202,
+    "charge_capacity_ah": 2.46953,
+    "ce": 0.99696,
+    "ir_mohm": 28.773,
+    "mid_voltage_v": 3.7299
+   },
+   {
+    "cycle": 3,
+    "discharge_capacity_ah": 2.48716,
+    "charge_capacity_ah": 2.49474,
+    "ce": 0.99696,
+    "ir_mohm": 24.441,
+    "mid_voltage_v": 3.7294
+   },
+   {
+    "cycle": 4,
+    "discharge_capacity_ah": 2.50979,
+    "charge_capacity_ah": 2.52023,
+    "ce": 0.99585,
+    "ir_mohm": 25.017,
+    "mid_voltage_v": 3.6988
+   }
+  ],
+  "A11": [
+   {
+    "cycle": 1,
+    "discharge_capacity_ah": 2.50108,
+    "charge_capacity_ah": 2.84505,
+    "ce": 0.8791,
+    "ir_mohm": 21.451,
+    "mid_voltage_v": 3.7309
+   },
+   {
+    "cycle": 2,
+    "discharge_capacity_ah": 2.50359,
+    "charge_capacity_ah": 2.51107,
+    "ce": 0.99702,
+    "ir_mohm": 27.136,
+    "mid_voltage_v": 3.7303
+   },
+   {
+    "cycle": 3,
+    "discharge_capacity_ah": 2.50582,
+    "charge_capacity_ah": 2.51359,
+    "ce": 0.99691,
+    "ir_mohm": 23.558,
+    "mid_voltage_v": 3.7302
+   },
+   {
+    "cycle": 4,
+    "discharge_capacity_ah": 2.50554,
+    "charge_capacity_ah": 2.51612,
+    "ce": 0.9958,
+    "ir_mohm": 24.319,
+    "mid_voltage_v": 3.7021
+   }
+  ],
+  "A12": [
+   {
+    "cycle": 1,
+    "discharge_capacity_ah": 2.48508,
+    "charge_capacity_ah": 2.83197,
+    "ce": 0.87751,
+    "ir_mohm": 38.952,
+    "mid_voltage_v": 3.7175
+   },
+   {
+    "cycle": 2,
+    "discharge_capacity_ah": 2.48785,
+    "charge_capacity_ah": 2.49538,
+    "ce": 0.99698,
+    "ir_mohm": 40.002,
+    "mid_voltage_v": 3.7169
+   },
+   {
+    "cycle": 3,
+    "discharge_capacity_ah": 2.49063,
+    "charge_capacity_ah": 2.49816,
+    "ce": 0.99698,
+    "ir_mohm": 41.502,
+    "mid_voltage_v": 3.7177
+   },
+   {
+    "cycle": 4,
+    "discharge_capacity_ah": 2.48966,
+    "charge_capacity_ah": 2.50111,
+    "ce": 0.99542,
+    "ir_mohm": 40.563,
+    "mid_voltage_v": 3.6693
+   }
+  ],
+  "A13": [
+   {
+    "cycle": 1,
+    "discharge_capacity_ah": 2.48516,
+    "charge_capacity_ah": 2.81638,
+    "ce": 0.8824,
+    "ir_mohm": 25.252,
+    "mid_voltage_v": 3.7295
+   },
+   {
+    "cycle": 2,
+    "discharge_capacity_ah": 2.48904,
+    "charge_capacity_ah": 2.49657,
+    "ce": 0.99699,
+    "ir_mohm": 24.047,
+    "mid_voltage_v": 3.7298
+   },
+   {
+    "cycle": 3,
+    "discharge_capacity_ah": 2.49265,
+    "charge_capacity_ah": 2.50047,
+    "ce": 0.99687,
+    "ir_mohm": 26.071,
+    "mid_voltage_v": 3.7292
+   },
+   {
+    "cycle": 4,
+    "discharge_capacity_ah": 2.49404,
+    "charge_capacity_ah": 2.50436,
+    "ce": 0.99588,
+    "ir_mohm": 26.3,
+    "mid_voltage_v": 3.6982
+   }
+  ],
+  "A14": [
+   {
+    "cycle": 1,
+    "discharge_capacity_ah": 2.50834,
+    "charge_capacity_ah": 2.85665,
+    "ce": 0.87807,
+    "ir_mohm": 25.062,
+    "mid_voltage_v": 3.7316
+   },
+   {
+    "cycle": 2,
+    "discharge_capacity_ah": 2.50974,
+    "charge_capacity_ah": 2.51747,
+    "ce": 0.99693,
+    "ir_mohm": 27.683,
+    "mid_voltage_v": 3.7311
+   },
+   {
+    "cycle": 3,
+    "discharge_capacity_ah": 2.51113,
+    "charge_capacity_ah": 2.51887,
+    "ce": 0.99693,
+    "ir_mohm": 24.399,
+    "mid_voltage_v": 3.7309
+   },
+   {
+    "cycle": 4,
+    "discharge_capacity_ah": 2.51071,
+    "charge_capacity_ah": 2.52058,
+    "ce": 0.99608,
+    "ir_mohm": 24.278,
+    "mid_voltage_v": 3.703
+   }
+  ],
+  "A15": [
+   {
+    "cycle": 1,
+    "discharge_capacity_ah": 2.48574,
+    "charge_capacity_ah": 2.82991,
+    "ce": 0.87838,
+    "ir_mohm": 21.817,
+    "mid_voltage_v": 3.7288
+   },
+   {
+    "cycle": 2,
+    "discharge_capacity_ah": 2.48963,
+    "charge_capacity_ah": 2.49709,
+    "ce": 0.99701,
+    "ir_mohm": 24.356,
+    "mid_voltage_v": 3.7296
+   },
+   {
+    "cycle": 3,
+    "discharge_capacity_ah": 2.49324,
+    "charge_capacity_ah": 2.50099,
+    "ce": 0.9969,
+    "ir_mohm": 25.381,
+    "mid_voltage_v": 3.7295
+   },
+   {
+    "cycle": 4,
+    "discharge_capacity_ah": 2.49504,
+    "charge_capacity_ah": 2.50492,
+    "ce": 0.99606,
+    "ir_mohm": 23.824,
+    "mid_voltage_v": 3.7006
+   }
+  ],
+  "A16": [
+   {
+    "cycle": 1,
+    "discharge_capacity_ah": 2.52325,
+    "charge_capacity_ah": 2.8833,
+    "ce": 0.87512,
+    "ir_mohm": 25.021,
+    "mid_voltage_v": 3.7286
+   },
+   {
+    "cycle": 2,
+    "discharge_capacity_ah": 2.52213,
+    "charge_capacity_ah": 2.52977,
+    "ce": 0.99698,
+    "ir_mohm": 26.241,
+    "mid_voltage_v": 3.728
+   },
+   {
+    "cycle": 3,
+    "discharge_capacity_ah": 2.52072,
+    "charge_capacity_ah": 2.52864,
+    "ce": 0.99687,
+    "ir_mohm": 23.706,
+    "mid_voltage_v": 3.7288
+   },
+   {
+    "cycle": 4,
+    "discharge_capacity_ah": 2.51708,
+    "charge_capacity_ah": 2.52752,
+    "ce": 0.99587,
+    "ir_mohm": 26.317,
+    "mid_voltage_v": 3.6989
+   }
+  ]
+ },
+ "flags": {
+  "A01": [],
+  "A02": [],
+  "A03": [],
+  "A04": [
+   {
+    "type": "NOISY_OR_DEAD_CHANNEL",
+    "severity": "high"
+   }
+  ],
+  "A05": [],
+  "A06": [
+   {
+    "type": "LOW_CE",
+    "severity": "low"
+   }
+  ],
+  "A07": [
+   {
+    "type": "LOW_CE",
+    "severity": "medium"
+   }
+  ],
+  "A08": [],
+  "A09": [
+   {
+    "type": "CAPACITY_CREEP_UP",
+    "severity": "high"
+   }
+  ],
+  "A10": [
+   {
+    "type": "CAPACITY_CREEP_UP",
+    "severity": "high"
+   }
+  ],
+  "A11": [],
+  "A12": [
+   {
+    "type": "HIGH_IR",
+    "severity": "high"
+   }
+  ],
+  "A13": [],
+  "A14": [],
+  "A15": [],
+  "A16": []
+ },
+ "reference_capacity_ah": 2.49845,
+ "median_ir_mohm": 24.416,
+ "grades": {
+  "A01": "A",
+  "A02": "A",
+  "A03": "A",
+  "A04": "REJECT",
+  "A05": "A",
+  "A06": "A",
+  "A07": "B",
+  "A08": "A",
+  "A09": "C",
+  "A10": "C",
+  "A11": "A",
+  "A12": "REJECT",
+  "A13": "A",
+  "A14": "A",
+  "A15": "A",
+  "A16": "A"
+ },
+ "thresholds": {
+  "basis": "batch_median",
+  "nominal_capacity_ah": null,
+  "capacity_min_pct": {
+   "A": 98.0,
+   "B": 95.0,
+   "C": 90.0
+  },
+  "ir_max_pct": {
+   "A": 115.0,
+   "B": 130.0,
+   "C": 160.0
+  },
+  "reject_on_flags": [
+   "NOISY_OR_DEAD_CHANNEL"
+  ],
+  "max_grade_by_severity": {
+   "high": "C",
+   "medium": "B"
+  },
+  "source": "default",
+  "rationale": ""
+ }
+}

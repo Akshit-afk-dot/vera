@@ -31,3 +31,7 @@ One line each: date (IST) · decision · why. Newest at the bottom.
 - 2026-10-30 · Browser regrading mirrors analysis/grading.py and a parity test runs both through Node on five threshold variants.
 - 2026-10-30 · Structural peeks collapse repeated keys (channels, cycles) to one example plus names and fall back to compact JSON · keeps every layout's prompt complete (Oxford 12k truncated → 4.7k complete).
 - 2026-10-30 · `scripts/finish.py` is the single step from "key in .env" to a finished project: live demo runs, publish, R1/R4/R5, README tables, tests.
+- 2026-10-30 · Enter both Arbiter Hacks (Vera as is) and Codegeist (Vera for Jira, a Forge rebuild) · rules of both allow it; deadlines Dec 20 and Dec 22.
+- 2026-10-30 · Vera for Jira uses Forge Functions + KVS + async events, and Nemotron via NVIDIA's API; not Forge LLMs or Forge Containers · those two have no free allowance and the team has no card; functions/KVS/events stay inside Forge's free tier.
+- 2026-10-30 · Inside Jira the model proposes a declarative layout mapping instead of writing code · no model-written code runs in a customer's site; same deterministic validation and repair loop.
+- 2026-10-30 · The engine is ported to TypeScript (forge-app/src/core) with a parity test against the Python engine on the same batch (features within rounding, identical flags and grades).
