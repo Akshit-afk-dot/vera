@@ -19,6 +19,7 @@ concurrency:
 
 jobs:
   deploy:
+    if: ${{ !github.event.repository.private }}   # skipped (not failed) while the repo is private
     runs-on: ubuntu-latest
     environment:
       name: github-pages

@@ -83,7 +83,8 @@ function runCard(r) {
   </a>`;
 }
 function r2Table(r) {
-  const rows = Object.entries(r.methods).map(([k, e]) => `<tr><td>${esc(k)}</td><td>${fmt(e.detection.precision, 2)}</td><td>${fmt(e.detection.recall, 2)}</td><td>${fmt(e.detection.f1, 2)}</td><td>${(100 * e.detection.false_alarm_rate_clean_batches).toFixed(2)}%</td></tr>`).join("");
+  const f2 = (x) => (x == null ? "–" : (+x).toFixed(2));
+  const rows = Object.entries(r.methods).map(([k, e]) => `<tr><td>${esc(k)}</td><td>${f2(e.detection.precision)}</td><td>${f2(e.detection.recall)}</td><td>${f2(e.detection.f1)}</td><td>${(100 * e.detection.false_alarm_rate_clean_batches).toFixed(2)}%</td></tr>`).join("");
   return `<p class="note"><span class="label SYNTHETIC">SYNTHETIC</span> Planted-fault detection on ${r.faulty_seeds.length} simulated 128-channel batches (${r.n_faulty_channels} faults) and ${r.clean_seeds.length} clean ones. The rules were developed on the same simulator, so treat these as optimistic.</p>
   <table><thead><tr><th>Method</th><th>Precision</th><th>Recall</th><th>F1</th><th>False alarms (clean batches)</th></tr></thead><tbody>${rows}</tbody></table>`;
 }
